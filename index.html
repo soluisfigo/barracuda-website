@@ -48,8 +48,8 @@
     .mnav a:hover{color:var(--cyan)}
     .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
 
-    /* HERO */
-    .hero{min-height:80vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
+    /* HERO — Full screen */
+    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
     .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:70%;height:140%;background:radial-gradient(ellipse,rgba(133,92,198,.12) 0%,transparent 70%);pointer-events:none}
     .hero-t{padding:0 48px 0 0;position:relative;z-index:2}
     .hero-t .container{max-width:100%;padding:0 60px}
@@ -57,9 +57,19 @@
     .hero h1{font-size:clamp(2rem,3.5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:24px;opacity:0;animation:fu .8s ease forwards .4s}
     .hero p{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--muted);max-width:500px;margin-bottom:36px;opacity:0;animation:fu .8s ease forwards .6s}
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
-    .hero-v{position:relative;height:80vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none}
+    /* Top overlay to hide YouTube title */
+    .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 40%,transparent 100%);pointer-events:none;z-index:1}
+    /* Bottom overlay */
     .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:1}
+
+    /* Scroll arrow */
+    .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;opacity:0;animation:fu .8s ease forwards 1.2s}
+    .scroll-arrow span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.5)}
+    .scroll-arrow svg{width:28px;height:28px;color:rgba(255,255,255,.6);animation:bounce 2s ease infinite}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(10px)}60%{transform:translateY(5px)}}
+
     @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
     /* MANIFESTO */
@@ -140,6 +150,8 @@
     .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
     .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
     .proj-cta{text-align:center}
+    /* IA Tag on video */
+    .vw-tag{position:absolute;top:12px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
 
     /* SOLUCIONES ESPECIALIZADAS */
     .especial{background:var(--dark2)}
@@ -251,12 +263,18 @@
     </div>
     <div class="hero-v">
       <iframe src="https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&mute=1&loop=1&playlist=neEB_ePH51g&controls=0&showinfo=0&rel=0&modestbranding=1" title="Reel Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      <div class="hero-v-top"></div>
       <div class="hero-vo"></div>
     </div>
+    <!-- Scroll indicator -->
+    <a href="#manif" class="scroll-arrow">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5"/><path d="M7 6l5 5 5-5"/></svg>
+    </a>
   </section>
 
   <!-- MANIFESTO -->
-  <section class="manif">
+  <section class="manif" id="manif">
     <div class="container reveal">
       <h2><strong>Creatividad y producción de alto nivel</strong> potencializada con las <strong class="grad">mejores herramientas de IA</strong>.</h2>
     </div>
@@ -396,10 +414,11 @@
       </div>
       <div class="proj-grid">
         <div class="vw reveal">
-          <iframe src="https://www.youtube.com/embed/HLUhrtL-2ZA" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <span class="vw-tag">Hecho 100% con IA</span>
+          <iframe src="https://www.youtube.com/embed/MOdGSM_cvKY" title="Video 100% IA" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="vw reveal">
-          <iframe src="https://www.youtube.com/embed/Rct2nV7EzgU" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/HLUhrtL-2ZA" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="proj-cta reveal">
@@ -539,7 +558,7 @@
             const eased=1-Math.pow(1-progress,3);
             const current=eased*target;
             if(isDecimal){
-              el.textContent=prefix+current.toFixed(current>=target?1:1)+suffix;
+              el.textContent=prefix+current.toFixed(1)+suffix;
             }else{
               el.textContent=prefix+Math.floor(current)+suffix;
             }
