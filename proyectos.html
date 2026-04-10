@@ -11,11 +11,17 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden}
+    body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden;cursor:none}
+    a,button{cursor:none}
     a{text-decoration:none;color:inherit}
     :root{--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;--dark:#0A0A0A;--muted:#a0a0a0;--max-w:1200px}
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
     .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* CUSTOM CURSOR */
+    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:#D4AF37;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s}
+    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:2px solid rgba(212,175,55,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+    .cursor-ring.hover{width:56px;height:56px;border-color:rgba(212,175,55,.8)}
 
     /* NAV */
     .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
@@ -41,10 +47,17 @@
     .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    @media(max-width:768px){.proj-grid{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .proj-grid{grid-template-columns:1fr}
+      .cursor-dot,.cursor-ring{display:none}
+      body,a,button{cursor:auto}
+    }
   </style>
 </head>
 <body>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
   <nav class="nav">
     <div class="container">
       <a href="index.html" class="logo"><img src="logo-barracuda.png" alt="Barracuda Advertising"></a>
@@ -83,6 +96,9 @@
         <div class="vw reveal">
           <iframe src="https://www.youtube.com/embed/UUCTfwQn3T4" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
+        <div class="vw reveal">
+          <iframe src="https://www.youtube.com/embed/RERp0k0hdRg" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -92,6 +108,19 @@
   </footer>
 
   <script>
+    // Custom cursor
+    const dot=document.getElementById('cursorDot');
+    const ring=document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+    function animateRing(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing)}
+    animateRing();
+    document.querySelectorAll('a,button,.vw').forEach(el=>{
+      el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+      el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+    });
+
+    // Scroll reveal
     const rv=document.querySelectorAll('.reveal');
     const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
     rv.forEach(el=>ro.observe(el));

@@ -11,7 +11,8 @@
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden}
+    body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden;cursor:none}
+    a,button{cursor:none}
     a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto}
 
     :root{
@@ -30,6 +31,11 @@
     .sh h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:14px}
     .sh p{color:var(--muted);font-size:1.05rem;max-width:650px;margin:0 auto}
 
+    /* CUSTOM CURSOR */
+    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:#D4AF37;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s}
+    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:2px solid rgba(212,175,55,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+    .cursor-ring.hover{width:56px;height:56px;border-color:rgba(212,175,55,.8)}
+
     /* NAV */
     .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .3s;background:transparent}
     .nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);padding:10px 0}
@@ -40,13 +46,13 @@
     .nl a:hover{color:var(--cyan)}
     .nl .nc{padding:10px 24px;border:1.5px solid var(--pink);border-radius:50px;color:var(--pink);font-weight:700;transition:all .3s}
     .nl .nc:hover{background:var(--pink);color:#fff}
-    .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:8px}
     .ham span{display:block;width:24px;height:2px;background:#fff;transition:all .3s}
     .mnav{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
     .mnav.active{display:flex}
     .mnav a{font-size:1.3rem;font-weight:500;color:var(--muted);transition:color .3s}
     .mnav a:hover{color:var(--cyan)}
-    .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+    .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:none}
 
     /* HERO — Full screen */
     .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
@@ -59,13 +65,11 @@
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
     .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none}
-    /* Top overlay to hide YouTube title */
     .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 40%,transparent 100%);pointer-events:none;z-index:1}
-    /* Bottom overlay */
     .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:1}
 
     /* Scroll arrow */
-    .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;opacity:0;animation:fu .8s ease forwards 1.2s}
+    .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s ease forwards 1.2s}
     .scroll-arrow span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.5)}
     .scroll-arrow svg{width:28px;height:28px;color:rgba(255,255,255,.6);animation:bounce 2s ease infinite}
     @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(10px)}60%{transform:translateY(5px)}}
@@ -105,8 +109,6 @@
     .ai-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .4s;position:relative}
     .ai-c:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.15)}
     .ai-c-img{width:100%;height:220px;overflow:hidden;position:relative}
-    .ai-c-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
-    .ai-c:hover .ai-c-img img{transform:scale(1.05)}
     .ai-c-img .ai-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
     .ai-c-img .ai-placeholder svg{width:80px;height:80px;opacity:.35}
     .ai-ph-1{background:linear-gradient(135deg,#0a1628 0%,#0d2847 30%,rgba(0,229,255,.13) 60%,#0a0a0a 100%)}
@@ -150,8 +152,8 @@
     .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
     .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
     .proj-cta{text-align:center}
-    /* IA Tag on video */
-    .vw-tag{position:absolute;top:12px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
+    /* IA Tag on video — bottom left to avoid YouTube title */
+    .vw-tag{position:absolute;bottom:60px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
 
     /* SOLUCIONES ESPECIALIZADAS */
     .especial{background:var(--dark2)}
@@ -206,14 +208,22 @@
       .hero{grid-template-columns:1fr;min-height:auto}
       .hero-t .container{padding:120px 24px 40px}
       .hero-v{height:50vh}
-      .cine{padding-bottom:56.25%}
+      /* Fix cine banner on mobile */
+      .cine{padding-bottom:70%}
+      .cine-txt{bottom:15%;width:85%}
+      .cine-txt h3{font-size:1rem;letter-spacing:1px}
       .especial-grid{grid-template-columns:1fr}
     }
     @media(max-width:768px){
-      .nl{display:none}.ham{display:flex}
+      /* Hide custom cursor on touch devices */
+      .cursor-dot,.cursor-ring{display:none}
+      body,a,button{cursor:auto}
+      .nl{display:none}.ham{display:flex;cursor:auto}
+      .mnav .cb{cursor:auto}
       .ft-g{grid-template-columns:1fr;gap:32px}
       .proj-grid{grid-template-columns:1fr}
-      .test-g{grid-template-columns:repeat(2,1fr)}
+      /* Fix testimonials: single column on mobile so nothing is cut off */
+      .test-g{grid-template-columns:1fr}
       .ai-grid{grid-template-columns:1fr}
       .datos-grid{grid-template-columns:repeat(2,1fr)}
       .trad-grid{grid-template-columns:repeat(2,1fr)}
@@ -222,6 +232,10 @@
   </style>
 </head>
 <body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
   <nav class="nav" id="navbar">
@@ -266,7 +280,6 @@
       <div class="hero-v-top"></div>
       <div class="hero-vo"></div>
     </div>
-    <!-- Scroll indicator -->
     <a href="#manif" class="scroll-arrow">
       <span>Scroll</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5"/><path d="M7 6l5 5 5-5"/></svg>
@@ -418,7 +431,7 @@
           <iframe src="https://www.youtube.com/embed/MOdGSM_cvKY" title="Video 100% IA" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="vw reveal">
-          <iframe src="https://www.youtube.com/embed/HLUhrtL-2ZA" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+          <iframe src="https://www.youtube.com/embed/RERp0k0hdRg" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
       <div class="proj-cta reveal">
@@ -527,6 +540,18 @@
   </footer>
 
   <script>
+    // Custom cursor
+    const dot=document.getElementById('cursorDot');
+    const ring=document.getElementById('cursorRing');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+    function animateRing(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing)}
+    animateRing();
+    document.querySelectorAll('a,button,.ai-c,.tc,.dato-card,.trad-c').forEach(el=>{
+      el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
+      el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
+    });
+
     // Navbar
     const nb=document.getElementById('navbar');
     window.addEventListener('scroll',()=>{nb.classList.toggle('scrolled',window.scrollY>50)});
@@ -557,11 +582,8 @@
             const progress=Math.min(elapsed/duration,1);
             const eased=1-Math.pow(1-progress,3);
             const current=eased*target;
-            if(isDecimal){
-              el.textContent=prefix+current.toFixed(1)+suffix;
-            }else{
-              el.textContent=prefix+Math.floor(current)+suffix;
-            }
+            if(isDecimal){el.textContent=prefix+current.toFixed(1)+suffix}
+            else{el.textContent=prefix+Math.floor(current)+suffix}
             if(progress<1)requestAnimationFrame(animate);
             else el.textContent=prefix+(isDecimal?target.toFixed(1):target)+suffix;
           }
