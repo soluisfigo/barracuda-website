@@ -65,8 +65,11 @@
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
     .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none}
-    .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.6) 40%,transparent 100%);pointer-events:none;z-index:1}
-    .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:1}
+    /* Blue gradient blend overlay on video */
+    .hero-v-blend{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,rgba(10,10,10,.75) 0%,rgba(7,7,58,.55) 40%,rgba(29,31,161,.35) 100%);pointer-events:none;z-index:1}
+    /* Top overlay to hide YouTube title */
+    .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.4) 50%,transparent 100%);pointer-events:none;z-index:2}
+    .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:2}
 
     /* Scroll arrow */
     .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s ease forwards 1.2s}
@@ -152,7 +155,6 @@
     .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
     .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
     .proj-cta{text-align:center}
-    /* IA Tag on video — bottom left to avoid YouTube title */
     .vw-tag{position:absolute;bottom:60px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
 
     /* SOLUCIONES ESPECIALIZADAS */
@@ -208,21 +210,18 @@
       .hero{grid-template-columns:1fr;min-height:auto}
       .hero-t .container{padding:120px 24px 40px}
       .hero-v{height:50vh}
-      /* Fix cine banner on mobile */
       .cine{padding-bottom:70%}
       .cine-txt{bottom:15%;width:85%}
       .cine-txt h3{font-size:1rem;letter-spacing:1px}
       .especial-grid{grid-template-columns:1fr}
     }
     @media(max-width:768px){
-      /* Hide custom cursor on touch devices */
       .cursor-dot,.cursor-ring{display:none}
       body,a,button{cursor:auto}
       .nl{display:none}.ham{display:flex;cursor:auto}
       .mnav .cb{cursor:auto}
       .ft-g{grid-template-columns:1fr;gap:32px}
       .proj-grid{grid-template-columns:1fr}
-      /* Fix testimonials: single column on mobile so nothing is cut off */
       .test-g{grid-template-columns:1fr}
       .ai-grid{grid-template-columns:1fr}
       .datos-grid{grid-template-columns:repeat(2,1fr)}
@@ -233,7 +232,6 @@
 </head>
 <body>
 
-  <!-- Custom cursor -->
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
@@ -277,6 +275,7 @@
     </div>
     <div class="hero-v">
       <iframe src="https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&mute=1&loop=1&playlist=neEB_ePH51g&controls=0&showinfo=0&rel=0&modestbranding=1" title="Reel Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+      <div class="hero-v-blend"></div>
       <div class="hero-v-top"></div>
       <div class="hero-vo"></div>
     </div>

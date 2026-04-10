@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proyectos – Barracuda Advertising</title>
-  <meta name="description" content="Conoce nuestros proyectos de producción audiovisual, videos con IA, VFX y más.">
+  <meta name="description" content="Galería de proyectos audiovisuales de Barracuda Advertising. Producción de alto nivel con creatividad humana e inteligencia artificial.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -13,8 +13,12 @@
     html{scroll-behavior:smooth}
     body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden;cursor:none}
     a,button{cursor:none}
-    a{text-decoration:none;color:inherit}
-    :root{--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;--dark:#0A0A0A;--muted:#a0a0a0;--max-w:1200px}
+    a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto}
+
+    :root{
+      --blue:#1D1FA1;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;
+      --dark:#0A0A0A;--dark2:#111;--muted:#a0a0a0;--max-w:1200px;
+    }
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
     .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
@@ -24,57 +28,106 @@
     .cursor-ring.hover{width:56px;height:56px;border-color:rgba(212,175,55,.8)}
 
     /* NAV */
-    .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:14px 0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
+    .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05)}
     .nav .container{display:flex;justify-content:space-between;align-items:center}
     .nav .logo img{height:40px}
-    .nav-back{font-size:.9rem;color:var(--cyan);font-weight:500;transition:opacity .3s}
-    .nav-back:hover{opacity:.7}
+    .nl{display:flex;align-items:center;gap:28px}
+    .nl a{font-size:.88rem;font-weight:500;color:var(--muted);transition:color .3s;letter-spacing:.3px}
+    .nl a:hover{color:var(--cyan)}
+    .nl .nc{padding:10px 24px;border:1.5px solid var(--pink);border-radius:50px;color:var(--pink);font-weight:700;transition:all .3s}
+    .nl .nc:hover{background:var(--pink);color:#fff}
+    .ham{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:8px}
+    .ham span{display:block;width:24px;height:2px;background:#fff;transition:all .3s}
+    .mnav{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,.98);backdrop-filter:blur(20px);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+    .mnav.active{display:flex}
+    .mnav a{font-size:1.3rem;font-weight:500;color:var(--muted);transition:color .3s}
+    .mnav a:hover{color:var(--cyan)}
+    .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:none}
 
-    /* HERO */
-    .page-hero{padding:140px 0 60px;text-align:center;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 100%)}
-    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;margin-bottom:16px}
-    .page-hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto}
+    /* HERO BANNER */
+    .page-hero{padding:140px 0 60px;text-align:center;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%);position:relative;overflow:hidden}
+    .page-hero::before{content:'';position:absolute;top:-40%;right:-20%;width:70%;height:140%;background:radial-gradient(ellipse,rgba(133,92,198,.12) 0%,transparent 70%);pointer-events:none}
+    .page-hero h1{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;margin-bottom:16px;position:relative;z-index:1}
+    .page-hero p{color:var(--muted);font-size:1.1rem;max-width:600px;margin:0 auto;position:relative;z-index:1}
 
-    /* GRID */
-    .proj-section{padding:60px 0 100px}
+    /* PROJECTS GRID */
+    .proj-section{padding:80px 0;background:var(--dark)}
     .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px}
-    .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06);transition:all .4s}
+    .vw:hover{border-color:rgba(255,255,255,.15);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
     .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+    .vw-tag{position:absolute;bottom:60px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
+
+    /* BACK LINK */
+    .back-link{text-align:center;padding:40px 0 80px}
+    .btn-s{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;border-radius:50px;font-weight:700;font-size:.95rem;letter-spacing:.5px;transition:all .3s;text-transform:uppercase;border:none}
+    .btn-s:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(88,208,245,.3)}
 
     /* FOOTER */
-    .ft{background:#060606;padding:30px 0;border-top:1px solid rgba(255,255,255,.04);text-align:center;color:rgba(255,255,255,.2);font-size:.8rem}
+    .ft{background:#060606;padding:40px 0;border-top:1px solid rgba(255,255,255,.04);text-align:center}
+    .ft p{color:rgba(255,255,255,.2);font-size:.8rem}
 
     .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
     @media(max-width:768px){
-      .proj-grid{grid-template-columns:1fr}
       .cursor-dot,.cursor-ring{display:none}
       body,a,button{cursor:auto}
+      .nl{display:none}.ham{display:flex;cursor:auto}
+      .mnav .cb{cursor:auto}
+      .proj-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
+
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-ring" id="cursorRing"></div>
 
+  <!-- NAV -->
   <nav class="nav">
     <div class="container">
       <a href="index.html" class="logo"><img src="logo-barracuda.png" alt="Barracuda Advertising"></a>
-      <a href="index.html" class="nav-back">&larr; Volver al inicio</a>
+      <div class="nl">
+        <a href="index.html#soluciones">Soluciones IA</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#proyectos">Proyectos</a>
+        <a href="index.html#especializadas">Especializadas</a>
+        <a href="index.html#clientes">Clientes</a>
+        <a href="https://wa.me/17863814091" target="_blank" class="nc">Hablemos</a>
+      </div>
+      <button class="ham" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
+  <div class="mnav" id="mobileNav">
+    <button class="cb" onclick="toggleMobileNav()">&times;</button>
+    <a href="index.html#soluciones" onclick="toggleMobileNav()">Soluciones IA</a>
+    <a href="index.html#servicios" onclick="toggleMobileNav()">Servicios</a>
+    <a href="index.html#proyectos" onclick="toggleMobileNav()">Proyectos</a>
+    <a href="index.html#especializadas" onclick="toggleMobileNav()">Especializadas</a>
+    <a href="index.html#clientes" onclick="toggleMobileNav()">Clientes</a>
+    <a href="https://wa.me/17863814091" target="_blank" onclick="toggleMobileNav()">Hablemos</a>
+  </div>
 
+  <!-- PAGE HERO -->
   <section class="page-hero">
     <div class="container">
       <h1>Nuestros <span class="grad">Proyectos</span></h1>
-      <p>Una selección de nuestro trabajo en producción audiovisual, videos con IA, VFX y contenido para marcas globales.</p>
+      <p>Producción audiovisual de alto nivel para marcas que buscan destacar. Creatividad humana potenciada con IA.</p>
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section class="proj-section">
     <div class="container">
       <div class="proj-grid">
+        <div class="vw reveal">
+          <span class="vw-tag">Hecho 100% con IA</span>
+          <iframe src="https://www.youtube.com/embed/MOdGSM_cvKY" title="Video 100% IA" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="vw reveal">
+          <iframe src="https://www.youtube.com/embed/RERp0k0hdRg" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
+        </div>
         <div class="vw reveal">
           <iframe src="https://www.youtube.com/embed/HLUhrtL-2ZA" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
@@ -88,23 +141,23 @@
           <iframe src="https://www.youtube.com/embed/KSw3kaYCNWQ" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="vw reveal">
-          <iframe src="https://www.youtube.com/embed/MOdGSM_cvKY" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
-        <div class="vw reveal">
           <iframe src="https://www.youtube.com/embed/R9i2XjdfA0U" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
         <div class="vw reveal">
           <iframe src="https://www.youtube.com/embed/UUCTfwQn3T4" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
         </div>
-        <div class="vw reveal">
-          <iframe src="https://www.youtube.com/embed/RERp0k0hdRg" title="Proyecto Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
-        </div>
+      </div>
+      <div class="back-link reveal">
+        <a href="index.html" class="btn-s">&larr; Volver al Inicio</a>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="ft">
-    <div class="container">&copy; 2026 Barracuda Advertising. Todos los derechos reservados.</div>
+    <div class="container">
+      <p>&copy; 2026 Barracuda Advertising. Todos los derechos reservados.</p>
+    </div>
   </footer>
 
   <script>
@@ -119,6 +172,9 @@
       el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
       el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
     });
+
+    // Mobile nav
+    function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('active')}
 
     // Scroll reveal
     const rv=document.querySelectorAll('.reveal');
