@@ -65,8 +65,12 @@
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
     .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none}
-    /* Blue gradient blend overlay on video */
-    .hero-v-blend{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(160deg,rgba(10,10,10,.75) 0%,rgba(7,7,58,.55) 40%,rgba(29,31,161,.35) 100%);pointer-events:none;z-index:1}
+    /* Edge blend — only masks the black borders around the video, center stays clear */
+    .hero-v-blend{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;
+      background:
+        linear-gradient(to right, rgba(7,7,58,.95) 0%, rgba(7,7,58,.3) 4%, transparent 15%, transparent 85%, rgba(10,10,10,.3) 96%, rgba(10,10,10,.95) 100%),
+        linear-gradient(to bottom, rgba(7,7,58,.85) 0%, transparent 10%, transparent 90%, rgba(10,10,10,.85) 100%)
+    }
     /* Top overlay to hide YouTube title */
     .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.4) 50%,transparent 100%);pointer-events:none;z-index:2}
     .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:2}
