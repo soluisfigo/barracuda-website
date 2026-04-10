@@ -34,7 +34,7 @@
     .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .3s;background:transparent}
     .nav.scrolled{background:rgba(10,10,10,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);padding:10px 0}
     .nav .container{display:flex;justify-content:space-between;align-items:center}
-    .nav .logo img{height:40px;filter:brightness(0) invert(1)}
+    .nav .logo img{height:40px}
     .nl{display:flex;align-items:center;gap:28px}
     .nl a{font-size:.88rem;font-weight:500;color:var(--muted);transition:color .3s;letter-spacing:.3px}
     .nl a:hover{color:var(--cyan)}
@@ -72,7 +72,7 @@
     .datos-head{margin-bottom:48px}
     .datos-head h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:12px}
     .datos-head p{color:var(--muted);font-size:1rem;max-width:500px}
-    .datos-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+    .datos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .dato-card{text-align:center;padding:32px 20px 28px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);position:relative;overflow:hidden;transition:all .4s}
     .dato-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.12);box-shadow:0 16px 48px rgba(0,0,0,.3)}
     .dato-card::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:3px;opacity:0;transition:opacity .4s}
@@ -80,15 +80,13 @@
     .dato-card:nth-child(1)::after{background:var(--cyan)}
     .dato-card:nth-child(2)::after{background:var(--purple)}
     .dato-card:nth-child(3)::after{background:var(--pink)}
-    .dato-card:nth-child(4)::after{background:var(--cyan)}
-    .dato-card:nth-child(5)::after{background:var(--purple)}
+    .dato-card:nth-child(4)::after{background:var(--purple)}
     .dato-icon{font-size:1.6rem;margin-bottom:14px;opacity:.7}
     .dato-num{font-size:clamp(2.2rem,3.8vw,3.6rem);font-weight:900;line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
     .dato-card:nth-child(1) .dato-num{color:var(--cyan)}
     .dato-card:nth-child(2) .dato-num{color:var(--purple)}
     .dato-card:nth-child(3) .dato-num{color:var(--pink)}
-    .dato-card:nth-child(4) .dato-num{color:var(--cyan)}
-    .dato-card:nth-child(5) .dato-num{color:var(--purple)}
+    .dato-card:nth-child(4) .dato-num{color:var(--purple)}
     .dato-label{color:var(--muted);font-size:.82rem;line-height:1.5}
 
     /* AI SERVICES — Cinematic Cards */
@@ -127,6 +125,14 @@
     .trad-c .ti{width:56px;height:56px;border-radius:14px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
     .trad-c h3{font-size:.9rem;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
     .trad-c p{color:var(--muted);font-size:.82rem;line-height:1.7}
+
+    /* POWER DAY HIGHLIGHT */
+    .trad-c.power-day{background:linear-gradient(135deg,rgba(0,255,136,.08),rgba(0,255,200,.04));border:1.5px solid rgba(0,255,136,.35);border-radius:20px;position:relative;overflow:hidden;transition:all .4s}
+    .trad-c.power-day:hover{transform:translateY(-6px);border-color:rgba(0,255,136,.6);box-shadow:0 12px 40px rgba(0,255,136,.15)}
+    .trad-c.power-day::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#00ff88,#00ffc8,#00ff88)}
+    .trad-c.power-day h3{color:#00ff88;font-size:1rem;letter-spacing:1px}
+    .trad-c.power-day .ti{background:rgba(0,255,136,.12);border-color:rgba(0,255,136,.25)}
+    .trad-c.power-day .pd-badge{display:inline-block;margin-top:12px;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(0,255,136,.12);color:#00ff88;border:1px solid rgba(0,255,136,.3)}
 
     /* PROJECTS */
     .proj{background:var(--dark)}
@@ -183,7 +189,7 @@
     .reveal{opacity:0;transform:translateY(40px);transition:all .8s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
 
-    @media(max-width:1024px){.datos-grid{grid-template-columns:repeat(3,1fr)}.trad-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:1024px){.datos-grid{grid-template-columns:repeat(2,1fr)}.trad-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:900px){
       .hero{grid-template-columns:1fr;min-height:auto}
       .hero-t .container{padding:120px 24px 40px}
@@ -208,7 +214,7 @@
   <!-- NAV -->
   <nav class="nav" id="navbar">
     <div class="container">
-      <a href="#" class="logo"><img src="https://barracudaadvertising.com/wp-content/uploads/logobarracuda2.svg" alt="Barracuda Advertising"></a>
+      <a href="#" class="logo"><img src="logo-barracuda.png" alt="Barracuda Advertising"></a>
       <div class="nl">
         <a href="#soluciones">Soluciones IA</a>
         <a href="#servicios">Servicios</a>
@@ -278,11 +284,6 @@
           <div class="dato-icon">&#9889;</div>
           <div class="dato-num" data-target="3" data-prefix="" data-suffix="X">0X</div>
           <div class="dato-label">Más rápidos los diseños generados con asistencia IA</div>
-        </div>
-        <div class="dato-card">
-          <div class="dato-icon">&#128176;</div>
-          <div class="dato-num" data-target="3.70" data-prefix="$" data-suffix="" data-decimal="true">$0</div>
-          <div class="dato-label">Retorno por cada $1.00 invertido en IA (early adopters)</div>
         </div>
         <div class="dato-card">
           <div class="dato-icon">&#127909;</div>
@@ -376,10 +377,11 @@
           <h3>E-Commerce y Ads</h3>
           <p>Tiendas optimizadas en Amazon, Mercado Libre y más. Campañas SEO y Ads que aceleran tus ventas.</p>
         </div>
-        <div class="trad-c reveal">
+        <div class="trad-c power-day reveal">
           <div class="ti">&#9889;</div>
-          <h3>Fast Content</h3>
-          <p>Grandes volúmenes de contenido para redes, e-commerce y publicidad en un solo día. Menores costos, mayor rendimiento.</p>
+          <h3>Power Day Content</h3>
+          <p>Todo el contenido que podamos producir en un día de filmación/fotografía para que tengas mucho contenido para tus redes.</p>
+          <span class="pd-badge">&#9733; Servicio Estrella</span>
         </div>
       </div>
     </div>
@@ -483,7 +485,7 @@
     <div class="container">
       <div class="ft-g">
         <div class="ft-about">
-          <img src="https://barracudaadvertising.com/wp-content/uploads/logobarracuda2.svg" alt="Barracuda Advertising" style="height:36px;filter:brightness(0) invert(1)">
+          <img src="logo-barracuda.png" alt="Barracuda Advertising" style="height:36px">
           <p>En Barracuda, la creatividad y la tecnología se potencian con un equipo unido. Creatividad y producción de alto nivel potencializada con las mejores herramientas de IA.</p>
         </div>
         <div>
