@@ -18,6 +18,7 @@
     :root{
       --blue:#1D1FA1;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;
       --dark:#0A0A0A;--dark2:#111;--muted:#a0a0a0;--max-w:1200px;
+      --cursor:#00ff88;
     }
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
     .sp{padding:80px 0}
@@ -31,10 +32,10 @@
     .sh h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:14px}
     .sh p{color:var(--muted);font-size:1.05rem;max-width:650px;margin:0 auto}
 
-    /* CUSTOM CURSOR */
-    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:#D4AF37;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s}
-    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:2px solid rgba(212,175,55,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
-    .cursor-ring.hover{width:56px;height:56px;border-color:rgba(212,175,55,.8)}
+    /* CUSTOM CURSOR — green fluorescent */
+    .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--cursor);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s;box-shadow:0 0 6px rgba(0,255,136,.6)}
+    .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:2px solid rgba(0,255,136,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
+    .cursor-ring.hover{width:56px;height:56px;border-color:rgba(0,255,136,.85)}
 
     /* NAV */
     .nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:16px 0;transition:all .3s;background:transparent}
@@ -64,7 +65,7 @@
     .hero p{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--muted);max-width:500px;margin-bottom:36px;opacity:0;animation:fu .8s ease forwards .6s}
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
 
-    /* Video side: same gradient as hero background so black blends into blue */
+    /* Video side: same gradient so black blends into blue via mix-blend-mode */
     .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none;mix-blend-mode:lighten}
 
@@ -288,7 +289,7 @@
   <!-- MANIFESTO -->
   <section class="manif" id="manif">
     <div class="container reveal">
-      <h2><strong>Creatividad y producción de alto nivel</strong> potencializada con las <strong class="grad">mejores herramientas de IA</strong>.</h2>
+      <h2><strong>Pensamos primero como creativos</strong> —del brief al concepto y la dirección de arte— y lo ejecutamos con <strong class="grad">herramientas de IA profesionales</strong> para lograr calidad de producción.</h2>
     </div>
   </section>
 
