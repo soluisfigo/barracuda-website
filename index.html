@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barracuda Advertising – Creatividad Humana + Inteligencia Artificial</title>
+  <title>Barracuda Advertising, Creatividad Humana + Inteligencia Artificial</title>
   <meta name="description" content="Agencia creativa que combina producción de alto nivel con las mejores herramientas de IA. Videos IA, VFX, Agentes IA, Streaming y más.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,7 @@
     :root{
       --blue:#1D1FA1;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;
       --dark:#0A0A0A;--dark2:#111;--muted:#a0a0a0;--max-w:1200px;
-      --cursor:#00ff88;
+      --green:#00ff88;--cursor:#00ff88;
     }
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
     .sp{padding:80px 0}
@@ -32,7 +32,7 @@
     .sh h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:14px}
     .sh p{color:var(--muted);font-size:1.05rem;max-width:650px;margin:0 auto}
 
-    /* CUSTOM CURSOR — green fluorescent */
+    /* CUSTOM CURSOR */
     .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--cursor);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .3s;box-shadow:0 0 6px rgba(0,255,136,.6)}
     .cursor-ring{position:fixed;top:0;left:0;width:36px;height:36px;border:2px solid rgba(0,255,136,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s,border-color .3s}
     .cursor-ring.hover{width:56px;height:56px;border-color:rgba(0,255,136,.85)}
@@ -55,7 +55,7 @@
     .mnav a:hover{color:var(--cyan)}
     .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:none}
 
-    /* HERO — Full screen */
+    /* HERO */
     .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
     .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:70%;height:140%;background:radial-gradient(ellipse,rgba(133,92,198,.12) 0%,transparent 70%);pointer-events:none}
     .hero-t{padding:0 48px 0 0;position:relative;z-index:2}
@@ -64,21 +64,15 @@
     .hero h1{font-size:clamp(2rem,3.5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:24px;opacity:0;animation:fu .8s ease forwards .4s}
     .hero p{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--muted);max-width:500px;margin-bottom:36px;opacity:0;animation:fu .8s ease forwards .6s}
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
-
-    /* Video side: same gradient so black blends into blue via mix-blend-mode */
     .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
     .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none;mix-blend-mode:lighten}
-
-    /* Top overlay to hide YouTube title */
     .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.4) 50%,transparent 100%);pointer-events:none;z-index:2}
     .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:2}
 
-    /* Scroll arrow */
     .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s ease forwards 1.2s}
     .scroll-arrow span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.5)}
     .scroll-arrow svg{width:28px;height:28px;color:rgba(255,255,255,.6);animation:bounce 2s ease infinite}
     @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(10px)}60%{transform:translateY(5px)}}
-
     @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
     /* MANIFESTO */
@@ -86,7 +80,30 @@
     .manif h2{font-size:clamp(1.4rem,2.3vw,2rem);font-weight:300;line-height:1.6;max-width:900px;margin:0 auto}
     .manif h2 strong{font-weight:900}
 
-    /* DATOS DUROS — Glassmorphism */
+    /* FUNNEL — Timeline horizontal */
+    .funnel{background:var(--dark);padding:90px 0 80px;overflow:hidden}
+    .funnel-head{text-align:center;margin-bottom:70px}
+    .funnel-head h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:14px}
+    .funnel-head p{color:var(--muted);font-size:1.05rem;max-width:650px;margin:0 auto}
+    .fB{position:relative;padding:40px 0 20px}
+    .fB-track{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:0}
+    .fB-track::before{content:'';position:absolute;top:66px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink),var(--green));border-radius:3px;opacity:.4}
+    .fB-item{position:relative;text-align:center;padding:0 10px}
+    .fB-icon{position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:1.6rem;opacity:.85}
+    .fB-dot{position:relative;width:56px;height:56px;border-radius:50%;margin:38px auto 20px;display:flex;align-items:center;justify-content:center;background:var(--dark);border:3px solid rgba(255,255,255,.15);font-weight:900;font-size:1.1rem;z-index:2;transition:all .4s}
+    .fB-item:nth-child(1) .fB-dot{border-color:var(--cyan);color:var(--cyan)}
+    .fB-item:nth-child(2) .fB-dot{border-color:#79a8ea;color:#79a8ea}
+    .fB-item:nth-child(3) .fB-dot{border-color:var(--purple);color:var(--purple)}
+    .fB-item:nth-child(4) .fB-dot{border-color:#b74ba6;color:#b74ba6}
+    .fB-item:nth-child(5) .fB-dot{border-color:var(--pink);color:var(--pink)}
+    .fB-item:nth-child(6) .fB-dot{border-color:var(--green);color:var(--green);animation:pulseGreen 2.5s ease infinite}
+    .fB-item:hover .fB-dot{transform:scale(1.15)}
+    .fB-item h3{font-size:.82rem;font-weight:900;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;line-height:1.3}
+    .fB-item p{font-size:.78rem;color:var(--muted);line-height:1.5}
+    .fB-item:nth-child(6) h3{color:var(--green)}
+    @keyframes pulseGreen{0%,100%{box-shadow:0 0 24px rgba(0,255,136,.4)}50%{box-shadow:0 0 40px rgba(0,255,136,.8)}}
+
+    /* DATOS DUROS */
     .datos{background:var(--dark2);overflow:hidden}
     .datos-head{margin-bottom:48px}
     .datos-head h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:12px}
@@ -108,7 +125,7 @@
     .dato-card:nth-child(4) .dato-num{color:var(--purple)}
     .dato-label{color:var(--muted);font-size:.82rem;line-height:1.5}
 
-    /* AI SERVICES — Cinematic Cards */
+    /* AI SERVICES */
     .ai-srv{background:var(--dark)}
     .ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
     .ai-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .4s;position:relative}
@@ -142,8 +159,6 @@
     .trad-c .ti{width:56px;height:56px;border-radius:14px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
     .trad-c h3{font-size:.9rem;font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
     .trad-c p{color:var(--muted);font-size:.82rem;line-height:1.7}
-
-    /* POWER DAY HIGHLIGHT */
     .trad-c.power-day{background:linear-gradient(135deg,rgba(0,255,136,.08),rgba(0,255,200,.04));border:1.5px solid rgba(0,255,136,.35);border-radius:20px;position:relative;overflow:hidden;transition:all .4s}
     .trad-c.power-day:hover{transform:translateY(-6px);border-color:rgba(0,255,136,.6);box-shadow:0 12px 40px rgba(0,255,136,.15)}
     .trad-c.power-day::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,#00ff88,#00ffc8,#00ff88)}
@@ -159,7 +174,7 @@
     .proj-cta{text-align:center}
     .vw-tag{position:absolute;bottom:60px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
 
-    /* SOLUCIONES ESPECIALIZADAS */
+    /* ESPECIAL */
     .especial{background:var(--dark2)}
     .especial-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
     .especial-item{display:flex;flex-direction:column;gap:24px}
@@ -216,6 +231,11 @@
       .cine-txt{bottom:15%;width:85%}
       .cine-txt h3{font-size:1rem;letter-spacing:1px}
       .especial-grid{grid-template-columns:1fr}
+      .fB-track{grid-template-columns:1fr;gap:20px}
+      .fB-track::before{display:none}
+      .fB-item{display:grid;grid-template-columns:80px 1fr;align-items:center;text-align:left;gap:16px;padding:8px 0}
+      .fB-dot{margin:0}
+      .fB-icon{position:static;transform:none}
     }
     @media(max-width:768px){
       .cursor-dot,.cursor-ring{display:none}
@@ -289,7 +309,57 @@
   <!-- MANIFESTO -->
   <section class="manif" id="manif">
     <div class="container reveal">
-      <h2><strong>Pensamos primero como creativos</strong> —del brief al concepto y la dirección de arte— y lo ejecutamos con <strong class="grad">herramientas de IA profesionales</strong> para lograr calidad de producción.</h2>
+      <h2><strong>Creatividad y producción de alto nivel</strong> potencializada con las <strong class="grad">mejores herramientas de IA</strong>.</h2>
+    </div>
+  </section>
+
+  <!-- FUNNEL — Nuestro Proceso -->
+  <section class="funnel">
+    <div class="container">
+      <div class="funnel-head reveal">
+        <h2>Nuestro <span class="grad">Proceso</span></h2>
+        <p>El método Barracuda: creatividad humana primero, tecnología como aliada.</p>
+      </div>
+      <div class="fB reveal">
+        <div class="fB-track">
+          <div class="fB-item">
+            <div class="fB-icon">&#128221;</div>
+            <div class="fB-dot">1</div>
+            <h3>Brief del<br>Cliente</h3>
+            <p>Recibimos objetivos y necesidades de comunicación.</p>
+          </div>
+          <div class="fB-item">
+            <div class="fB-icon">&#128161;</div>
+            <div class="fB-dot">2</div>
+            <h3>Expertise<br>Publicitario</h3>
+            <p>Pensamos como creativos, no como operadores.</p>
+          </div>
+          <div class="fB-item">
+            <div class="fB-icon">&#127919;</div>
+            <div class="fB-dot">3</div>
+            <h3>Estrategia y<br>Concepto</h3>
+            <p>Desarrollamos estrategia, concepto y brief creativo.</p>
+          </div>
+          <div class="fB-item">
+            <div class="fB-icon">&#129302;</div>
+            <div class="fB-dot">4</div>
+            <h3>Herramientas<br>IA</h3>
+            <p>Incorporamos las tecnologías más avanzadas del mercado.</p>
+          </div>
+          <div class="fB-item">
+            <div class="fB-icon">&#127912;</div>
+            <div class="fB-dot">5</div>
+            <h3>Dirección<br>de Arte</h3>
+            <p>Supervisión creativa en cada frame y detalle.</p>
+          </div>
+          <div class="fB-item">
+            <div class="fB-icon">&#9889;</div>
+            <div class="fB-dot">6</div>
+            <h3>Producción<br>Alta Calidad</h3>
+            <p>Resultado final con calidad de superproducción.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -341,7 +411,7 @@
           </div>
           <div class="ai-c-body">
             <h3>Videos 100% IA</h3>
-            <p>Creamos videos con modelos 3D texturizados y animados usando IA — lo que antes costaba miles y semanas de render, hoy lo logramos en una fracción del tiempo y costo.</p>
+            <p>Creamos videos con modelos 3D texturizados y animados usando IA, logrando en una fracción del tiempo y costo lo que antes requería miles de dólares y semanas de render.</p>
             <span class="stat st-c">&#8595; 70% EN COSTOS</span>
           </div>
         </div>
@@ -352,8 +422,8 @@
             </div>
           </div>
           <div class="ai-c-body">
-            <h3>VFX + Edición IA</h3>
-            <p>Comerciales y contenido con efectos visuales de superproducción — a un costo mucho menor y sin hardware costoso. La edición asistida por IA reduce los tiempos de postproducción drásticamente.</p>
+            <h3>Filmación + VFX hechos con IA</h3>
+            <p>Comerciales y contenido con efectos visuales de superproducción, a un costo mucho menor y sin hardware costoso. La edición asistida por IA reduce los tiempos de postproducción drásticamente.</p>
             <span class="stat st-p">&#8595; 50%+ EN COSTOS DE VFX</span>
           </div>
         </div>
@@ -365,7 +435,7 @@
           </div>
           <div class="ai-c-body">
             <h3>Aceleración de Diseño</h3>
-            <p>Contenido visual a alta velocidad con IA: fotos para e-commerce, retoque y postproducción — sin necesidad de fotógrafo, modelos ni props. Siempre con supervisión humana creativa.</p>
+            <p>Contenido visual a alta velocidad con IA: fotos para e-commerce, retoque y postproducción, sin necesidad de fotógrafo, modelos ni props. Siempre con supervisión humana creativa.</p>
             <span class="stat st-b">3X MÁS RÁPIDO</span>
           </div>
         </div>
@@ -380,7 +450,7 @@
     <div class="cine-txt"><h3>Donde la creatividad se encuentra con la <span class="grad">tecnología</span></h3></div>
   </div>
 
-  <!-- SERVICIOS DE SIEMPRE -->
+  <!-- SERVICIOS -->
   <section class="trad sp-sm" id="servicios">
     <div class="container">
       <div class="sh reveal">
@@ -440,7 +510,7 @@
     </div>
   </section>
 
-  <!-- SOLUCIONES ESPECIALIZADAS -->
+  <!-- ESPECIALIZADAS -->
   <section class="especial sp" id="especializadas">
     <div class="container">
       <div class="sh reveal">
@@ -457,7 +527,7 @@
         </div>
         <div class="especial-item reveal">
           <h3>&#129302; Agentes de IA</h3>
-          <p>Personalizamos agentes de IA — tanto en chat como de voz — para atención al cliente, soporte técnico y consultas especializadas. Disponibles 24/7, los 365 días del año. Sin generar antigüedad laboral ni horarios limitados.</p>
+          <p>Personalizamos agentes de IA, tanto en chat como de voz, para atención al cliente, soporte técnico y consultas especializadas. Disponibles 24/7, los 365 días del año. Sin generar antigüedad laboral ni horarios limitados.</p>
           <span class="stat st-c">&#8595; 90% COSTOS DE OPERACIÓN</span>
           <div class="vw">
             <iframe src="https://www.youtube.com/embed/rKRjN-3-UTg" title="Agentes IA Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen loading="lazy"></iframe>
@@ -485,15 +555,15 @@
       <div class="test-g">
         <div class="tc reveal">
           <p class="tq">Barracuda no solo destaca por el gran trabajo y dedicación en todo lo que hace, sino también por su compromiso.</p>
-          <div class="ta"><div class="tav">AG</div><div><div class="tn">Alejandro Goycoolea</div><div class="tr">Director de Comunicaciones — Panam Sports</div></div></div>
+          <div class="ta"><div class="tav">AG</div><div><div class="tn">Alejandro Goycoolea</div><div class="tr">Director de Comunicaciones, Panam Sports</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Trabajar con el equipo de Barracuda siempre es garantía de soluciones para industrias que se mueven rápido.</p>
-          <div class="ta"><div class="tav">NP</div><div><div class="tn">Nadia Pelaez</div><div class="tr">Brand Manager Pulsar — BAJAJ</div></div></div>
+          <div class="ta"><div class="tav">NP</div><div><div class="tn">Nadia Pelaez</div><div class="tr">Brand Manager Pulsar, BAJAJ</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Trabajar con Barracuda es una experiencia increíble: rapidez en las entregas, creatividad y soluciones a la medida.</p>
-          <div class="ta"><div class="tav">IH</div><div><div class="tn">Itzel Heca</div><div class="tr">Brand Manager Dominar — BAJAJ</div></div></div>
+          <div class="ta"><div class="tav">IH</div><div><div class="tn">Itzel Heca</div><div class="tr">Brand Manager Dominar, BAJAJ</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Puedo contar con Barracuda tanto para proyectos a largo plazo como para necesidades inmediatas. Su nivel de respuesta es oportuno y la calidad de su trabajo es consistente y confiable.</p>
@@ -540,32 +610,27 @@
   </footer>
 
   <script>
-    // Custom cursor
     const dot=document.getElementById('cursorDot');
     const ring=document.getElementById('cursorRing');
     let mx=0,my=0,rx=0,ry=0;
     document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
     function animateRing(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing)}
     animateRing();
-    document.querySelectorAll('a,button,.ai-c,.tc,.dato-card,.trad-c').forEach(el=>{
+    document.querySelectorAll('a,button,.ai-c,.tc,.dato-card,.trad-c,.fB-item').forEach(el=>{
       el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
       el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
     });
 
-    // Navbar
     const nb=document.getElementById('navbar');
     window.addEventListener('scroll',()=>{nb.classList.toggle('scrolled',window.scrollY>50)});
     function toggleMobileNav(){document.getElementById('mobileNav').classList.toggle('active')}
 
-    // Scroll reveal
     const rv=document.querySelectorAll('.reveal');
     const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
     rv.forEach(el=>ro.observe(el));
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
 
-    // Animated counters
     const counters=document.querySelectorAll('.dato-num');
     const countObs=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
