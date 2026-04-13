@@ -56,18 +56,28 @@
     .mnav .cb{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:none}
 
     /* HERO */
-    .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;position:relative;overflow:hidden;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
-    .hero::before{content:'';position:absolute;top:-40%;right:-20%;width:70%;height:140%;background:radial-gradient(ellipse,rgba(133,92,198,.12) 0%,transparent 70%);pointer-events:none}
-    .hero-t{padding:0 48px 0 0;position:relative;z-index:2}
-    .hero-t .container{max-width:100%;padding:0 60px}
-    .hero-tag{display:inline-block;font-size:.8rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--cyan);margin-bottom:24px;opacity:0;animation:fu .8s ease forwards .2s}
-    .hero h1{font-size:clamp(2rem,3.5vw,3.4rem);font-weight:900;line-height:1.15;margin-bottom:24px;opacity:0;animation:fu .8s ease forwards .4s}
-    .hero p{font-size:clamp(.95rem,1.3vw,1.1rem);color:var(--muted);max-width:500px;margin-bottom:36px;opacity:0;animation:fu .8s ease forwards .6s}
-    .hero-cta{display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:fu .8s ease forwards .8s}
-    .hero-v{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0A0A0A 0%,#07073a 50%,var(--blue) 100%)}
-    .hero-v iframe{width:100%;height:100%;position:absolute;top:0;left:0;object-fit:cover;border:none;mix-blend-mode:lighten}
-    .hero-v-top{position:absolute;top:0;left:0;width:100%;height:30%;background:linear-gradient(to bottom,rgba(10,10,10,.95) 0%,rgba(10,10,10,.4) 50%,transparent 100%);pointer-events:none;z-index:2}
-    .hero-vo{position:absolute;bottom:0;left:0;width:100%;height:40%;background:linear-gradient(to top,var(--dark),transparent);pointer-events:none;z-index:2}
+    /* HERO FULLSCREEN */
+    .hero{position:relative;width:100%;height:100vh;overflow:hidden;background:#000}
+    .hero-video{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+    .hero-video iframe{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);border:none;pointer-events:none}
+    .hero-ov{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(10,10,10,.7) 0%,rgba(10,10,10,.25) 25%,rgba(10,10,10,.25) 70%,rgba(10,10,10,.85) 100%);z-index:2}
+    .hero-vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 30%,rgba(10,10,10,.5) 100%);z-index:2;pointer-events:none}
+    .hero-content{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
+    .hero-tag{display:inline-block;font-size:.8rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .3s;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+    .hero h1{font-size:clamp(1.6rem,3vw,2.75rem);font-weight:900;line-height:1.15;margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .5s;max-width:800px;text-shadow:0 4px 30px rgba(0,0,0,.7)}
+    .hero p{font-size:clamp(1rem,1.4vw,1.2rem);color:rgba(255,255,255,.85);max-width:680px;margin-bottom:40px;opacity:0;animation:fu .8s ease forwards .7s;text-shadow:0 2px 15px rgba(0,0,0,.6)}
+    .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fu .8s ease forwards .9s}
+    .expand-btn{position:absolute;bottom:32px;right:32px;z-index:4;width:52px;height:52px;border-radius:50%;background:rgba(10,10,10,.6);backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:all .3s;opacity:0;animation:fu .8s ease forwards 1.1s}
+    .expand-btn:hover{background:rgba(0,255,136,.2);border-color:var(--green);transform:scale(1.08)}
+    .expand-btn svg{width:22px;height:22px}
+    .expand-label{position:absolute;bottom:44px;right:100px;z-index:4;color:rgba(255,255,255,.7);font-size:.75rem;text-transform:uppercase;letter-spacing:2px;opacity:0;animation:fu .8s ease forwards 1.1s}
+    .lb{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);z-index:9999;display:none;align-items:center;justify-content:center;padding:40px}
+    .lb.active{display:flex;animation:fadeIn .3s ease}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .lb-video{position:relative;width:100%;max-width:1400px;aspect-ratio:16/9;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.8)}
+    .lb-video iframe{width:100%;height:100%;border:none}
+    .lb-close{position:absolute;top:24px;right:24px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:1.5rem}
+    .lb-close:hover{background:rgba(204,51,102,.25);border-color:var(--pink)}
 
     .scroll-arrow{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fu .8s ease forwards 1.2s}
     .scroll-arrow span{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.5)}
@@ -224,9 +234,9 @@
 
     @media(max-width:1024px){.datos-grid{grid-template-columns:repeat(2,1fr)}.trad-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:900px){
-      .hero{grid-template-columns:1fr;min-height:auto}
-      .hero-t .container{padding:120px 24px 40px}
-      .hero-v{height:50vh}
+      .hero h1{font-size:clamp(1.8rem,6vw,2.4rem)}
+      .expand-label{display:none}
+      .expand-btn{bottom:100px;right:20px}
       .cine{padding-bottom:70%}
       .cine-txt{bottom:15%;width:85%}
       .cine-txt h3{font-size:1rem;letter-spacing:1px}
@@ -284,27 +294,45 @@
 
   <!-- HERO -->
   <section class="hero" id="inicio">
-    <div class="hero-t">
-      <div class="container">
-        <span class="hero-tag">Creatividad Humana + Inteligencia Artificial</span>
-        <h1>Ideas pensadas<br>por humanos.<br><span class="grad">Potenciadas con IA.</span></h1>
-        <p>Somos una agencia creativa que combina los métodos tradicionales de filmación y creación de contenido con las nuevas tecnologías de inteligencia artificial. Mismos resultados, una fracción del costo.</p>
-        <div class="hero-cta">
-          <a href="https://wa.me/17863814091" target="_blank" class="btn-p">Hablemos</a>
-          <a href="#soluciones" class="btn-s">Ver Soluciones</a>
-        </div>
+    <div class="hero-video">
+      <iframe src="https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&mute=1&loop=1&playlist=neEB_ePH51g&controls=0&showinfo=0&rel=0&modestbranding=1" title="Reel Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+    </div>
+    <div class="hero-ov"></div>
+    <div class="hero-vig"></div>
+
+    <div class="hero-content">
+      <span class="hero-tag">Creatividad Humana + Inteligencia Artificial</span>
+      <h1>Ideas pensadas por humanos.<br><span class="grad">Potenciadas con IA.</span></h1>
+      <p>Somos una agencia creativa que combina los métodos tradicionales de filmación y creación de contenido con las nuevas tecnologías de inteligencia artificial. Mismos resultados, una fracción del costo.</p>
+      <div class="hero-cta">
+        <a href="https://wa.me/17863814091" target="_blank" class="btn-p">Hablemos</a>
+        <a href="#soluciones" class="btn-s">Ver Soluciones</a>
       </div>
     </div>
-    <div class="hero-v">
-      <iframe src="https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&mute=1&loop=1&playlist=neEB_ePH51g&controls=0&showinfo=0&rel=0&modestbranding=1" title="Reel Barracuda" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
-      <div class="hero-v-top"></div>
-      <div class="hero-vo"></div>
-    </div>
+
+    <span class="expand-label">Ampliar reel</span>
+    <button class="expand-btn" onclick="openLightbox()" aria-label="Ampliar video">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 3 21 3 21 9"/>
+        <polyline points="9 21 3 21 3 15"/>
+        <line x1="21" y1="3" x2="14" y2="10"/>
+        <line x1="3" y1="21" x2="10" y2="14"/>
+      </svg>
+    </button>
+
     <a href="#manif" class="scroll-arrow">
       <span>Scroll</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 13l5 5 5-5"/><path d="M7 6l5 5 5-5"/></svg>
     </a>
   </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lightbox" onclick="closeLightbox(event)">
+    <button class="lb-close" onclick="closeLightbox()">&times;</button>
+    <div class="lb-video">
+      <iframe id="lbIframe" src="" allow="autoplay;encrypted-media" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <!-- MANIFESTO -->
   <section class="manif" id="manif">
@@ -658,6 +686,21 @@
       });
     },{threshold:.5});
     counters.forEach(c=>countObs.observe(c));
+
+    function openLightbox(){
+      const lb=document.getElementById('lightbox');
+      const f=document.getElementById('lbIframe');
+      f.src='https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&rel=0&modestbranding=1';
+      lb.classList.add('active');
+    }
+    function closeLightbox(e){
+      if(e && e.target.id!=='lightbox' && !e.target.classList.contains('lb-close'))return;
+      const lb=document.getElementById('lightbox');
+      const f=document.getElementById('lbIframe');
+      lb.classList.remove('active');
+      f.src='';
+    }
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox({target:{id:'lightbox'}})});
   </script>
 </body>
 </html>
