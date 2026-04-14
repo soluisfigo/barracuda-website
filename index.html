@@ -219,8 +219,15 @@
     .clients{background:transparent;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
     .mq-w{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);padding:16px 0}
     .mq-t{display:flex;gap:72px;align-items:center;animation:mq 40s linear infinite;width:max-content}
-    .mq-i{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:52px;min-width:120px;font-family:'Bebas Neue','Impact',sans-serif;font-size:1.6rem;letter-spacing:2px;color:rgba(255,255,255,.75);text-transform:uppercase;white-space:nowrap;transition:color .3s,transform .3s}
-    .mq-i:hover{color:#fff;transform:scale(1.05)}
+    .mq-i{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:72px;min-width:140px}
+    .mq-i img{max-height:57px;max-width:220px;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.6;transition:opacity .3s,transform .3s}
+    .mq-i:hover img{opacity:1;transform:scale(1.05)}
+    .mq-i.lg img{max-height:74px;max-width:286px}
+    .mq-i.lg-up img{max-height:81px;max-width:314px}
+    .mq-i.xl img{max-height:89px;max-width:340px}
+    .mq-i.lg-md img{max-height:81px;max-width:314px}
+    .mq-i.lg-sm img{max-height:73px;max-width:283px}
+    .mq-i.lg-kylie img{max-height:81px;max-width:314px;position:relative;top:12px}
     @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* TESTIMONIALS */
@@ -634,31 +641,33 @@
     <div class="container"><div class="sh reveal"><h2 class="t-opt2">Marcas que <span class="grad">confían en nosotros</span></h2></div></div>
     <div class="mq-w">
       <div class="mq-t">
-        <span class="mq-i">Adidas</span>
-        <span class="mq-i">Bajaj</span>
-        <span class="mq-i">Black+Decker</span>
-        <span class="mq-i">Hugo Boss</span>
-        <span class="mq-i">CFANAL</span>
-        <span class="mq-i">Comité Olímpico Mexicano</span>
-        <span class="mq-i">Electrolit</span>
-        <span class="mq-i">Gucci</span>
-        <span class="mq-i">Kwikset</span>
-        <span class="mq-i">Kylie Cosmetics</span>
-        <span class="mq-i">Panam Sports</span>
-        <span class="mq-i">Remington</span>
+        <span class="mq-i"><img src="logos/electrolit.png" alt="Electrolit"></span>
+        <span class="mq-i xl"><img src="logos/adidas.png" alt="Adidas"></span>
+        <span class="mq-i xl"><img src="logos/bajaj.png" alt="Bajaj"></span>
+        <span class="mq-i lg"><img src="logos/blackdecker.png" alt="Black+Decker"></span>
+        <span class="mq-i"><img src="logos/boss.png" alt="Hugo Boss"></span>
+        <span class="mq-i lg"><img src="logos/chubb.png" alt="Chubb"></span>
+        <span class="mq-i"><img src="logos/com.png" alt="Comité Olímpico Mexicano"></span>
+        <span class="mq-i lg-sm"><img src="logos/cfanal.png" alt="CFANAL"></span>
+        <span class="mq-i lg-md"><img src="logos/gucci.png" alt="Gucci"></span>
+        <span class="mq-i"><img src="logos/kwikset.png" alt="Kwikset"></span>
+        <span class="mq-i lg-kylie"><img src="logos/kylie.png" alt="Kylie Cosmetics"></span>
+        <span class="mq-i"><img src="logos/panam-sports.png" alt="Panam Sports"></span>
+        <span class="mq-i lg-up"><img src="logos/remington.png" alt="Remington"></span>
         <!-- duplicado para marquee infinito -->
-        <span class="mq-i">Adidas</span>
-        <span class="mq-i">Bajaj</span>
-        <span class="mq-i">Black+Decker</span>
-        <span class="mq-i">Hugo Boss</span>
-        <span class="mq-i">CFANAL</span>
-        <span class="mq-i">Comité Olímpico Mexicano</span>
-        <span class="mq-i">Electrolit</span>
-        <span class="mq-i">Gucci</span>
-        <span class="mq-i">Kwikset</span>
-        <span class="mq-i">Kylie Cosmetics</span>
-        <span class="mq-i">Panam Sports</span>
-        <span class="mq-i">Remington</span>
+        <span class="mq-i"><img src="logos/electrolit.png" alt="Electrolit"></span>
+        <span class="mq-i xl"><img src="logos/adidas.png" alt="Adidas"></span>
+        <span class="mq-i xl"><img src="logos/bajaj.png" alt="Bajaj"></span>
+        <span class="mq-i lg"><img src="logos/blackdecker.png" alt="Black+Decker"></span>
+        <span class="mq-i"><img src="logos/boss.png" alt="Hugo Boss"></span>
+        <span class="mq-i lg"><img src="logos/chubb.png" alt="Chubb"></span>
+        <span class="mq-i"><img src="logos/com.png" alt="Comité Olímpico Mexicano"></span>
+        <span class="mq-i lg-sm"><img src="logos/cfanal.png" alt="CFANAL"></span>
+        <span class="mq-i lg-md"><img src="logos/gucci.png" alt="Gucci"></span>
+        <span class="mq-i"><img src="logos/kwikset.png" alt="Kwikset"></span>
+        <span class="mq-i lg-kylie"><img src="logos/kylie.png" alt="Kylie Cosmetics"></span>
+        <span class="mq-i"><img src="logos/panam-sports.png" alt="Panam Sports"></span>
+        <span class="mq-i lg-up"><img src="logos/remington.png" alt="Remington"></span>
       </div>
     </div>
   </section>
