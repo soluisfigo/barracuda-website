@@ -30,10 +30,10 @@
     /* Título Opción 1: blanco con final en degradado */
     h2.t-opt1{color:#fff}
     h2.t-opt1 .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    h2.t-grad-pp .grad{background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     /* Título Opción 2: todo en azul Horizon mayúsculas */
     h2.t-opt2{color:var(--blue-horizon);text-transform:uppercase;letter-spacing:2px}
     h2.t-opt2 .grad{background:none;-webkit-text-fill-color:var(--blue-horizon);color:var(--blue-horizon)}
+    h2.t-grad-pp .grad{background:linear-gradient(135deg,var(--pink),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     h2.t-purple{color:var(--purple);text-transform:uppercase;letter-spacing:2px;font-family:'Horizon','Impact',sans-serif;font-weight:normal}
     h2.t-purple .grad{background:none;-webkit-text-fill-color:var(--purple);color:var(--purple)}
     .manif h2,.manif h2 strong{font-family:'Raleway',sans-serif;letter-spacing:0;font-weight:300}
@@ -265,15 +265,15 @@
       .cine-txt{bottom:15%;width:85%}
       .cine-txt h3{font-size:1rem;letter-spacing:1px}
       .especial-grid{grid-template-columns:1fr}
-      .fB-track{grid-template-columns:repeat(3,1fr);gap:8px 4px;row-gap:24px}
+      .fB-track{grid-template-columns:repeat(3,1fr);gap:8px 4px;row-gap:28px}
       .fB-track::before{display:none}
-      .fB-item{padding:0 4px;text-align:center;position:relative}
+      .fB-item{padding:0 2px;text-align:center;position:relative;display:flex;flex-direction:column;align-items:center}
       .fB-item p{display:none}
-      .fB-item h3{font-size:.62rem;letter-spacing:.5px;margin-bottom:0}
-      .fB-icon{position:static;transform:none;font-size:1.4rem;margin-bottom:4px}
-      .fB-dot{width:42px;height:42px;font-size:1rem;margin:0 auto 6px;border-width:2px}
-      .fB-item:nth-child(1)::after,.fB-item:nth-child(2)::after,.fB-item:nth-child(4)::after,.fB-item:nth-child(5)::after{content:"→";position:absolute;right:-6px;top:38px;font-size:1.2rem;color:var(--muted);font-weight:700;z-index:2}
-      .fB-item:nth-child(3)::after{content:"↓";position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);font-size:1.2rem;color:var(--muted);font-weight:700}
+      .fB-item h3{font-size:.6rem;letter-spacing:.4px;margin-bottom:0;text-align:center;width:100%}
+      .fB-icon{position:static;transform:none;font-size:1.3rem;margin:0 auto 4px;display:block;text-align:center}
+      .fB-dot{position:relative;left:auto;right:auto;width:42px;height:42px;font-size:.95rem;margin:0 auto 6px;border-width:2px}
+      .fB-item:nth-child(1)::after,.fB-item:nth-child(2)::after,.fB-item:nth-child(4)::after,.fB-item:nth-child(5)::after{content:"→";position:absolute;right:-4px;top:30px;font-size:1.1rem;color:var(--muted);font-weight:700;z-index:2}
+      .fB-item:nth-child(3)::after{content:"↓";position:absolute;left:50%;bottom:-24px;transform:translateX(-50%);font-size:1.1rem;color:var(--muted);font-weight:700}
     }
     @media(max-width:768px){
       .cursor-dot,.cursor-ring{display:none}
@@ -284,9 +284,23 @@
       .proj-grid{grid-template-columns:1fr}
       .test-g{grid-template-columns:1fr}
       .ai-grid{grid-template-columns:1fr}
-      .datos-grid{grid-template-columns:repeat(2,1fr)}
+      .ai-c .stat{font-size:.82rem;padding:8px 14px;letter-spacing:.5px;white-space:nowrap}
+      .datos-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+      .dato-card{padding:20px 10px;overflow:visible}
+      .dato-ring{width:min(130px,80%);aspect-ratio:1;height:auto;max-width:100%}
+      .dato-ring svg{width:100%;height:100%}
+      .dato-ring .dato-num{font-size:1.4rem}
+      .dato-ring .dato-num-sm{font-size:1.05rem}
       .trad-grid{grid-template-columns:repeat(2,1fr)}
       .sp{padding:60px 0}
+      .hero{height:auto;min-height:auto}
+      .hero-video{height:62vh}
+      .hero-video iframe{width:100vw;height:56.25vw;min-height:62vh;min-width:calc(62vh * 1.7778)}
+      .hero-content{height:auto;padding:90px 24px 40px}
+      .hero h1{margin-bottom:20px}
+      .hero p{margin-bottom:24px}
+      .hero-cta{position:relative;z-index:5;margin-top:16px;background:transparent}
+      .expand-btn{top:calc(62vh - 70px);bottom:auto;right:16px}
     }
   </style>
 </head>
