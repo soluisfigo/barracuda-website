@@ -7,19 +7,39 @@
   <meta name="description" content="Agencia creativa que combina producción de alto nivel con las mejores herramientas de IA. Videos IA, VFX, Agentes IA, Streaming y más.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
+    @font-face{font-family:'Horizon';src:url('fonts/horizon.otf') format('opentype');font-weight:normal;font-style:normal;font-display:swap}
+
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{font-family:'Roboto',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden;cursor:none}
+    body{font-family:'Raleway',sans-serif;background:#0A0A0A;color:#fff;line-height:1.6;overflow-x:hidden;cursor:none;position:relative}
+    /* Fondo global con orbes */
+    body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 90% 12%,rgba(88,208,245,.22) 0%,rgba(29,31,161,.12) 35%,transparent 65%),radial-gradient(ellipse 45% 40% at 8% 88%,rgba(133,92,198,.28) 0%,rgba(204,51,102,.08) 40%,transparent 70%),#0A0A0A}
     a,button{cursor:none}
     a{text-decoration:none;color:inherit}ul{list-style:none}img{max-width:100%;height:auto}
 
     :root{
-      --blue:#1D1FA1;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;
+      --blue:#1D1FA1;--blue-horizon:#2D2DFF;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;
       --dark:#0A0A0A;--dark2:#111;--muted:#a0a0a0;--max-w:1200px;
-      --green:#00ff88;--cursor:#00ff88;
+      --green:#00ff88;--lime:#A6E22E;--cursor:#00ff88;
     }
+
+    /* Tipografía de títulos: Horizon */
+    h1,h2,h3,h4,.sh h2,.datos-head h2,.funnel-head h1,.trad-c h3{font-family:'Horizon','Impact','Arial Black',sans-serif;letter-spacing:1px;font-weight:normal}
+    /* Título Opción 1: blanco con final en degradado */
+    h2.t-opt1{color:#fff}
+    h2.t-opt1 .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    /* Título Opción 2: todo en azul Horizon mayúsculas */
+    h2.t-opt2{color:var(--blue-horizon);text-transform:uppercase;letter-spacing:2px}
+    h2.t-opt2 .grad{background:none;-webkit-text-fill-color:var(--blue-horizon);color:var(--blue-horizon)}
+    h2.t-purple{color:var(--purple);text-transform:uppercase;letter-spacing:2px;font-family:'Horizon','Impact',sans-serif;font-weight:normal}
+    h2.t-purple .grad{background:none;-webkit-text-fill-color:var(--purple);color:var(--purple)}
+    .manif h2,.manif h2 strong{font-family:'Raleway',sans-serif;letter-spacing:0;font-weight:300}
+    .manif h2 strong{font-weight:900}
+    .hero-tag{font-family:'Bebas Neue','Impact',sans-serif}
+    .tn{font-weight:700}
+    .accent-lime{font-family:'Bebas Neue','Impact',sans-serif;color:var(--lime);letter-spacing:2px}
     .container{max-width:var(--max-w);margin:0 auto;padding:0 24px}
     .sp{padding:80px 0}
     .sp-sm{padding:60px 0}
@@ -63,14 +83,15 @@
     .hero-ov{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(10,10,10,.7) 0%,rgba(10,10,10,.25) 25%,rgba(10,10,10,.25) 70%,rgba(10,10,10,.85) 100%);z-index:2}
     .hero-vig{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at center,transparent 30%,rgba(10,10,10,.5) 100%);z-index:2;pointer-events:none}
     .hero-content{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px}
-    .hero-tag{display:inline-block;font-size:.8rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .3s;text-shadow:0 2px 10px rgba(0,0,0,.6)}
-    .hero h1{font-size:clamp(1.6rem,3vw,2.75rem);font-weight:900;line-height:1.15;margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .5s;max-width:800px;text-shadow:0 4px 30px rgba(0,0,0,.7)}
-    .hero p{font-size:clamp(1rem,1.4vw,1.2rem);color:rgba(255,255,255,.85);max-width:680px;margin-bottom:40px;opacity:0;animation:fu .8s ease forwards .7s;text-shadow:0 2px 15px rgba(0,0,0,.6)}
+    .hero-tag{display:inline-block;font-size:.8rem;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .3s;text-shadow:0 2px 10px rgba(0,0,0,.6);font-family:'Bebas Neue','Impact',sans-serif}
+    .hero h1{font-family:'Horizon','Impact',sans-serif;font-size:clamp(1.6rem,3vw,2.75rem);font-weight:normal;line-height:1.15;margin-bottom:28px;opacity:0;animation:fu .8s ease forwards .5s;max-width:800px;text-shadow:0 4px 30px rgba(0,0,0,.7);color:#fff;letter-spacing:2px;text-transform:uppercase}
+    .hero h1 .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-family:'Raleway',sans-serif;font-size:clamp(1rem,1.4vw,1.2rem);color:rgba(255,255,255,.88);max-width:680px;margin-bottom:40px;opacity:0;animation:fu .8s ease forwards .7s;text-shadow:0 2px 15px rgba(0,0,0,.6)}
     .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fu .8s ease forwards .9s}
     .expand-btn{position:absolute;bottom:32px;right:32px;z-index:4;width:52px;height:52px;border-radius:50%;background:rgba(10,10,10,.6);backdrop-filter:blur(10px);border:1.5px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;cursor:pointer;transition:all .3s;opacity:0;animation:fu .8s ease forwards 1.1s}
-    .expand-btn:hover{background:rgba(0,255,136,.2);border-color:var(--green);transform:scale(1.08)}
+    .expand-btn:hover{background:rgba(166,226,46,.2);border-color:var(--lime);transform:scale(1.08)}
     .expand-btn svg{width:22px;height:22px}
-    .expand-label{position:absolute;bottom:44px;right:100px;z-index:4;color:rgba(255,255,255,.7);font-size:.75rem;text-transform:uppercase;letter-spacing:2px;opacity:0;animation:fu .8s ease forwards 1.1s}
+    .expand-label{position:absolute;bottom:44px;right:100px;z-index:4;color:rgba(255,255,255,.7);font-size:.75rem;text-transform:uppercase;letter-spacing:2px;opacity:0;animation:fu .8s ease forwards 1.1s;font-family:'Bebas Neue',sans-serif}
     .lb{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);z-index:9999;display:none;align-items:center;justify-content:center;padding:40px}
     .lb.active{display:flex;animation:fadeIn .3s ease}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
@@ -86,12 +107,12 @@
     @keyframes fu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 
     /* MANIFESTO */
-    .manif{background:var(--dark);border-bottom:1px solid rgba(255,255,255,.04);text-align:center;padding:60px 0}
+    .manif{background:transparent;border-bottom:1px solid rgba(255,255,255,.04);text-align:center;padding:60px 0}
     .manif h2{font-size:clamp(1.4rem,2.3vw,2rem);font-weight:300;line-height:1.6;max-width:900px;margin:0 auto}
     .manif h2 strong{font-weight:900}
 
     /* FUNNEL — Timeline horizontal */
-    .funnel{background:var(--dark);padding:90px 0 80px;overflow:hidden}
+    .funnel{background:transparent;padding:90px 0 80px;overflow:hidden}
     .funnel-head{text-align:center;margin-bottom:70px}
     .funnel-head h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:14px}
     .funnel-head p{color:var(--muted);font-size:1.05rem;max-width:650px;margin:0 auto}
@@ -114,7 +135,7 @@
     @keyframes pulseGreen{0%,100%{box-shadow:0 0 24px rgba(0,255,136,.4)}50%{box-shadow:0 0 40px rgba(0,255,136,.8)}}
 
     /* DATOS DUROS */
-    .datos{background:var(--dark2);overflow:hidden}
+    .datos{background:transparent;overflow:hidden}
     .datos-head{margin-bottom:48px}
     .datos-head h2{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:900;margin-bottom:12px}
     .datos-head p{color:var(--muted);font-size:1rem;max-width:500px}
@@ -128,25 +149,24 @@
     .dato-card:nth-child(3)::after{background:var(--pink)}
     .dato-card:nth-child(4)::after{background:var(--purple)}
     .dato-icon{font-size:1.6rem;margin-bottom:14px;opacity:.7}
-    .dato-num{font-size:clamp(2.2rem,3.8vw,3.6rem);font-weight:900;line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums}
-    .dato-card:nth-child(1) .dato-num{color:var(--cyan)}
-    .dato-card:nth-child(2) .dato-num{color:var(--purple)}
-    .dato-card:nth-child(3) .dato-num{color:var(--pink)}
-    .dato-card:nth-child(4) .dato-num{color:var(--purple)}
+    .dato-num{font-size:clamp(2.2rem,3.8vw,3.6rem);font-weight:900;line-height:1;margin-bottom:12px;font-variant-numeric:tabular-nums;font-family:'Horizon','Impact',sans-serif;letter-spacing:1px}
+    /* Anillo gradient para datos destacados */
+    .dato-ring{position:relative;width:160px;height:160px;margin:0 auto 18px;display:flex;align-items:center;justify-content:center}
+    .dato-ring svg{position:absolute;top:0;left:0;width:100%;height:100%;animation:ringSpin 18s linear infinite}
+    .dato-ring .dato-num{margin-bottom:0;position:relative;z-index:2;font-size:clamp(1.8rem,2.6vw,2.4rem)}
+    @keyframes ringSpin{to{transform:rotate(360deg)}}
+    .dato-card .dato-num{color:#fff}
     .dato-label{color:var(--muted);font-size:.82rem;line-height:1.5}
 
     /* AI SERVICES */
-    .ai-srv{background:var(--dark)}
+    .ai-srv{background:transparent}
     .ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
     .ai-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;transition:all .4s;position:relative}
     .ai-c:hover{transform:translateY(-8px);border-color:rgba(255,255,255,.15)}
-    .ai-c-img{width:100%;height:220px;overflow:hidden;position:relative}
-    .ai-c-img .ai-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-    .ai-c-img .ai-placeholder svg{width:80px;height:80px;opacity:.35}
-    .ai-ph-1{background:linear-gradient(135deg,#0a1628 0%,#0d2847 30%,rgba(0,229,255,.13) 60%,#0a0a0a 100%)}
-    .ai-ph-2{background:linear-gradient(135deg,#1a0a28 0%,#2d0847 30%,rgba(170,0,255,.13) 60%,#0a0a0a 100%)}
-    .ai-ph-3{background:linear-gradient(135deg,#280a1a 0%,#470830 30%,rgba(255,0,128,.13) 60%,#0a0a0a 100%)}
-    .ai-c-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,#0a0a0a)}
+    .ai-c-img{width:100%;height:240px;overflow:hidden;position:relative;background:#000}
+    .ai-c-img iframe,.ai-c-img img{width:100%;height:100%;object-fit:cover;border:none;display:block}
+    .ai-c-img iframe{pointer-events:none}
+    .ai-c-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(transparent,#0a0a0a);pointer-events:none;z-index:2}
     .ai-c-body{padding:24px 28px 28px}
     .ai-c h3{font-size:1.2rem;font-weight:900;margin-bottom:12px;letter-spacing:1px;text-transform:uppercase}
     .ai-c p{color:var(--muted);font-size:.92rem;line-height:1.6;margin-bottom:20px}
@@ -163,7 +183,7 @@
     .cine-txt h3{font-size:clamp(1.2rem,2vw,1.8rem);font-weight:700;letter-spacing:2px;text-transform:uppercase;text-shadow:0 2px 20px rgba(0,0,0,.8)}
 
     /* TRAD SERVICES */
-    .trad{background:var(--dark2)}
+    .trad{background:transparent}
     .trad-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
     .trad-c{text-align:center;padding:32px 16px}
     .trad-c .ti{width:56px;height:56px;border-radius:14px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
@@ -177,7 +197,7 @@
     .trad-c.power-day .pd-badge{display:inline-block;margin-top:12px;padding:4px 14px;border-radius:20px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;background:rgba(0,255,136,.12);color:#00ff88;border:1px solid rgba(0,255,136,.3)}
 
     /* PROJECTS */
-    .proj{background:var(--dark)}
+    .proj{background:transparent}
     .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;margin-bottom:40px}
     .vw{position:relative;padding-bottom:56.25%;height:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.06)}
     .vw iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
@@ -185,7 +205,7 @@
     .vw-tag{position:absolute;bottom:60px;left:12px;z-index:2;padding:6px 14px;border-radius:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;box-shadow:0 4px 16px rgba(88,208,245,.3)}
 
     /* ESPECIAL */
-    .especial{background:var(--dark2)}
+    .especial{background:transparent}
     .especial-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
     .especial-item{display:flex;flex-direction:column;gap:24px}
     .especial-item h3{font-size:1.3rem;font-weight:900;text-transform:uppercase;letter-spacing:1px}
@@ -193,22 +213,24 @@
     .especial-item .stat{display:inline-block;padding:8px 18px;border-radius:50px;font-weight:700;font-size:.9rem;letter-spacing:.5px;text-transform:uppercase;margin-top:4px}
 
     /* CLIENTS */
-    .clients{background:var(--dark);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
-    .mq-w{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent)}
-    .mq-t{display:flex;gap:60px;animation:mq 25s linear infinite;width:max-content}
-    .mq-i{flex-shrink:0;font-size:1.1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);white-space:nowrap;padding:24px 0;transition:color .3s}
-    .mq-i:hover{color:rgba(255,255,255,.6)}
+    .clients{background:transparent;border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+    .mq-w{overflow:hidden;position:relative;mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 10%,black 90%,transparent);padding:16px 0}
+    .mq-t{display:flex;gap:72px;align-items:center;animation:mq 40s linear infinite;width:max-content}
+    .mq-i{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:52px;min-width:120px}
+    .mq-i img{max-height:44px;max-width:160px;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.65;transition:opacity .3s,transform .3s}
+    .mq-i:hover img{opacity:1;transform:scale(1.05)}
     @keyframes mq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     /* TESTIMONIALS */
-    .test{background:var(--dark2)}
+    .test{background:transparent}
     .test-g{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
     .tc{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:28px;transition:all .3s}
     .tc:hover{border-color:rgba(88,208,245,.15)}
     .tq{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:20px;font-style:italic}
     .tq::before{content:'\201C';font-size:2.5rem;line-height:0;vertical-align:-.5em;margin-right:4px;color:var(--purple)}
     .ta{display:flex;align-items:center;gap:12px}
-    .tav{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem}
+    .tav{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--purple));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.75rem;overflow:hidden;flex-shrink:0}
+    .tav img{width:100%;height:100%;object-fit:cover;display:block}
     .tn{font-weight:700;font-size:.85rem}
     .tr{color:var(--muted);font-size:.75rem}
 
@@ -241,11 +263,15 @@
       .cine-txt{bottom:15%;width:85%}
       .cine-txt h3{font-size:1rem;letter-spacing:1px}
       .especial-grid{grid-template-columns:1fr}
-      .fB-track{grid-template-columns:1fr;gap:20px}
+      .fB-track{grid-template-columns:repeat(3,1fr);gap:8px 4px;row-gap:24px}
       .fB-track::before{display:none}
-      .fB-item{display:grid;grid-template-columns:80px 1fr;align-items:center;text-align:left;gap:16px;padding:8px 0}
-      .fB-dot{margin:0}
-      .fB-icon{position:static;transform:none}
+      .fB-item{padding:0 4px;text-align:center;position:relative}
+      .fB-item p{display:none}
+      .fB-item h3{font-size:.62rem;letter-spacing:.5px;margin-bottom:0}
+      .fB-icon{position:static;transform:none;font-size:1.4rem;margin-bottom:4px}
+      .fB-dot{width:42px;height:42px;font-size:1rem;margin:0 auto 6px;border-width:2px}
+      .fB-item:nth-child(1)::after,.fB-item:nth-child(2)::after,.fB-item:nth-child(4)::after,.fB-item:nth-child(5)::after{content:"→";position:absolute;right:-6px;top:38px;font-size:1.2rem;color:var(--muted);font-weight:700;z-index:2}
+      .fB-item:nth-child(3)::after{content:"↓";position:absolute;left:50%;bottom:-22px;transform:translateX(-50%);font-size:1.2rem;color:var(--muted);font-weight:700}
     }
     @media(max-width:768px){
       .cursor-dot,.cursor-ring{display:none}
@@ -345,7 +371,7 @@
   <section class="funnel">
     <div class="container">
       <div class="funnel-head reveal">
-        <h2>Nuestro <span class="grad">Proceso</span></h2>
+        <h2 class="t-opt2">Nuestro <span class="grad">Proceso</span></h2>
         <p>El método Barracuda: creatividad humana primero, tecnología como aliada.</p>
       </div>
       <div class="fB reveal">
@@ -395,28 +421,48 @@
   <section class="datos sp" id="datos">
     <div class="container">
       <div class="datos-head reveal">
-        <h2>Números que <span class="grad">hablan</span></h2>
+        <h2 class="t-opt1">Números que <span class="grad">hablan</span></h2>
         <p>Datos reales sobre el impacto de la IA en la producción de contenido y marketing.</p>
       </div>
       <div class="datos-grid reveal">
         <div class="dato-card">
-          <div class="dato-icon">&#128181;</div>
-          <div class="dato-num" data-target="70" data-prefix="" data-suffix="%">0%</div>
+          <div class="dato-ring">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="gr1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1D1FA1"/><stop offset="50%" stop-color="#2D2DFF"/><stop offset="100%" stop-color="#A6E22E"/></linearGradient></defs>
+              <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gr1)" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="dato-num" data-target="70" data-prefix="" data-suffix="%">0%</div>
+          </div>
           <div class="dato-label">Menos costo de producción con IA vs métodos tradicionales</div>
         </div>
         <div class="dato-card">
-          <div class="dato-icon">&#128200;</div>
-          <div class="dato-num" data-target="35" data-prefix="" data-suffix="%">0%</div>
+          <div class="dato-ring">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="gr3" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#58D0F5"/><stop offset="55%" stop-color="#2D2DFF"/><stop offset="100%" stop-color="#855CC6"/></linearGradient></defs>
+              <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gr3)" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="dato-num" data-target="35" data-prefix="" data-suffix="%">0%</div>
+          </div>
           <div class="dato-label">Más engagement en piezas personalizadas con IA</div>
         </div>
         <div class="dato-card">
-          <div class="dato-icon">&#9889;</div>
-          <div class="dato-num" data-target="3" data-prefix="" data-suffix="X">0X</div>
+          <div class="dato-ring">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="gr2" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2D2DFF"/><stop offset="60%" stop-color="#58D0F5"/><stop offset="100%" stop-color="#A6E22E"/></linearGradient></defs>
+              <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gr2)" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="dato-num" data-target="3" data-prefix="" data-suffix="X">0X</div>
+          </div>
           <div class="dato-label">Más rápidos los diseños generados con asistencia IA</div>
         </div>
         <div class="dato-card">
-          <div class="dato-icon">&#127909;</div>
-          <div class="dato-num" data-target="90.9" data-prefix="" data-suffix="%" data-decimal="true">0%</div>
+          <div class="dato-ring">
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="gr4" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="0%" stop-color="#855CC6"/><stop offset="50%" stop-color="#2D2DFF"/><stop offset="100%" stop-color="#A6E22E"/></linearGradient></defs>
+              <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gr4)" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="dato-num" data-target="90.9" data-prefix="" data-suffix="%" data-decimal="true">0%</div>
+          </div>
           <div class="dato-label">De consumidores acepta que las marcas usen video hecho con IA</div>
         </div>
       </div>
@@ -427,15 +473,13 @@
   <section class="ai-srv sp" id="soluciones">
     <div class="container">
       <div class="sh reveal">
-        <h2>Soluciones <span class="grad">con IA</span></h2>
+        <h2 class="t-opt2">Soluciones <span class="grad">con IA</span></h2>
         <p>Tecnología de punta guiada por creativos humanos expertos en comunicación y publicidad.</p>
       </div>
       <div class="ai-grid">
         <div class="ai-c reveal">
           <div class="ai-c-img">
-            <div class="ai-placeholder ai-ph-1">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="20" width="70" height="45" rx="4" stroke="#00e5ff" stroke-width="2"/><polygon points="42,35 42,55 60,45" fill="#00e5ff"/><circle cx="50" cy="75" r="3" fill="#00e5ff"/><path d="M30 78 Q50 85 70 78" stroke="#00e5ff" stroke-width="1.5" fill="none"/></svg>
-            </div>
+            <iframe src="https://www.youtube.com/embed/MOdGSM_cvKY?autoplay=1&mute=1&loop=1&playlist=MOdGSM_cvKY&controls=0&showinfo=0&rel=0&modestbranding=1" title="Videos 100% IA" allow="autoplay;encrypted-media" loading="lazy"></iframe>
           </div>
           <div class="ai-c-body">
             <h3>Videos 100% IA</h3>
@@ -445,9 +489,7 @@
         </div>
         <div class="ai-c reveal">
           <div class="ai-c-img">
-            <div class="ai-placeholder ai-ph-2">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="25" width="35" height="25" rx="3" stroke="#cc44ff" stroke-width="1.5"/><rect x="55" y="25" width="35" height="25" rx="3" stroke="#cc44ff" stroke-width="1.5"/><rect x="10" y="55" width="35" height="25" rx="3" stroke="#cc44ff" stroke-width="1.5"/><rect x="55" y="55" width="35" height="25" rx="3" stroke="#cc44ff" stroke-width="1.5"/><path d="M45 37 L55 37" stroke="#cc44ff" stroke-width="2"/><path d="M45 67 L55 67" stroke="#cc44ff" stroke-width="2"/></svg>
-            </div>
+            <iframe src="https://www.youtube.com/embed/neEB_ePH51g?autoplay=1&mute=1&loop=1&playlist=neEB_ePH51g&controls=0&showinfo=0&rel=0&modestbranding=1" title="Filmación + VFX hechos con IA" allow="autoplay;encrypted-media" loading="lazy"></iframe>
           </div>
           <div class="ai-c-body">
             <h3>Filmación + VFX hechos con IA</h3>
@@ -457,9 +499,7 @@
         </div>
         <div class="ai-c reveal">
           <div class="ai-c-img">
-            <div class="ai-placeholder ai-ph-3">
-              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="60" height="60" rx="4" stroke="#ff0080" stroke-width="1.5"/><line x1="20" y1="40" x2="80" y2="40" stroke="#ff0080" stroke-width="1" opacity=".5"/><line x1="50" y1="20" x2="50" y2="80" stroke="#ff0080" stroke-width="1" opacity=".5"/><circle cx="35" cy="55" r="10" stroke="#ff0080" stroke-width="1.5"/><rect x="55" y="45" width="20" height="20" rx="2" stroke="#ff0080" stroke-width="1.5"/></svg>
-            </div>
+            <img src="images/boss-mupi.jpg" alt="Aceleración de Diseño — campaña BOSS">
           </div>
           <div class="ai-c-body">
             <h3>Aceleración de Diseño</h3>
@@ -482,7 +522,7 @@
   <section class="trad sp-sm" id="servicios">
     <div class="container">
       <div class="sh reveal">
-        <h2>Servicios <span class="grad">de siempre</span></h2>
+        <h2 class="t-opt1">Servicios <span class="grad">de siempre</span></h2>
         <p>Nuestra base sólida de producción y creatividad, ahora potenciada con tecnología.</p>
       </div>
       <div class="trad-grid">
@@ -508,7 +548,7 @@
         </div>
         <div class="trad-c power-day reveal">
           <div class="ti">&#9889;</div>
-          <h3>Power Day Content</h3>
+          <h3><span class="accent-lime">Power Day</span> Content</h3>
           <p>Todo el contenido que podamos producir en un día de filmación/fotografía para que tengas mucho contenido para tus redes.</p>
           <span class="pd-badge">&#9733; Servicio Estrella</span>
         </div>
@@ -520,7 +560,7 @@
   <section class="proj sp" id="proyectos">
     <div class="container">
       <div class="sh reveal">
-        <h2>Nuestros <span class="grad">Proyectos</span></h2>
+        <h2 class="t-opt2">Nuestros <span class="grad">Proyectos</span></h2>
         <p>Producción audiovisual de alto nivel para marcas que buscan destacar.</p>
       </div>
       <div class="proj-grid">
@@ -542,7 +582,7 @@
   <section class="especial sp" id="especializadas">
     <div class="container">
       <div class="sh reveal">
-        <h2>Soluciones <span class="grad">Especializadas</span></h2>
+        <h2 class="t-purple">Soluciones <span class="grad">Especializadas</span></h2>
         <p>Servicios diseñados para necesidades específicas que potencian tu operación y comunicación.</p>
       </div>
       <div class="especial-grid">
@@ -567,11 +607,32 @@
 
   <!-- CLIENTS -->
   <section class="clients sp-sm" id="clientes">
-    <div class="container"><div class="sh reveal"><h2>Marcas que <span class="grad">confían en nosotros</span></h2></div></div>
+    <div class="container"><div class="sh reveal"><h2 class="t-opt2">Marcas que <span class="grad">confían en nosotros</span></h2></div></div>
     <div class="mq-w">
       <div class="mq-t">
-        <span class="mq-i">Panam Sports</span><span class="mq-i">Chubb</span><span class="mq-i">Coty Inc</span><span class="mq-i">Gucci</span><span class="mq-i">Hugo Boss</span><span class="mq-i">Remington</span><span class="mq-i">Black + Decker</span><span class="mq-i">SmartBones</span><span class="mq-i">Bajaj Motos</span>
-        <span class="mq-i">Panam Sports</span><span class="mq-i">Chubb</span><span class="mq-i">Coty Inc</span><span class="mq-i">Gucci</span><span class="mq-i">Hugo Boss</span><span class="mq-i">Remington</span><span class="mq-i">Black + Decker</span><span class="mq-i">SmartBones</span><span class="mq-i">Bajaj Motos</span>
+        <span class="mq-i"><img src="logos/adidas.png" alt="Adidas"></span>
+        <span class="mq-i"><img src="logos/bajaj.png" alt="Bajaj"></span>
+        <span class="mq-i"><img src="logos/blackdecker.png" alt="Black+Decker"></span>
+        <span class="mq-i"><img src="logos/boss.svg" alt="Hugo Boss"></span>
+        <span class="mq-i"><img src="logos/cfanal.png" alt="CFANAL"></span>
+        <span class="mq-i"><img src="logos/com.png" alt="Comité Olímpico Mexicano"></span>
+        <span class="mq-i"><img src="logos/electrolit.png" alt="Electrolit"></span>
+        <span class="mq-i"><img src="logos/gucci.png" alt="Gucci"></span>
+        <span class="mq-i"><img src="logos/kwikset.png" alt="Kwikset"></span>
+        <span class="mq-i"><img src="logos/kylie.png" alt="Kylie Cosmetics"></span>
+        <span class="mq-i"><img src="logos/remington.png" alt="Remington"></span>
+        <!-- duplicado para marquee infinito -->
+        <span class="mq-i"><img src="logos/adidas.png" alt="Adidas"></span>
+        <span class="mq-i"><img src="logos/bajaj.png" alt="Bajaj"></span>
+        <span class="mq-i"><img src="logos/blackdecker.png" alt="Black+Decker"></span>
+        <span class="mq-i"><img src="logos/boss.svg" alt="Hugo Boss"></span>
+        <span class="mq-i"><img src="logos/cfanal.png" alt="CFANAL"></span>
+        <span class="mq-i"><img src="logos/com.png" alt="Comité Olímpico Mexicano"></span>
+        <span class="mq-i"><img src="logos/electrolit.png" alt="Electrolit"></span>
+        <span class="mq-i"><img src="logos/gucci.png" alt="Gucci"></span>
+        <span class="mq-i"><img src="logos/kwikset.png" alt="Kwikset"></span>
+        <span class="mq-i"><img src="logos/kylie.png" alt="Kylie Cosmetics"></span>
+        <span class="mq-i"><img src="logos/remington.png" alt="Remington"></span>
       </div>
     </div>
   </section>
@@ -579,23 +640,23 @@
   <!-- TESTIMONIALS -->
   <section class="test sp" id="testimonios">
     <div class="container">
-      <div class="sh reveal"><h2>Lo que dicen <span class="grad">nuestros clientes</span></h2></div>
+      <div class="sh reveal"><h2 class="t-opt1">Lo que dicen <span class="grad">nuestros clientes</span></h2></div>
       <div class="test-g">
         <div class="tc reveal">
           <p class="tq">Barracuda no solo destaca por el gran trabajo y dedicación en todo lo que hace, sino también por su compromiso.</p>
-          <div class="ta"><div class="tav">AG</div><div><div class="tn">Alejandro Goycoolea</div><div class="tr">Director de Comunicaciones, Panam Sports</div></div></div>
+          <div class="ta"><div class="tav"><img src="team/alejandro-goycoolea.jpg" alt="Alejandro Goycoolea"></div><div><div class="tn">Alejandro Goycoolea</div><div class="tr">Director de Comunicaciones, Panam Sports</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Trabajar con el equipo de Barracuda siempre es garantía de soluciones para industrias que se mueven rápido.</p>
-          <div class="ta"><div class="tav">NP</div><div><div class="tn">Nadia Pelaez</div><div class="tr">Brand Manager Pulsar, BAJAJ</div></div></div>
+          <div class="ta"><div class="tav"><img src="team/nadia-pelaez.jpg" alt="Nadia Pelaez"></div><div><div class="tn">Nadia Pelaez</div><div class="tr">Brand Manager Pulsar, BAJAJ</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Trabajar con Barracuda es una experiencia increíble: rapidez en las entregas, creatividad y soluciones a la medida.</p>
-          <div class="ta"><div class="tav">IH</div><div><div class="tn">Itzel Heca</div><div class="tr">Brand Manager Dominar, BAJAJ</div></div></div>
+          <div class="ta"><div class="tav"><img src="team/itzel-heca.jpg" alt="Itzel Heca"></div><div><div class="tn">Itzel Heca</div><div class="tr">Brand Manager Dominar, BAJAJ</div></div></div>
         </div>
         <div class="tc reveal">
           <p class="tq">Puedo contar con Barracuda tanto para proyectos a largo plazo como para necesidades inmediatas. Su nivel de respuesta es oportuno y la calidad de su trabajo es consistente y confiable.</p>
-          <div class="ta"><div class="tav">SC</div><div><div class="tn">Samantha Cantero</div><div class="tr">Brand Manager Coty Naútica y Adidas</div></div></div>
+          <div class="ta"><div class="tav"><img src="team/samantha-cantero.jpg" alt="Samantha Cantero"></div><div><div class="tn">Samantha Cantero</div><div class="tr">Brand Manager Coty Naútica y Adidas</div></div></div>
         </div>
       </div>
     </div>
@@ -604,7 +665,7 @@
   <!-- CTA -->
   <section class="cta" id="contacto">
     <div class="container reveal">
-      <h2>¿Listo para transformar tu contenido<br>con el poder de la <span class="grad">IA y la creatividad humana</span>?</h2>
+      <h2 class="t-purple">¿Listo para transformar tu contenido<br>con el poder de la <span class="grad">IA y la creatividad humana</span>?</h2>
       <p>Agenda una reunión con nuestro equipo y descubre cómo podemos reducir tus costos y multiplicar tus resultados.</p>
       <a href="https://wa.me/17863814091" target="_blank" class="btn-p">Hablemos</a>
     </div>
