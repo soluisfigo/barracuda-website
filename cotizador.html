@@ -23,16 +23,13 @@
   label{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin:12px 0 4px;}
   input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;font-family:inherit;color:var(--ink);background:#fff;}
   textarea{resize:vertical;min-height:60px;}
-  .row{display:flex;gap:10px;}
-  .row>div{flex:1;}
+  .row{display:flex;gap:10px;}.row>div{flex:1;}
   .items th{font-size:10px;color:var(--muted);text-transform:uppercase;text-align:left;padding:4px;}
-  .items td{padding:2px;}
-  .items input{padding:6px;font-size:12px;}
+  .items td{padding:2px;}.items input{padding:6px;font-size:12px;}
   .items table{width:100%;border-collapse:collapse;}
-  .qty{width:48px;} .price{width:96px;}
+  .qty{width:48px;}.price{width:96px;}
   .btn{cursor:pointer;border:none;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;font-family:'Raleway',sans-serif;}
   .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;}
-  .btn-primary:hover{background:linear-gradient(135deg,var(--purple),var(--pink));}
   .btn-ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line);}
   .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
   .additem{background:transparent;color:var(--accent);border:1px dashed var(--line);width:100%;padding:7px;border-radius:8px;cursor:pointer;font-size:12px;margin-top:6px;}
@@ -40,148 +37,69 @@
   .hist{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;}
   .hist h3{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:.04em;margin:0 0 8px;}
   .hist-item{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;font-size:12px;}
-  .hist-item .meta{cursor:pointer;flex:1;}
-  .hist-item .meta b{display:block;}
-  .hist-item .meta span{color:var(--muted);}
+  .hist-item .meta{cursor:pointer;flex:1;}.hist-item .meta b{display:block;}.hist-item .meta span{color:var(--muted);}
   .empty{color:var(--muted);font-size:12px;font-style:italic;}
 
-  /* ===== DOCUMENTO (estilo Barracuda) ===== */
+  /* ===== DOCUMENTO ===== */
   .doc{
-    background:var(--brand);
-    color:#c8d0e0;
-    width:820px;
+    background:var(--brand);color:#c8d0e0;width:820px;
     min-height:1160px;
-    margin:0 auto;
-    padding:0;
-    font-size:15px;
-    line-height:1.5;
-    font-family:'Raleway',sans-serif;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
+    margin:0 auto;padding:0;font-size:15px;line-height:1.5;
+    font-family:'Raleway',sans-serif;overflow:hidden;
+    display:flex;flex-direction:column;
   }
-  .doc .inner{
-    padding:28px 48px 32px;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-  }
+  .doc .inner{padding:28px 48px 32px;flex:1;display:flex;flex-direction:column;}
   .doc .content-area{flex-shrink:0;}
   .doc .footer-area{margin-top:auto;flex-shrink:0;}
 
-  /* Header compacto */
   .doc .top{
-    display:grid;
-    grid-template-columns:1fr auto;
-    align-items:center;
-    background:var(--brand);
-    padding:20px 48px 16px;
-    gap:30px;
-    flex-shrink:0;
+    display:grid;grid-template-columns:1fr auto;align-items:center;
+    background:var(--brand);padding:20px 48px 16px;gap:30px;flex-shrink:0;
   }
   .gradbar{height:4px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));flex-shrink:0;}
   .brand-logo{max-width:220px;height:60px;object-fit:contain;object-position:left;}
-  .brand-tag{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:9px;letter-spacing:.22em;
-    color:rgba(88,208,245,.45);text-transform:uppercase;margin-top:5px;
-  }
+  .brand-tag{font-family:'Bebas Neue','Impact',sans-serif;font-size:9px;letter-spacing:.22em;color:rgba(88,208,245,.45);text-transform:uppercase;margin-top:5px;}
 
-  /* Número cotización */
   .doc .quoteno{text-align:right;}
-  .doc .quoteno .big{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:11px;font-weight:400;color:rgba(255,255,255,.3);
-    letter-spacing:.15em;display:block;margin-bottom:6px;text-transform:uppercase;
-  }
-  .doc .quoteno .n{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:42px;font-weight:400;
-    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-    display:block;line-height:1;
-  }
+  .doc .quoteno .big{font-family:'Bebas Neue','Impact',sans-serif;font-size:11px;font-weight:400;color:rgba(255,255,255,.3);letter-spacing:.15em;display:block;margin-bottom:6px;text-transform:uppercase;}
+  .doc .quoteno .n{font-family:'Bebas Neue','Impact',sans-serif;font-size:42px;font-weight:400;background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;line-height:1;}
   .doc .quoteno small{display:block;color:rgba(255,255,255,.3);font-size:11px;margin-top:6px;letter-spacing:.05em;}
 
-  /* Meta grid */
   .meta-grid{display:flex;justify-content:space-between;gap:24px;margin-bottom:18px;}
   .meta-grid .blk{font-size:13px;color:#8b97b5;}
-  .meta-grid .blk .h{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:3px;
-  }
+  .meta-grid .blk .h{font-family:'Bebas Neue','Impact',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:3px;}
   .meta-grid .blk b{font-size:16px;color:#fff;font-weight:700;}
 
-  /* Barra proyecto */
-  .proj{
-    background:rgba(88,208,245,.06);
-    border-left:4px solid;border-image:linear-gradient(180deg,var(--cyan),var(--purple)) 1;
-    padding:8px 14px;font-weight:600;color:var(--cyan);margin-bottom:16px;font-size:14px;letter-spacing:.02em;
-  }
+  .proj{background:rgba(88,208,245,.06);border-left:4px solid;border-image:linear-gradient(180deg,var(--cyan),var(--purple)) 1;padding:8px 14px;font-weight:600;color:var(--cyan);margin-bottom:16px;font-size:14px;letter-spacing:.02em;}
 
-  /* Tabla */
   table.lines{width:100%;border-collapse:collapse;margin-bottom:14px;}
-  table.lines thead th{
-    background:linear-gradient(135deg,rgba(88,208,245,.15),rgba(133,92,198,.15),rgba(204,51,102,.1));
-    color:var(--cyan);font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:.1em;
-    padding:10px 12px;text-align:left;border-bottom:1px solid rgba(88,208,245,.2);
-  }
+  table.lines thead th{background:linear-gradient(135deg,rgba(88,208,245,.15),rgba(133,92,198,.15),rgba(204,51,102,.1));color:var(--cyan);font-family:'Bebas Neue','Impact',sans-serif;font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:.1em;padding:10px 12px;text-align:left;border-bottom:1px solid rgba(88,208,245,.2);}
   table.lines thead th.r{text-align:right;}
-  table.lines tbody td{
-    border-bottom:1px solid rgba(255,255,255,.06);
-    padding:10px 12px;vertical-align:top;font-size:14px;color:#c8d0e0;white-space:pre-line;
-  }
+  table.lines tbody td{border-bottom:1px solid rgba(255,255,255,.06);padding:10px 12px;vertical-align:top;font-size:14px;color:#c8d0e0;white-space:pre-line;}
   table.lines td.c{text-align:center;width:50px;color:#8b97b5;}
   table.lines td.r{text-align:right;width:125px;white-space:nowrap;color:#fff;font-weight:500;}
-  table.lines tbody tr:hover{background:rgba(88,208,245,.03);}
 
-  /* Totales */
   .totals{width:320px;margin-left:auto;font-size:14px;}
   .totals .l{display:flex;justify-content:space-between;padding:6px 0;color:#8b97b5;}
   .totals .l span:last-child{color:#fff;font-weight:500;}
-  .totals .l.grand{
-    border-top:2px solid;border-image:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink)) 1;
-    margin-top:6px;padding-top:10px;font-weight:800;font-size:20px;
-  }
-  .totals .l.grand span:first-child{
-    font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:.08em;color:#fff;font-weight:400;font-size:22px;
-  }
-  .totals .l.grand span:last-child{
-    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  }
+  .totals .l.grand{border-top:2px solid;border-image:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink)) 1;margin-top:6px;padding-top:10px;font-weight:800;font-size:20px;}
+  .totals .l.grand span:first-child{font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:.08em;color:#fff;font-weight:400;font-size:22px;}
+  .totals .l.grand span:last-child{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-  /* Términos */
-  .terms{
-    margin-top:0;font-size:11px;color:rgba(255,255,255,.35);
-    border-top:1px solid rgba(255,255,255,.08);padding-top:12px;
-  }
-  .terms .h{
-    font-family:'Bebas Neue','Impact',sans-serif;font-weight:400;color:var(--cyan);
-    text-transform:uppercase;letter-spacing:.1em;font-size:13px;margin-bottom:4px;
-  }
+  .terms{margin-top:0;font-size:11px;color:rgba(255,255,255,.35);border-top:1px solid rgba(255,255,255,.08);padding-top:12px;}
+  .terms .h{font-family:'Bebas Neue','Impact',sans-serif;font-weight:400;color:var(--cyan);text-transform:uppercase;letter-spacing:.1em;font-size:13px;margin-bottom:4px;}
 
-  /* Firmas */
   .signs{display:flex;justify-content:space-between;gap:40px;margin-top:36px;}
   .sign{flex:1;text-align:center;}
-  .sign .line{
-    border-top:1px solid rgba(255,255,255,.25);padding-top:8px;
-    font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em;
-  }
+  .sign .line{border-top:1px solid rgba(255,255,255,.25);padding-top:8px;font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em;}
 
-  /* Pie */
-  .pf{
-    margin-top:24px;font-size:10px;color:rgba(255,255,255,.3);line-height:1.6;
-    border-top:1px solid rgba(255,255,255,.06);padding-top:10px;
-  }
+  .pf{margin-top:24px;font-size:10px;color:rgba(255,255,255,.3);line-height:1.6;border-top:1px solid rgba(255,255,255,.06);padding-top:10px;}
   .pf b{color:rgba(255,255,255,.5);}
 
   .doc-bottom-bar{height:4px;background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));flex-shrink:0;}
 
   @media print{
-    body{background:#fff;}
-    .app{display:block;padding:0;}
+    body{background:#fff;}.app{display:block;padding:0;}
     .editor,.no-print{display:none !important;}
     .preview-wrap,.panel{border:none;box-shadow:none;}
     .doc{width:auto;padding:0;min-height:auto;}
@@ -196,35 +114,21 @@
 </head>
 <body>
 <div class="app">
-
   <div class="panel editor no-print">
     <h1>Cotizador Barracuda</h1>
     <p class="sub">Llena los datos y se actualiza el documento a la derecha. Guarda para conservar el historial.</p>
-    <div class="row">
-      <div><label># Cotización</label><input id="num" type="number"></div>
-      <div><label>Moneda</label><select id="moneda"><option>MXN</option><option>USD</option></select></div>
-    </div>
+    <div class="row"><div><label># Cotización</label><input id="num" type="number"></div><div><label>Moneda</label><select id="moneda"><option>MXN</option><option>USD</option></select></div></div>
     <label>Cliente (empresa)</label><input id="cliente" placeholder="ASSA ABLOY">
     <label>Proyecto / concepto del mes</label><input id="proyecto" placeholder="Diseños Assa Abloy Junio">
     <label>Contacto</label><input id="contacto" placeholder="Laura Camacho">
     <label>Dirección</label><textarea id="direccion" placeholder="Pelicano 242, Granjas Modernas 07460, Ciudad de México"></textarea>
-    <div class="row">
-      <div><label>Lugar y fecha</label><input id="lugarfecha" placeholder="CDMX - 16/06"></div>
-      <div><label>Vigencia</label><input id="vigencia" value="2 SEMANAS"></div>
-    </div>
+    <div class="row"><div><label>Lugar y fecha</label><input id="lugarfecha" placeholder="CDMX - 16/06"></div><div><label>Vigencia</label><input id="vigencia" value="2 SEMANAS"></div></div>
     <label>Partidas</label>
     <div class="items"><table><thead><tr><th>Cant.</th><th>Descripción</th><th>P. Unitario</th><th></th></tr></thead><tbody id="items"></tbody></table></div>
     <button class="additem" id="addItem">+ Agregar partida</button>
-    <div class="row" style="margin-top:14px;">
-      <div><label>IVA (%)</label><input id="iva" type="number" value="16"></div>
-      <div><label>Aplicar IVA</label><select id="aplicaIva"><option value="si">Sí (16%)</option><option value="no">No</option></select></div>
-    </div>
+    <div class="row" style="margin-top:14px;"><div><label>IVA (%)</label><input id="iva" type="number" value="16"></div><div><label>Aplicar IVA</label><select id="aplicaIva"><option value="si">Sí (16%)</option><option value="no">No</option></select></div></div>
     <label>Términos y condiciones</label>
-    <select id="termPreset">
-      <option value="oc">Firma + OC o anticipo 50% (estándar)</option>
-      <option value="simple">Solo firma de autorización</option>
-      <option value="custom">Personalizado…</option>
-    </select>
+    <select id="termPreset"><option value="oc">Firma + OC o anticipo 50% (estándar)</option><option value="simple">Solo firma de autorización</option><option value="custom">Personalizado…</option></select>
     <textarea id="terminos" style="margin-top:6px;"></textarea>
     <div class="btn-row">
       <button class="btn btn-primary" id="save">Guardar cotización</button>
@@ -253,19 +157,9 @@
         <div class="gradbar"></div>
         <div class="inner">
           <div class="content-area">
-            <div class="meta-grid">
-              <div class="blk">
-                <div class="h">Cliente</div>
-                <b id="d_cliente">—</b>
-                <div id="d_contacto" style="margin-top:4px;font-size:13px;"></div>
-                <div id="d_direccion" style="margin-top:5px;color:#6b7a94;max-width:340px;white-space:pre-line;font-size:12px;"></div>
-              </div>
-            </div>
+            <div class="meta-grid"><div class="blk"><div class="h">Cliente</div><b id="d_cliente">—</b><div id="d_contacto" style="margin-top:4px;font-size:13px;"></div><div id="d_direccion" style="margin-top:5px;color:#6b7a94;max-width:340px;white-space:pre-line;font-size:12px;"></div></div></div>
             <div class="proj" id="d_proyecto" style="display:none;"></div>
-            <table class="lines">
-              <thead><tr><th class="c">Cant.</th><th>Descripción</th><th class="r">Precio Unitario</th><th class="r">Total</th></tr></thead>
-              <tbody id="d_items"></tbody>
-            </table>
+            <table class="lines"><thead><tr><th class="c">Cant.</th><th>Descripción</th><th class="r">Precio Unitario</th><th class="r">Total</th></tr></thead><tbody id="d_items"></tbody></table>
             <div class="totals">
               <div class="l"><span>SUBTOTAL</span><span id="d_subtotal">$0,00</span></div>
               <div class="l" id="d_ivarow"><span>IMPUESTOS (IVA)</span><span id="d_iva">$0,00</span></div>
@@ -273,18 +167,9 @@
             </div>
           </div>
           <div class="footer-area">
-            <div class="terms">
-              <div class="h">Términos y condiciones</div>
-              <div id="d_terminos"></div>
-            </div>
-            <div class="signs">
-              <div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div>
-              <div class="sign"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
-            </div>
-            <div class="pf">
-              <b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>
-              Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
-            </div>
+            <div class="terms"><div class="h">Términos y condiciones</div><div id="d_terminos"></div></div>
+            <div class="signs"><div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div><div class="sign"><div class="line">HÉCTOR SOLÍS — CEO</div></div></div>
+            <div class="pf"><b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com</div>
           </div>
         </div>
         <div class="doc-bottom-bar"></div>
@@ -301,24 +186,15 @@ const TERMS = {
 const $ = id => document.getElementById(id);
 const STORE = 'barracuda_cotizaciones_v1';
 const NUMKEY = 'barracuda_next_num';
-
-function fmt(n){
-  n = isNaN(n)?0:n;
-  return '$' + n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
-}
+function fmt(n){ n = isNaN(n)?0:n; return '$' + n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2}); }
 
 function addItem(cant='1', desc='', precio=''){
   const tr = document.createElement('tr');
-  tr.innerHTML = `
-    <td><input class="qty it-cant" value="${cant}"></td>
-    <td><input class="it-desc" value="${desc.replace(/"/g,'&quot;')}"></td>
-    <td><input class="price it-precio" value="${precio}"></td>
-    <td><button class="del">✕</button></td>`;
+  tr.innerHTML = `<td><input class="qty it-cant" value="${cant}"></td><td><input class="it-desc" value="${desc.replace(/"/g,'&quot;')}"></td><td><input class="price it-precio" value="${precio}"></td><td><button class="del">✕</button></td>`;
   tr.querySelector('.del').onclick = ()=>{tr.remove();render();};
   tr.querySelectorAll('input').forEach(i=>i.addEventListener('input',render));
   $('items').appendChild(tr);
 }
-
 function getItems(){
   return [...document.querySelectorAll('#items tr')].map(tr=>({
     cant: tr.querySelector('.it-cant').value.trim(),
@@ -326,7 +202,6 @@ function getItems(){
     precio: parseFloat(tr.querySelector('.it-precio').value)||0
   }));
 }
-
 function render(){
   $('d_num').textContent = $('num').value || '—';
   $('d_moneda').textContent = 'MONEDA: ' + $('moneda').value;
@@ -346,8 +221,7 @@ function render(){
     const tot = cant * it.precio;
     subtotal += tot;
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td class="c">${it.cant||''}</td><td>${(it.desc||'').replace(/</g,'&lt;')}</td>
-      <td class="r">${fmt(it.precio)}</td><td class="r">${fmt(tot)}</td>`;
+    tr.innerHTML = `<td class="c">${it.cant||''}</td><td>${(it.desc||'').replace(/</g,'&lt;')}</td><td class="r">${fmt(it.precio)}</td><td class="r">${fmt(tot)}</td>`;
     tb.appendChild(tr);
   });
   const aplica = $('aplicaIva').value==='si';
@@ -359,7 +233,6 @@ function render(){
   $('d_total').textContent = fmt(subtotal+iva);
   $('d_terminos').textContent = $('terminos').value;
 }
-
 $('termPreset').addEventListener('change', e=>{
   if(e.target.value!=='custom') $('terminos').value = TERMS[e.target.value];
   render();
@@ -370,18 +243,13 @@ $('addItem').onclick = ()=>{addItem();render();};
 
 function loadStore(){ try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return []} }
 function saveStore(arr){ localStorage.setItem(STORE, JSON.stringify(arr)); }
-
 function snapshot(){
-  return {
-    id: Date.now(),
-    num: $('num').value, moneda:$('moneda').value, lugarfecha:$('lugarfecha').value,
+  return { id: Date.now(), num: $('num').value, moneda:$('moneda').value, lugarfecha:$('lugarfecha').value,
     vigencia:$('vigencia').value, cliente:$('cliente').value, proyecto:$('proyecto').value,
     contacto:$('contacto').value, direccion:$('direccion').value,
     iva:$('iva').value, aplicaIva:$('aplicaIva').value, terminos:$('terminos').value,
-    items:getItems(), savedAt:new Date().toLocaleString('es-MX')
-  };
+    items:getItems(), savedAt:new Date().toLocaleString('es-MX') };
 }
-
 function applySnapshot(s){
   $('num').value=s.num; $('moneda').value=s.moneda; $('lugarfecha').value=s.lugarfecha;
   $('vigencia').value=s.vigencia; $('cliente').value=s.cliente; $('proyecto').value=s.proyecto||'';
@@ -391,7 +259,6 @@ function applySnapshot(s){
   (s.items||[]).forEach(it=>addItem(it.cant,it.desc,it.precio));
   render();
 }
-
 function renderHist(){
   const arr = loadStore().sort((a,b)=>b.id-a.id);
   const box = $('histList');
@@ -400,66 +267,73 @@ function renderHist(){
   arr.forEach(s=>{
     const div = document.createElement('div');
     div.className='hist-item';
-    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||'Sin cliente'}</b>
-      <span>${s.proyecto||''} · ${s.moneda} · ${s.savedAt}</span></div>
-      <button class="del" title="Eliminar">🗑</button>`;
+    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||'Sin cliente'}</b><span>${s.proyecto||''} · ${s.moneda} · ${s.savedAt}</span></div><button class="del" title="Eliminar">🗑</button>`;
     div.querySelector('.meta').onclick = ()=>applySnapshot(s);
     div.querySelector('.del').onclick = ()=>{ saveStore(loadStore().filter(x=>x.id!==s.id)); renderHist(); };
     box.appendChild(div);
   });
 }
-
 $('save').onclick = ()=>{
   if(!$('num').value){ alert('Pon un número de cotización antes de guardar.'); return; }
-  const arr = loadStore();
-  arr.push(snapshot());
-  saveStore(arr);
+  const arr = loadStore(); arr.push(snapshot()); saveStore(arr);
   const next = (parseInt($('num').value)||0)+1;
-  localStorage.setItem(NUMKEY, next);
-  renderHist();
+  localStorage.setItem(NUMKEY, next); renderHist();
   const subtotal = getItems().reduce((sum, it)=>sum+(parseFloat(it.precio)||0)*parseInt(it.cant),0);
   const ivaPct = parseFloat($('iva').value)||0;
   const iva = $('aplicaIva').value==='si' ? subtotal*(ivaPct/100) : 0;
   const total = subtotal + iva;
-  const payload = {
-    numero: $('num').value, fecha: new Date().toLocaleDateString('es-MX'),
+  const payload = { numero: $('num').value, fecha: new Date().toLocaleDateString('es-MX'),
     cliente: $('cliente').value, proyecto: $('proyecto').value,
     monto: '$' + total.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}),
-    estado: 'Borrador', enlace: ''
-  };
+    estado: 'Borrador', enlace: '' };
   fetch('https://script.google.com/macros/s/AKfycbwOQPOUhr4Ej4tlpwb05D712kO_OGhUTOnUvj94GfdOUSwYRAbSRSUi0TI47oe4pFic/exec', {
     method: 'POST', body: JSON.stringify(payload)
   }).catch(err=>console.log('Nota: No se pudo registrar en Google Sheets ('+err.message+')'));
   alert('Cotización #'+$('num').value+' guardada. El siguiente número será '+next+'.');
 };
-
 $('nuevo').onclick = ()=>{
   if(!confirm('¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva).')) return;
   initBlank();
 };
 
+/* ====== PDF EXPORT — fuerza A4 exacto ====== */
 $('pdf').onclick = ()=>{
   const el = document.getElementById('doc');
-  // Forzar altura exacta a múltiplo de A4
-  const pageH = Math.round(820 * 297 / 210); // ~1160px por página A4
-  const naturalH = el.scrollHeight;
-  const pages = Math.max(1, Math.ceil(naturalH / pageH));
-  const targetH = pages * pageH;
-  const origMinH = el.style.minHeight;
-  el.style.minHeight = targetH + 'px';
+  const W = 820;
+  const PAGE_H = Math.ceil(W * 297 / 210); // 1 página A4 en px
+
+  // Guardar estilos originales
+  const orig = { h: el.style.height, mh: el.style.minHeight };
+
+  // Calcular cuántas páginas necesita el contenido
+  const natural = el.scrollHeight;
+  const pages = Math.max(1, Math.ceil(natural / PAGE_H));
+  const targetH = pages * PAGE_H;
+
+  // Forzar altura exacta para que html2canvas capture el área completa
   el.style.height = targetH + 'px';
+  el.style.minHeight = targetH + 'px';
+  void el.offsetHeight; // forzar reflow
 
   const opt = {
     margin: 0,
     filename: 'Cotizacion-' + ($('num').value || 'Barracuda') + '.pdf',
-    image: {type:'jpeg',quality:0.98},
-    html2canvas: {scale:2, useCORS:true, backgroundColor:'#0B0F1A'},
-    jsPDF: {unit:'mm',format:'a4',orientation:'portrait'},
-    pagebreak: {mode:['avoid-all','css','legacy']}
+    image: { type:'jpeg', quality:0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#0B0F1A',
+      width: W,
+      height: targetH,
+      scrollY: 0,
+      scrollX: 0
+    },
+    jsPDF: { unit:'mm', format:'a4', orientation:'portrait' }
   };
+
   html2pdf().set(opt).from(el).save().then(()=>{
-    el.style.minHeight = origMinH || '';
-    el.style.height = '';
+    el.style.height = orig.h || '';
+    el.style.minHeight = orig.mh || '';
   });
 };
 
