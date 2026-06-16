@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Propuesta Títulos</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Horizon';src:url('fonts/horizon.otf') format('opentype');font-weight:normal;font-style:normal;font-display:swap}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Raleway',sans-serif;background:#0A0A0A;color:#fff;padding:60px 24px;line-height:1.6;min-height:100vh;position:relative}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 55% 45% at 90% 12%,rgba(88,208,245,.22) 0%,rgba(29,31,161,.12) 35%,transparent 65%),radial-gradient(ellipse 45% 40% at 8% 88%,rgba(133,92,198,.28) 0%,rgba(204,51,102,.08) 40%,transparent 70%),#0A0A0A}
+:root{--blue-horizon:#2D2DFF;--cyan:#58D0F5;--pink:#CC3366;--purple:#855CC6;--lime:#A6E22E}
+.container{max-width:1200px;margin:0 auto}
+.section{padding:60px 0;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+.tag{display:inline-block;font-family:'Bebas Neue','Impact',sans-serif;color:var(--lime);letter-spacing:4px;font-size:.85rem;margin-bottom:20px}
+
+/* OPCIÓN 1: Blanco con final en degradado (como antes) */
+.opt1 h2{font-family:'Horizon','Impact',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:normal;letter-spacing:1px;color:#fff}
+.opt1 h2 .grad{background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* OPCIÓN 2: Todo en azul Horizon mayúsculas */
+.opt2 h2{font-family:'Horizon','Impact',sans-serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:normal;letter-spacing:2px;color:var(--blue-horizon);text-transform:uppercase}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="section opt1">
+    <span class="tag">Opción 1 — Blanco con final en degradado</span>
+    <h2>Números que <span class="grad">hablan</span></h2>
+    <br>
+    <h2>Marcas que <span class="grad">confían en nosotros</span></h2>
+    <br>
+    <h2>Lo que dicen <span class="grad">nuestros clientes</span></h2>
+    <br>
+    <h2>Nuestros <span class="grad">Proyectos</span></h2>
+  </div>
+
+  <div class="section opt2">
+    <span class="tag">Opción 2 — Todo en azul Horizon mayúsculas</span>
+    <h2>Números que hablan</h2>
+    <br>
+    <h2>Marcas que confían en nosotros</h2>
+    <br>
+    <h2>Lo que dicen nuestros clientes</h2>
+    <br>
+    <h2>Nuestros Proyectos</h2>
+  </div>
+
+</div>
+</body>
+</html>
