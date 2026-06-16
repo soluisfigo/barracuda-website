@@ -89,6 +89,7 @@
     @page{margin:14mm;}
   }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <div class="app">
@@ -402,7 +403,17 @@ $('nuevo').onclick = ()=>{
   initBlank();
 };
 
-$('pdf').onclick = ()=>window.print();
+$('pdf').onclick = ()=>{
+  const el = document.getElementById('doc');
+  const opt = {
+    margin: [10,0,10,0],
+    filename: 'Cotizacion-' + ($('num').value || 'Barracuda') + '.pdf',
+    image: {type:'jpeg',quality:0.98},
+    html2canvas: {scale:2, useCORS:true, backgroundColor:'#ffffff'},
+    jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
+  };
+  html2pdf().set(opt).from(el).save();
+};
 
 // ---- inicio ----
 function initBlank(){
