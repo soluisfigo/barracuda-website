@@ -14,7 +14,7 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:'Raleway','Segoe UI',Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);}
-  .app{display:flex;gap:24px;max-width:1500px;margin:0 auto;padding:24px;align-items:flex-start;}
+  .app{display:flex;gap:24px;max-width:1540px;margin:0 auto;padding:24px;align-items:flex-start;}
   .panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(20,30,60,.06);}
   .editor{flex:0 0 430px;padding:20px;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;}
   .preview-wrap{flex:1;min-width:0;}
@@ -35,7 +35,6 @@
   .btn-primary:hover{background:linear-gradient(135deg,var(--purple),var(--pink));}
   .btn-ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line);}
   .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
-  .btn-sm{padding:5px 9px;font-size:11px;}
   .additem{background:transparent;color:var(--accent);border:1px dashed var(--line);width:100%;padding:7px;border-radius:8px;cursor:pointer;font-size:12px;margin-top:6px;}
   .del{background:#fff;border:1px solid var(--line);color:var(--accent);border-radius:6px;cursor:pointer;width:26px;height:26px;}
   .hist{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;}
@@ -46,210 +45,147 @@
   .hist-item .meta span{color:var(--muted);}
   .empty{color:var(--muted);font-size:12px;font-style:italic;}
 
-  /* ===== DOCUMENTO REDISEÑADO (estilo Barracuda) ===== */
+  /* ===== DOCUMENTO (estilo Barracuda) ===== */
   .doc{
     background:var(--brand);
     color:#c8d0e0;
     width:820px;
+    min-height:1160px;
     margin:0 auto;
-    padding:0 0 0;
-    font-size:13px;
+    padding:0;
+    font-size:15px;
     line-height:1.5;
     font-family:'Raleway',sans-serif;
-    border-radius:0;
     overflow:hidden;
+    display:flex;
+    flex-direction:column;
   }
-  .doc .inner{padding:32px 56px 40px;}
+  .doc .inner{
+    padding:28px 48px 32px;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+  }
+  .doc .content-area{flex-shrink:0;}
+  .doc .footer-area{margin-top:auto;flex-shrink:0;}
 
-  /* Header */
+  /* Header compacto */
   .doc .top{
     display:grid;
     grid-template-columns:1fr auto;
     align-items:center;
     background:var(--brand);
-    padding:32px 56px 24px;
-    gap:40px;
-    border-bottom:none;
+    padding:20px 48px 16px;
+    gap:30px;
+    flex-shrink:0;
   }
-  .gradbar{
-    height:4px;
-    background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-  }
-  .brand-logo{max-width:260px;height:72px;object-fit:contain;object-position:left;}
+  .gradbar{height:4px;background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));flex-shrink:0;}
+  .brand-logo{max-width:220px;height:60px;object-fit:contain;object-position:left;}
   .brand-tag{
     font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:10px;
-    letter-spacing:.25em;
-    color:rgba(88,208,245,.5);
-    text-transform:uppercase;
-    margin-top:8px;
+    font-size:9px;letter-spacing:.22em;
+    color:rgba(88,208,245,.45);text-transform:uppercase;margin-top:5px;
   }
 
-  /* Quote number */
+  /* Número cotización */
   .doc .quoteno{text-align:right;}
   .doc .quoteno .big{
     font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:12px;
-    font-weight:400;
-    color:rgba(255,255,255,.35);
-    letter-spacing:.15em;
-    display:block;
-    margin-bottom:8px;
-    text-transform:uppercase;
+    font-size:11px;font-weight:400;color:rgba(255,255,255,.3);
+    letter-spacing:.15em;display:block;margin-bottom:6px;text-transform:uppercase;
   }
   .doc .quoteno .n{
     font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:52px;
-    font-weight:400;
+    font-size:42px;font-weight:400;
     background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    display:block;
-    line-height:1;
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    display:block;line-height:1;
   }
-  .doc .quoteno small{
-    display:block;
-    color:rgba(255,255,255,.3);
-    font-size:10px;
-    margin-top:8px;
-    letter-spacing:.05em;
-  }
+  .doc .quoteno small{display:block;color:rgba(255,255,255,.3);font-size:11px;margin-top:6px;letter-spacing:.05em;}
 
   /* Meta grid */
-  .meta-grid{display:flex;justify-content:space-between;gap:30px;margin-bottom:22px;}
-  .meta-grid .blk{font-size:12px;color:#8b97b5;}
+  .meta-grid{display:flex;justify-content:space-between;gap:24px;margin-bottom:18px;}
+  .meta-grid .blk{font-size:13px;color:#8b97b5;}
   .meta-grid .blk .h{
     font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.12em;
-    color:var(--cyan);
-    margin-bottom:4px;
+    font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);margin-bottom:3px;
   }
-  .meta-grid .blk b{font-size:15px;color:#fff;font-weight:700;}
+  .meta-grid .blk b{font-size:16px;color:#fff;font-weight:700;}
 
-  /* Project bar */
+  /* Barra proyecto */
   .proj{
     background:rgba(88,208,245,.06);
-    border-left:4px solid;
-    border-image:linear-gradient(180deg,var(--cyan),var(--purple)) 1;
-    padding:10px 14px;
-    font-weight:600;
-    color:var(--cyan);
-    margin-bottom:20px;
-    font-size:13px;
-    letter-spacing:.02em;
+    border-left:4px solid;border-image:linear-gradient(180deg,var(--cyan),var(--purple)) 1;
+    padding:8px 14px;font-weight:600;color:var(--cyan);margin-bottom:16px;font-size:14px;letter-spacing:.02em;
   }
 
-  /* Table */
-  table.lines{width:100%;border-collapse:collapse;margin-bottom:18px;}
+  /* Tabla */
+  table.lines{width:100%;border-collapse:collapse;margin-bottom:14px;}
   table.lines thead th{
     background:linear-gradient(135deg,rgba(88,208,245,.15),rgba(133,92,198,.15),rgba(204,51,102,.1));
-    color:var(--cyan);
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-size:12px;
-    font-weight:400;
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    padding:12px 12px;
-    text-align:left;
-    border-bottom:1px solid rgba(88,208,245,.2);
+    color:var(--cyan);font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:.1em;
+    padding:10px 12px;text-align:left;border-bottom:1px solid rgba(88,208,245,.2);
   }
   table.lines thead th.r{text-align:right;}
   table.lines tbody td{
     border-bottom:1px solid rgba(255,255,255,.06);
-    padding:11px 12px;
-    vertical-align:top;
-    font-size:12.5px;
-    color:#c8d0e0;
-    white-space:pre-line;
+    padding:10px 12px;vertical-align:top;font-size:14px;color:#c8d0e0;white-space:pre-line;
   }
   table.lines td.c{text-align:center;width:50px;color:#8b97b5;}
-  table.lines td.r{text-align:right;width:120px;white-space:nowrap;color:#fff;font-weight:500;}
+  table.lines td.r{text-align:right;width:125px;white-space:nowrap;color:#fff;font-weight:500;}
   table.lines tbody tr:hover{background:rgba(88,208,245,.03);}
 
-  /* Totals */
-  .totals{width:320px;margin-left:auto;font-size:13px;}
-  .totals .l{display:flex;justify-content:space-between;padding:7px 0;color:#8b97b5;}
+  /* Totales */
+  .totals{width:320px;margin-left:auto;font-size:14px;}
+  .totals .l{display:flex;justify-content:space-between;padding:6px 0;color:#8b97b5;}
   .totals .l span:last-child{color:#fff;font-weight:500;}
   .totals .l.grand{
-    border-top:2px solid;
-    border-image:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink)) 1;
-    margin-top:6px;
-    padding-top:10px;
-    font-weight:800;
-    font-size:18px;
+    border-top:2px solid;border-image:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink)) 1;
+    margin-top:6px;padding-top:10px;font-weight:800;font-size:20px;
   }
   .totals .l.grand span:first-child{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    letter-spacing:.08em;
-    color:#fff;
-    font-weight:400;
-    font-size:20px;
+    font-family:'Bebas Neue','Impact',sans-serif;letter-spacing:.08em;color:#fff;font-weight:400;font-size:22px;
   }
   .totals .l.grand span:last-child{
     background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    font-family:'Raleway',sans-serif;
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   }
 
-  /* Terms */
+  /* Términos */
   .terms{
-    margin-top:28px;
-    font-size:10.5px;
-    color:rgba(255,255,255,.35);
-    border-top:1px solid rgba(255,255,255,.08);
-    padding-top:14px;
+    margin-top:0;font-size:11px;color:rgba(255,255,255,.35);
+    border-top:1px solid rgba(255,255,255,.08);padding-top:12px;
   }
   .terms .h{
-    font-family:'Bebas Neue','Impact',sans-serif;
-    font-weight:400;
-    color:var(--cyan);
-    text-transform:uppercase;
-    letter-spacing:.1em;
-    font-size:12px;
-    margin-bottom:5px;
+    font-family:'Bebas Neue','Impact',sans-serif;font-weight:400;color:var(--cyan);
+    text-transform:uppercase;letter-spacing:.1em;font-size:13px;margin-bottom:4px;
   }
 
-  /* Signatures */
-  .signs{display:flex;justify-content:space-between;gap:40px;margin-top:50px;}
+  /* Firmas */
+  .signs{display:flex;justify-content:space-between;gap:40px;margin-top:36px;}
   .sign{flex:1;text-align:center;}
   .sign .line{
-    border-top:1px solid rgba(255,255,255,.25);
-    padding-top:8px;
-    font-size:11px;
-    font-weight:600;
-    color:#fff;
-    letter-spacing:.04em;
+    border-top:1px solid rgba(255,255,255,.25);padding-top:8px;
+    font-size:12px;font-weight:600;color:#fff;letter-spacing:.04em;
   }
 
-  /* Footer */
+  /* Pie */
   .pf{
-    margin-top:34px;
-    font-size:10px;
-    color:rgba(255,255,255,.3);
-    line-height:1.6;
-    border-top:1px solid rgba(255,255,255,.06);
-    padding-top:12px;
+    margin-top:24px;font-size:10px;color:rgba(255,255,255,.3);line-height:1.6;
+    border-top:1px solid rgba(255,255,255,.06);padding-top:10px;
   }
   .pf b{color:rgba(255,255,255,.5);}
 
-  /* Bottom gradient bar */
-  .doc-bottom-bar{
-    height:4px;
-    background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));
-  }
+  .doc-bottom-bar{height:4px;background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));flex-shrink:0;}
 
   @media print{
     body{background:#fff;}
     .app{display:block;padding:0;}
     .editor,.no-print{display:none !important;}
     .preview-wrap,.panel{border:none;box-shadow:none;}
-    .doc{width:auto;padding:0;}
-    .doc,.doc .top{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+    .doc{width:auto;padding:0;min-height:auto;}
+    .doc,.doc .top,.doc .inner{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
     .doc .top{background:var(--brand) !important;}
     .gradbar,.doc-bottom-bar{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
     table.lines thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
@@ -261,65 +197,28 @@
 <body>
 <div class="app">
 
-  <!-- ============ EDITOR ============ -->
   <div class="panel editor no-print">
     <h1>Cotizador Barracuda</h1>
     <p class="sub">Llena los datos y se actualiza el documento a la derecha. Guarda para conservar el historial.</p>
-
     <div class="row">
-      <div>
-        <label># Cotización</label>
-        <input id="num" type="number">
-      </div>
-      <div>
-        <label>Moneda</label>
-        <select id="moneda"><option>MXN</option><option>USD</option></select>
-      </div>
+      <div><label># Cotización</label><input id="num" type="number"></div>
+      <div><label>Moneda</label><select id="moneda"><option>MXN</option><option>USD</option></select></div>
     </div>
-
-    <label>Cliente (empresa)</label>
-    <input id="cliente" placeholder="ASSA ABLOY">
-
-    <label>Proyecto / concepto del mes</label>
-    <input id="proyecto" placeholder="Diseños Assa Abloy Junio">
-
-    <label>Contacto</label>
-    <input id="contacto" placeholder="Laura Camacho">
-
-    <label>Dirección</label>
-    <textarea id="direccion" placeholder="Pelicano 242, Granjas Modernas 07460, Ciudad de México"></textarea>
-
+    <label>Cliente (empresa)</label><input id="cliente" placeholder="ASSA ABLOY">
+    <label>Proyecto / concepto del mes</label><input id="proyecto" placeholder="Diseños Assa Abloy Junio">
+    <label>Contacto</label><input id="contacto" placeholder="Laura Camacho">
+    <label>Dirección</label><textarea id="direccion" placeholder="Pelicano 242, Granjas Modernas 07460, Ciudad de México"></textarea>
     <div class="row">
-      <div>
-        <label>Lugar y fecha</label>
-        <input id="lugarfecha" placeholder="CDMX - 16/06">
-      </div>
-      <div>
-        <label>Vigencia</label>
-        <input id="vigencia" value="2 SEMANAS">
-      </div>
+      <div><label>Lugar y fecha</label><input id="lugarfecha" placeholder="CDMX - 16/06"></div>
+      <div><label>Vigencia</label><input id="vigencia" value="2 SEMANAS"></div>
     </div>
-
     <label>Partidas</label>
-    <div class="items">
-      <table>
-        <thead><tr><th>Cant.</th><th>Descripción</th><th>P. Unitario</th><th></th></tr></thead>
-        <tbody id="items"></tbody>
-      </table>
-    </div>
+    <div class="items"><table><thead><tr><th>Cant.</th><th>Descripción</th><th>P. Unitario</th><th></th></tr></thead><tbody id="items"></tbody></table></div>
     <button class="additem" id="addItem">+ Agregar partida</button>
-
     <div class="row" style="margin-top:14px;">
-      <div>
-        <label>IVA (%)</label>
-        <input id="iva" type="number" value="16">
-      </div>
-      <div>
-        <label>Aplicar IVA</label>
-        <select id="aplicaIva"><option value="si">Sí (16%)</option><option value="no">No</option></select>
-      </div>
+      <div><label>IVA (%)</label><input id="iva" type="number" value="16"></div>
+      <div><label>Aplicar IVA</label><select id="aplicaIva"><option value="si">Sí (16%)</option><option value="no">No</option></select></div>
     </div>
-
     <label>Términos y condiciones</label>
     <select id="termPreset">
       <option value="oc">Firma + OC o anticipo 50% (estándar)</option>
@@ -327,20 +226,14 @@
       <option value="custom">Personalizado…</option>
     </select>
     <textarea id="terminos" style="margin-top:6px;"></textarea>
-
     <div class="btn-row">
       <button class="btn btn-primary" id="save">Guardar cotización</button>
       <button class="btn btn-ghost" id="pdf">Descargar PDF</button>
       <button class="btn btn-ghost" id="nuevo">+ Nueva</button>
     </div>
-
-    <div class="hist">
-      <h3>Historial de cotizaciones</h3>
-      <div id="histList"><p class="empty">Aún no has guardado cotizaciones.</p></div>
-    </div>
+    <div class="hist"><h3>Historial de cotizaciones</h3><div id="histList"><p class="empty">Aún no has guardado cotizaciones.</p></div></div>
   </div>
 
-  <!-- ============ PREVIEW / DOCUMENTO ============ -->
   <div class="preview-wrap">
     <div class="panel" style="background:var(--brand);border-color:rgba(255,255,255,.08);">
       <div class="doc" id="doc">
@@ -358,49 +251,42 @@
           </div>
         </div>
         <div class="gradbar"></div>
-
         <div class="inner">
-        <div class="meta-grid">
-          <div class="blk">
-            <div class="h">Cliente</div>
-            <b id="d_cliente">—</b>
-            <div id="d_contacto" style="margin-top:4px;"></div>
-            <div id="d_direccion" style="margin-top:6px;color:#6b7a94;max-width:320px;white-space:pre-line;"></div>
+          <div class="content-area">
+            <div class="meta-grid">
+              <div class="blk">
+                <div class="h">Cliente</div>
+                <b id="d_cliente">—</b>
+                <div id="d_contacto" style="margin-top:4px;font-size:13px;"></div>
+                <div id="d_direccion" style="margin-top:5px;color:#6b7a94;max-width:340px;white-space:pre-line;font-size:12px;"></div>
+              </div>
+            </div>
+            <div class="proj" id="d_proyecto" style="display:none;"></div>
+            <table class="lines">
+              <thead><tr><th class="c">Cant.</th><th>Descripción</th><th class="r">Precio Unitario</th><th class="r">Total</th></tr></thead>
+              <tbody id="d_items"></tbody>
+            </table>
+            <div class="totals">
+              <div class="l"><span>SUBTOTAL</span><span id="d_subtotal">$0,00</span></div>
+              <div class="l" id="d_ivarow"><span>IMPUESTOS (IVA)</span><span id="d_iva">$0,00</span></div>
+              <div class="l grand"><span>TOTAL</span><span id="d_total">$0,00</span></div>
+            </div>
+          </div>
+          <div class="footer-area">
+            <div class="terms">
+              <div class="h">Términos y condiciones</div>
+              <div id="d_terminos"></div>
+            </div>
+            <div class="signs">
+              <div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div>
+              <div class="sign"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
+            </div>
+            <div class="pf">
+              <b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>
+              Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
+            </div>
           </div>
         </div>
-
-        <div class="proj" id="d_proyecto" style="display:none;"></div>
-
-        <table class="lines">
-          <thead><tr>
-            <th class="c">Cant.</th><th>Descripción</th>
-            <th class="r">Precio Unitario</th><th class="r">Total</th>
-          </tr></thead>
-          <tbody id="d_items"></tbody>
-        </table>
-
-        <div class="totals">
-          <div class="l"><span>SUBTOTAL</span><span id="d_subtotal">$0,00</span></div>
-          <div class="l" id="d_ivarow"><span>IMPUESTOS (IVA)</span><span id="d_iva">$0,00</span></div>
-          <div class="l grand"><span>TOTAL</span><span id="d_total">$0,00</span></div>
-        </div>
-
-        <div class="terms">
-          <div class="h">Términos y condiciones</div>
-          <div id="d_terminos"></div>
-        </div>
-
-        <div class="signs">
-          <div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div>
-          <div class="sign"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
-        </div>
-
-        <div class="pf">
-          <b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>
-          Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
-        </div>
-        </div><!-- /inner -->
-
         <div class="doc-bottom-bar"></div>
       </div>
     </div>
@@ -412,7 +298,6 @@ const TERMS = {
   oc: "* Se solicita su firma de autorización para dar comienzo al proyecto. Los precios están sujetos a cambios en caso de cambiar el scope del proyecto. Precio vigente por 15 días a partir de la fecha de este documento. Se requiere Orden de Compra o anticipo del 50%.",
   simple: "* Se solicita su firma de autorización para dar comienzo al proyecto. Los precios están sujetos a cambios en caso de cambiar el scope del proyecto. Precio vigente por 15 días a partir de la fecha de este documento."
 };
-
 const $ = id => document.getElementById(id);
 const STORE = 'barracuda_cotizaciones_v1';
 const NUMKEY = 'barracuda_next_num';
@@ -453,7 +338,6 @@ function render(){
   const proj = $('proyecto').value.trim();
   $('d_proyecto').style.display = proj ? 'block':'none';
   $('d_proyecto').textContent = proj;
-
   const items = getItems();
   const tb = $('d_items'); tb.innerHTML='';
   let subtotal = 0;
@@ -466,7 +350,6 @@ function render(){
       <td class="r">${fmt(it.precio)}</td><td class="r">${fmt(tot)}</td>`;
     tb.appendChild(tr);
   });
-
   const aplica = $('aplicaIva').value==='si';
   const ivaPct = parseFloat($('iva').value)||0;
   const iva = aplica ? subtotal*(ivaPct/100) : 0;
@@ -481,10 +364,8 @@ $('termPreset').addEventListener('change', e=>{
   if(e.target.value!=='custom') $('terminos').value = TERMS[e.target.value];
   render();
 });
-
 ['num','moneda','lugarfecha','vigencia','cliente','proyecto','contacto','direccion','iva','aplicaIva','terminos']
   .forEach(id=>$(id).addEventListener('input',render));
-
 $('addItem').onclick = ()=>{addItem();render();};
 
 function loadStore(){ try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return []} }
@@ -536,27 +417,19 @@ $('save').onclick = ()=>{
   const next = (parseInt($('num').value)||0)+1;
   localStorage.setItem(NUMKEY, next);
   renderHist();
-
   const subtotal = getItems().reduce((sum, it)=>sum+(parseFloat(it.precio)||0)*parseInt(it.cant),0);
   const ivaPct = parseFloat($('iva').value)||0;
   const iva = $('aplicaIva').value==='si' ? subtotal*(ivaPct/100) : 0;
   const total = subtotal + iva;
-
   const payload = {
-    numero: $('num').value,
-    fecha: new Date().toLocaleDateString('es-MX'),
-    cliente: $('cliente').value,
-    proyecto: $('proyecto').value,
+    numero: $('num').value, fecha: new Date().toLocaleDateString('es-MX'),
+    cliente: $('cliente').value, proyecto: $('proyecto').value,
     monto: '$' + total.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}),
-    estado: 'Borrador',
-    enlace: ''
+    estado: 'Borrador', enlace: ''
   };
-
   fetch('https://script.google.com/macros/s/AKfycbwOQPOUhr4Ej4tlpwb05D712kO_OGhUTOnUvj94GfdOUSwYRAbSRSUi0TI47oe4pFic/exec', {
-    method: 'POST',
-    body: JSON.stringify(payload)
+    method: 'POST', body: JSON.stringify(payload)
   }).catch(err=>console.log('Nota: No se pudo registrar en Google Sheets ('+err.message+')'));
-
   alert('Cotización #'+$('num').value+' guardada. El siguiente número será '+next+'.');
 };
 
@@ -567,14 +440,27 @@ $('nuevo').onclick = ()=>{
 
 $('pdf').onclick = ()=>{
   const el = document.getElementById('doc');
+  // Forzar altura exacta a múltiplo de A4
+  const pageH = Math.round(820 * 297 / 210); // ~1160px por página A4
+  const naturalH = el.scrollHeight;
+  const pages = Math.max(1, Math.ceil(naturalH / pageH));
+  const targetH = pages * pageH;
+  const origMinH = el.style.minHeight;
+  el.style.minHeight = targetH + 'px';
+  el.style.height = targetH + 'px';
+
   const opt = {
-    margin: [10,0,10,0],
+    margin: 0,
     filename: 'Cotizacion-' + ($('num').value || 'Barracuda') + '.pdf',
     image: {type:'jpeg',quality:0.98},
     html2canvas: {scale:2, useCORS:true, backgroundColor:'#0B0F1A'},
-    jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
+    jsPDF: {unit:'mm',format:'a4',orientation:'portrait'},
+    pagebreak: {mode:['avoid-all','css','legacy']}
   };
-  html2pdf().set(opt).from(el).save();
+  html2pdf().set(opt).from(el).save().then(()=>{
+    el.style.minHeight = origMinH || '';
+    el.style.height = '';
+  });
 };
 
 function initBlank(){
@@ -589,7 +475,6 @@ function initBlank(){
   $('items').innerHTML=''; addItem('1','','');
   render();
 }
-
 initBlank();
 renderHist();
 </script>
