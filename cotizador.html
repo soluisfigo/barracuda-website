@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cotizador Barracuda</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
   :root{
     --ink:#101725; --muted:#5b6b85; --line:#d8deea; --bg:#eef1f6;
-    --brand:#0B0F1A; --accent:#3D2BF0; --cyan:#3D2BF0; --accent2:#3D2BF0; --soft:#f4f6fa;
-    --grad:#3D2BF0;
+    --brand:#0B0F1A; --accent:#3D2BF0; --cyan:#58D0F5; --purple:#855CC6; --pink:#CC3366;
+    --soft:#f4f6fa;
   }
   *{box-sizing:border-box;}
-  body{margin:0;font-family:'Segoe UI',Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);}
+  body{margin:0;font-family:'Raleway','Segoe UI',Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);}
   .app{display:flex;gap:24px;max-width:1500px;margin:0 auto;padding:24px;align-items:flex-start;}
   .panel{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 6px 24px rgba(20,30,60,.06);}
   .editor{flex:0 0 430px;padding:20px;position:sticky;top:24px;max-height:calc(100vh - 48px);overflow:auto;}
@@ -28,12 +30,13 @@
   .items input{padding:6px;font-size:12px;}
   .items table{width:100%;border-collapse:collapse;}
   .qty{width:48px;} .price{width:96px;}
-  .btn{cursor:pointer;border:none;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;}
-  .btn-primary{background:var(--grad);color:#fff;}
+  .btn{cursor:pointer;border:none;border-radius:8px;padding:9px 14px;font-size:13px;font-weight:600;font-family:'Raleway',sans-serif;}
+  .btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#fff;}
+  .btn-primary:hover{background:linear-gradient(135deg,var(--purple),var(--pink));}
   .btn-ghost{background:var(--soft);color:var(--ink);border:1px solid var(--line);}
   .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
   .btn-sm{padding:5px 9px;font-size:11px;}
-  .additem{background:transparent;color:var(--accent2);border:1px dashed var(--line);width:100%;padding:7px;border-radius:8px;cursor:pointer;font-size:12px;margin-top:6px;}
+  .additem{background:transparent;color:var(--accent);border:1px dashed var(--line);width:100%;padding:7px;border-radius:8px;cursor:pointer;font-size:12px;margin-top:6px;}
   .del{background:#fff;border:1px solid var(--line);color:var(--accent);border-radius:6px;cursor:pointer;width:26px;height:26px;}
   .hist{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;}
   .hist h3{font-size:12px;text-transform:uppercase;color:var(--muted);letter-spacing:.04em;margin:0 0 8px;}
@@ -43,38 +46,202 @@
   .hist-item .meta span{color:var(--muted);}
   .empty{color:var(--muted);font-size:12px;font-style:italic;}
 
-  /* ===== Documento (preview / impresión) ===== */
-  .doc{background:#fff;color:#101725;width:820px;margin:0 auto;padding:0 0 50px;font-size:13px;line-height:1.45;}
-  .doc .inner{padding:28px 56px 0;}
-  .doc .top{display:grid;grid-template-columns:1fr auto;align-items:start;background:var(--brand);padding:24px 56px;gap:80px;}
-  .gradbar{height:4px;background:var(--grad);}
-  .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
-  .brand-tag{font-size:8.5px;letter-spacing:.22em;color:#8b97b5;text-transform:uppercase;margin-top:6px;}
+  /* ===== DOCUMENTO REDISEÑADO (estilo Barracuda) ===== */
+  .doc{
+    background:var(--brand);
+    color:#c8d0e0;
+    width:820px;
+    margin:0 auto;
+    padding:0 0 0;
+    font-size:13px;
+    line-height:1.5;
+    font-family:'Raleway',sans-serif;
+    border-radius:0;
+    overflow:hidden;
+  }
+  .doc .inner{padding:32px 56px 40px;}
+
+  /* Header */
+  .doc .top{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    background:var(--brand);
+    padding:32px 56px 24px;
+    gap:40px;
+    border-bottom:none;
+  }
+  .gradbar{
+    height:4px;
+    background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+  }
+  .brand-logo{max-width:260px;height:72px;object-fit:contain;object-position:left;}
+  .brand-tag{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:10px;
+    letter-spacing:.25em;
+    color:rgba(88,208,245,.5);
+    text-transform:uppercase;
+    margin-top:8px;
+  }
+
+  /* Quote number */
   .doc .quoteno{text-align:right;}
-  .doc .quoteno .big{font-size:10px;font-weight:700;color:#9aa6c4;letter-spacing:.04em;display:block;margin-bottom:24px;}
-  .doc .quoteno .n{font-size:40px;font-weight:800;color:var(--cyan);display:block;line-height:1;}
-  .doc .quoteno small{display:block;color:#9aa6c4;font-size:10px;margin-top:14px;}
-  .meta-grid{display:flex;justify-content:space-between;gap:30px;margin-bottom:18px;}
-  .meta-grid .blk{font-size:12px;}
-  .meta-grid .blk .h{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px;}
-  .meta-grid .blk b{font-size:14px;color:var(--brand);}
-  .proj{background:var(--soft);border-left:4px solid var(--accent);padding:8px 12px;font-weight:600;color:var(--brand);margin-bottom:16px;font-size:13px;}
-  table.lines{width:100%;border-collapse:collapse;margin-bottom:14px;}
-  table.lines thead th{background:var(--brand);color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:.03em;padding:9px 10px;text-align:left;}
+  .doc .quoteno .big{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:12px;
+    font-weight:400;
+    color:rgba(255,255,255,.35);
+    letter-spacing:.15em;
+    display:block;
+    margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .doc .quoteno .n{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:52px;
+    font-weight:400;
+    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    display:block;
+    line-height:1;
+  }
+  .doc .quoteno small{
+    display:block;
+    color:rgba(255,255,255,.3);
+    font-size:10px;
+    margin-top:8px;
+    letter-spacing:.05em;
+  }
+
+  /* Meta grid */
+  .meta-grid{display:flex;justify-content:space-between;gap:30px;margin-bottom:22px;}
+  .meta-grid .blk{font-size:12px;color:#8b97b5;}
+  .meta-grid .blk .h{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--cyan);
+    margin-bottom:4px;
+  }
+  .meta-grid .blk b{font-size:15px;color:#fff;font-weight:700;}
+
+  /* Project bar */
+  .proj{
+    background:rgba(88,208,245,.06);
+    border-left:4px solid;
+    border-image:linear-gradient(180deg,var(--cyan),var(--purple)) 1;
+    padding:10px 14px;
+    font-weight:600;
+    color:var(--cyan);
+    margin-bottom:20px;
+    font-size:13px;
+    letter-spacing:.02em;
+  }
+
+  /* Table */
+  table.lines{width:100%;border-collapse:collapse;margin-bottom:18px;}
+  table.lines thead th{
+    background:linear-gradient(135deg,rgba(88,208,245,.15),rgba(133,92,198,.15),rgba(204,51,102,.1));
+    color:var(--cyan);
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-size:12px;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    padding:12px 12px;
+    text-align:left;
+    border-bottom:1px solid rgba(88,208,245,.2);
+  }
   table.lines thead th.r{text-align:right;}
-  table.lines tbody td{border-bottom:1px solid var(--line);padding:9px 10px;vertical-align:top;font-size:12px;white-space:pre-line;}
-  table.lines td.c{text-align:center;width:50px;}
-  table.lines td.r{text-align:right;width:120px;white-space:nowrap;}
-  .totals{width:300px;margin-left:auto;font-size:13px;}
-  .totals .l{display:flex;justify-content:space-between;padding:5px 0;}
-  .totals .l.grand{border-top:2px solid var(--brand);margin-top:4px;padding-top:8px;font-weight:800;font-size:16px;color:var(--accent);}
-  .terms{margin-top:22px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
-  .terms .h{font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;font-size:10px;margin-bottom:3px;}
-  .signs{display:flex;justify-content:space-between;gap:40px;margin-top:46px;}
+  table.lines tbody td{
+    border-bottom:1px solid rgba(255,255,255,.06);
+    padding:11px 12px;
+    vertical-align:top;
+    font-size:12.5px;
+    color:#c8d0e0;
+    white-space:pre-line;
+  }
+  table.lines td.c{text-align:center;width:50px;color:#8b97b5;}
+  table.lines td.r{text-align:right;width:120px;white-space:nowrap;color:#fff;font-weight:500;}
+  table.lines tbody tr:hover{background:rgba(88,208,245,.03);}
+
+  /* Totals */
+  .totals{width:320px;margin-left:auto;font-size:13px;}
+  .totals .l{display:flex;justify-content:space-between;padding:7px 0;color:#8b97b5;}
+  .totals .l span:last-child{color:#fff;font-weight:500;}
+  .totals .l.grand{
+    border-top:2px solid;
+    border-image:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink)) 1;
+    margin-top:6px;
+    padding-top:10px;
+    font-weight:800;
+    font-size:18px;
+  }
+  .totals .l.grand span:first-child{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    letter-spacing:.08em;
+    color:#fff;
+    font-weight:400;
+    font-size:20px;
+  }
+  .totals .l.grand span:last-child{
+    background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    font-family:'Raleway',sans-serif;
+  }
+
+  /* Terms */
+  .terms{
+    margin-top:28px;
+    font-size:10.5px;
+    color:rgba(255,255,255,.35);
+    border-top:1px solid rgba(255,255,255,.08);
+    padding-top:14px;
+  }
+  .terms .h{
+    font-family:'Bebas Neue','Impact',sans-serif;
+    font-weight:400;
+    color:var(--cyan);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size:12px;
+    margin-bottom:5px;
+  }
+
+  /* Signatures */
+  .signs{display:flex;justify-content:space-between;gap:40px;margin-top:50px;}
   .sign{flex:1;text-align:center;}
-  .sign .line{border-top:1px solid #101725;padding-top:6px;font-size:11px;font-weight:600;}
-  .pf{margin-top:30px;font-size:10px;color:var(--muted);line-height:1.5;border-top:1px dashed var(--line);padding-top:10px;}
-  .pf b{color:var(--ink);}
+  .sign .line{
+    border-top:1px solid rgba(255,255,255,.25);
+    padding-top:8px;
+    font-size:11px;
+    font-weight:600;
+    color:#fff;
+    letter-spacing:.04em;
+  }
+
+  /* Footer */
+  .pf{
+    margin-top:34px;
+    font-size:10px;
+    color:rgba(255,255,255,.3);
+    line-height:1.6;
+    border-top:1px solid rgba(255,255,255,.06);
+    padding-top:12px;
+  }
+  .pf b{color:rgba(255,255,255,.5);}
+
+  /* Bottom gradient bar */
+  .doc-bottom-bar{
+    height:4px;
+    background:linear-gradient(90deg,var(--pink),var(--purple),var(--cyan));
+  }
 
   @media print{
     body{background:#fff;}
@@ -82,14 +249,14 @@
     .editor,.no-print{display:none !important;}
     .preview-wrap,.panel{border:none;box-shadow:none;}
     .doc{width:auto;padding:0;}
-    .doc .top{background:var(--brand) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .doc .gradbar{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    .doc .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
+    .doc,.doc .top{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+    .doc .top{background:var(--brand) !important;}
+    .gradbar,.doc-bottom-bar{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
+    table.lines thead th{-webkit-print-color-adjust:exact;print-color-adjust:exact;color-adjust:exact;}
     img{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    @page{margin:14mm;}
+    @page{margin:10mm;}
   }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 <div class="app">
@@ -162,9 +329,9 @@
     <textarea id="terminos" style="margin-top:6px;"></textarea>
 
     <div class="btn-row">
-      <button class="btn btn-primary" id="save">💾 Guardar cotización</button>
-      <button class="btn btn-ghost" id="pdf">⬇ Descargar / Imprimir PDF</button>
-      <button class="btn btn-ghost" id="nuevo">＋ Nueva</button>
+      <button class="btn btn-primary" id="save">Guardar cotización</button>
+      <button class="btn btn-ghost" id="pdf">Descargar PDF</button>
+      <button class="btn btn-ghost" id="nuevo">+ Nueva</button>
     </div>
 
     <div class="hist">
@@ -175,7 +342,7 @@
 
   <!-- ============ PREVIEW / DOCUMENTO ============ -->
   <div class="preview-wrap">
-    <div class="panel">
+    <div class="panel" style="background:var(--brand);border-color:rgba(255,255,255,.08);">
       <div class="doc" id="doc">
         <div class="top">
           <div>
@@ -183,7 +350,7 @@
             <div class="brand-tag">Creatividad Humana + Inteligencia Artificial</div>
           </div>
           <div class="quoteno">
-            <div class="big">COTIZACIÓN #</div>
+            <div class="big">COTIZACIÓN</div>
             <div class="n" id="d_num">—</div>
             <small id="d_moneda">MONEDA: MXN</small>
             <small id="d_lugarfecha">CDMX - 16/06</small>
@@ -198,7 +365,7 @@
             <div class="h">Cliente</div>
             <b id="d_cliente">—</b>
             <div id="d_contacto" style="margin-top:4px;"></div>
-            <div id="d_direccion" style="margin-top:6px;color:#5b6b85;max-width:320px;white-space:pre-line;"></div>
+            <div id="d_direccion" style="margin-top:6px;color:#6b7a94;max-width:320px;white-space:pre-line;"></div>
           </div>
         </div>
 
@@ -233,6 +400,8 @@
           Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
         </div>
         </div><!-- /inner -->
+
+        <div class="doc-bottom-bar"></div>
       </div>
     </div>
   </div>
@@ -248,13 +417,11 @@ const $ = id => document.getElementById(id);
 const STORE = 'barracuda_cotizaciones_v1';
 const NUMKEY = 'barracuda_next_num';
 
-// ---- formato de moneda estilo $30.000,00 ----
 function fmt(n){
   n = isNaN(n)?0:n;
   return '$' + n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
 }
 
-// ---- partidas ----
 function addItem(cant='1', desc='', precio=''){
   const tr = document.createElement('tr');
   tr.innerHTML = `
@@ -275,7 +442,6 @@ function getItems(){
   }));
 }
 
-// ---- render del documento ----
 function render(){
   $('d_num').textContent = $('num').value || '—';
   $('d_moneda').textContent = 'MONEDA: ' + $('moneda').value;
@@ -311,7 +477,6 @@ function render(){
   $('d_terminos').textContent = $('terminos').value;
 }
 
-// ---- términos preset ----
 $('termPreset').addEventListener('change', e=>{
   if(e.target.value!=='custom') $('terminos').value = TERMS[e.target.value];
   render();
@@ -322,7 +487,6 @@ $('termPreset').addEventListener('change', e=>{
 
 $('addItem').onclick = ()=>{addItem();render();};
 
-// ---- historial ----
 function loadStore(){ try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return []} }
 function saveStore(arr){ localStorage.setItem(STORE, JSON.stringify(arr)); }
 
@@ -369,12 +533,10 @@ $('save').onclick = ()=>{
   const arr = loadStore();
   arr.push(snapshot());
   saveStore(arr);
-  // avanzar consecutivo
   const next = (parseInt($('num').value)||0)+1;
   localStorage.setItem(NUMKEY, next);
   renderHist();
 
-  // Enviar a Google Sheets
   const subtotal = getItems().reduce((sum, it)=>sum+(parseFloat(it.precio)||0)*parseInt(it.cant),0);
   const ivaPct = parseFloat($('iva').value)||0;
   const iva = $('aplicaIva').value==='si' ? subtotal*(ivaPct/100) : 0;
@@ -409,13 +571,12 @@ $('pdf').onclick = ()=>{
     margin: [10,0,10,0],
     filename: 'Cotizacion-' + ($('num').value || 'Barracuda') + '.pdf',
     image: {type:'jpeg',quality:0.98},
-    html2canvas: {scale:2, useCORS:true, backgroundColor:'#ffffff'},
+    html2canvas: {scale:2, useCORS:true, backgroundColor:'#0B0F1A'},
     jsPDF: {unit:'mm',format:'a4',orientation:'portrait'}
   };
   html2pdf().set(opt).from(el).save();
 };
 
-// ---- inicio ----
 function initBlank(){
   const next = parseInt(localStorage.getItem(NUMKEY)) || 190;
   $('num').value = next;
