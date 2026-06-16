@@ -46,14 +46,14 @@
   /* ===== Documento (preview / impresión) ===== */
   .doc{background:#fff;color:#101725;width:820px;margin:0 auto;padding:0 0 50px;font-size:13px;line-height:1.45;}
   .doc .inner{padding:28px 56px 0;}
-  .doc .top{display:flex;justify-content:space-between;align-items:center;background:var(--brand);padding:22px 56px;}
+  .doc .top{display:grid;grid-template-columns:1fr auto;align-items:start;background:var(--brand);padding:24px 56px;gap:80px;}
   .gradbar{height:4px;background:var(--grad);}
-  .brand-logo{width:200px;height:auto;display:block;}
-  .brand-tag{font-size:8.5px;letter-spacing:.22em;color:#8b97b5;text-transform:uppercase;margin-top:7px;}
+  .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
+  .brand-tag{font-size:8.5px;letter-spacing:.22em;color:#8b97b5;text-transform:uppercase;margin-top:6px;}
   .doc .quoteno{text-align:right;}
-  .doc .quoteno .big{font-size:11px;font-weight:700;color:#9aa6c4;letter-spacing:.04em;}
-  .doc .quoteno .n{font-size:28px;font-weight:800;color:var(--cyan);line-height:1.1;}
-  .doc .quoteno small{display:block;color:#9aa6c4;font-size:10.5px;margin-top:5px;}
+  .doc .quoteno .big{font-size:10px;font-weight:700;color:#9aa6c4;letter-spacing:.04em;display:block;margin-bottom:24px;}
+  .doc .quoteno .n{font-size:40px;font-weight:800;color:var(--cyan);display:block;line-height:1;}
+  .doc .quoteno small{display:block;color:#9aa6c4;font-size:10px;margin-top:14px;}
   .meta-grid{display:flex;justify-content:space-between;gap:30px;margin-bottom:18px;}
   .meta-grid .blk{font-size:12px;}
   .meta-grid .blk .h{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px;}
@@ -82,6 +82,10 @@
     .editor,.no-print{display:none !important;}
     .preview-wrap,.panel{border:none;box-shadow:none;}
     .doc{width:auto;padding:0;}
+    .doc .top{background:var(--brand) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .doc .gradbar{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .doc .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
+    img{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     @page{margin:14mm;}
   }
 </style>
@@ -368,6 +372,28 @@ $('save').onclick = ()=>{
   const next = (parseInt($('num').value)||0)+1;
   localStorage.setItem(NUMKEY, next);
   renderHist();
+
+  // Enviar a Google Sheets
+  const subtotal = getItems().reduce((sum, it)=>sum+(parseFloat(it.precio)||0)*parseInt(it.cant),0);
+  const ivaPct = parseFloat($('iva').value)||0;
+  const iva = $('aplicaIva').value==='si' ? subtotal*(ivaPct/100) : 0;
+  const total = subtotal + iva;
+
+  const payload = {
+    numero: $('num').value,
+    fecha: new Date().toLocaleDateString('es-MX'),
+    cliente: $('cliente').value,
+    proyecto: $('proyecto').value,
+    monto: '$' + total.toLocaleString('es-MX', {minimumFractionDigits:2, maximumFractionDigits:2}),
+    estado: 'Borrador',
+    enlace: ''
+  };
+
+  fetch('https://script.google.com/macros/s/AKfycbwOQPOUhr4Ej4tlpwb05D712kO_OGhUTOnUvj94GfdOUSwYRAbSRSUi0TI47oe4pFic/exec', {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  }).catch(err=>console.log('Nota: No se pudo registrar en Google Sheets ('+err.message+')'));
+
   alert('Cotización #'+$('num').value+' guardada. El siguiente número será '+next+'.');
 };
 
