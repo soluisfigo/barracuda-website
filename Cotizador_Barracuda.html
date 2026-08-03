@@ -46,13 +46,13 @@
   /* ===== Documento (preview / impresión) ===== */
   .doc{background:#fff;color:#101725;width:820px;margin:0 auto;padding:0 0 50px;font-size:13px;line-height:1.45;}
   .doc .inner{padding:28px 56px 0;}
-  .doc .top{display:grid;grid-template-columns:1fr auto;align-items:start;background:linear-gradient(135deg, #0B0F1A 0%, #1a1f45 50%, #0B0F1A 100%);padding:24px 56px;gap:80px;}
+  .doc .top{display:grid;grid-template-columns:1fr auto;align-items:start;background:var(--brand);padding:24px 56px;gap:80px;}
   .gradbar{height:4px;background:var(--grad);}
   .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
   .brand-tag{font-size:8.5px;letter-spacing:.22em;color:#8b97b5;text-transform:uppercase;margin-top:6px;}
   .doc .quoteno{text-align:right;}
   .doc .quoteno .big{font-size:10px;font-weight:700;color:#9aa6c4;letter-spacing:.04em;display:block;margin-bottom:24px;}
-  .doc .quoteno .n{font-size:40px;font-weight:800;color:#FF10F0;display:block;line-height:1;}
+  .doc .quoteno .n{font-size:40px;font-weight:800;color:var(--cyan);display:block;line-height:1;}
   .doc .quoteno small{display:block;color:#9aa6c4;font-size:10px;margin-top:14px;}
   .meta-grid{display:flex;justify-content:space-between;gap:30px;margin-bottom:18px;}
   .meta-grid .blk{font-size:12px;}
@@ -70,7 +70,7 @@
   .totals .l.grand{border-top:2px solid var(--brand);margin-top:4px;padding-top:8px;font-weight:800;font-size:16px;color:var(--accent);}
   .terms{margin-top:22px;font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px;}
   .terms .h{font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.04em;font-size:10px;margin-bottom:3px;}
-  .signs{display:flex;justify-content:space-between;gap:40px;margin-top:46px;}
+  .signs{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:46px;}
   .sign{flex:1;text-align:center;}
   .sign .line{border-top:1px solid #101725;padding-top:6px;font-size:11px;font-weight:600;}
   .pf{margin-top:30px;font-size:10px;color:var(--muted);line-height:1.5;border-top:1px dashed var(--line);padding-top:10px;}
@@ -82,7 +82,7 @@
     .editor,.no-print{display:none !important;}
     .preview-wrap,.panel{border:none;box-shadow:none;}
     .doc{width:auto;padding:0;}
-    .doc .top{background:linear-gradient(135deg, #0B0F1A 0%, #1a1f45 50%, #0B0F1A 100%) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .doc .top{background:var(--brand) !important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .doc .gradbar{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     .doc .brand-logo{max-width:280px;height:80px;object-fit:contain;object-position:left;}
     img{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
@@ -224,7 +224,7 @@
 
         <div class="signs">
           <div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div>
-          <div class="sign"><img src="Firma HSF.png" style="max-width:180px;height:auto;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
+          <div class="sign"><img src="Firma HSF.png" style="max-width:144px;height:auto;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
         </div>
 
         <div class="pf">
