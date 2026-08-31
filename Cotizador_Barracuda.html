@@ -101,74 +101,80 @@
 
     <div class="row">
       <div>
-        <label># Cotización</label>
+        <label id="lbl_num"># Cotización</label>
         <input id="num" type="number">
       </div>
       <div>
-        <label>Moneda</label>
+        <label id="lbl_moneda">Moneda</label>
         <select id="moneda"><option>MXN</option><option>USD</option></select>
       </div>
     </div>
+    <div class="row">
+      <div>
+        <label>Idioma / Language</label>
+        <select id="idioma"><option value="es">Español</option><option value="en">English</option></select>
+      </div>
+    </div>
 
-    <label>Cliente (empresa)</label>
+    <label id="lbl_cliente">Cliente (empresa)</label>
     <input id="cliente" placeholder="ASSA ABLOY">
 
-    <label>Proyecto / concepto del mes</label>
+    <label id="lbl_proyecto">Proyecto / concepto del mes</label>
     <input id="proyecto" placeholder="Diseños Assa Abloy Junio">
 
-    <label>Contacto</label>
+    <label id="lbl_contacto">Contacto</label>
     <input id="contacto" placeholder="Laura Camacho">
 
-    <label>Dirección</label>
+    <label id="lbl_direccion">Dirección</label>
     <textarea id="direccion" placeholder="Pelicano 242, Granjas Modernas 07460, Ciudad de México"></textarea>
 
     <div class="row">
       <div>
-        <label>Lugar y fecha</label>
+        <label id="lbl_lugarfecha">Lugar y fecha</label>
         <input id="lugarfecha" placeholder="CDMX - 16/06">
       </div>
       <div>
-        <label>Vigencia</label>
+        <label id="lbl_vigencia">Vigencia</label>
         <input id="vigencia" value="2 SEMANAS">
       </div>
     </div>
 
-    <label>Partidas</label>
+    <label id="lbl_partidas">Partidas</label>
     <div class="items">
       <table>
-        <thead><tr><th>Cant.</th><th>Descripción</th><th>P. Unitario</th><th></th></tr></thead>
+        <thead><tr><th id="lbl_th_cant">Cant.</th><th id="lbl_th_desc">Descripción</th><th id="lbl_th_precio">P. Unitario</th><th></th></tr></thead>
         <tbody id="items"></tbody>
       </table>
     </div>
-    <button class="additem" id="addItem">+ Agregar partida</button>
+    <button class="additem" id="addItem"><span id="lbl_additem">+ Agregar partida</span></button>
 
     <div class="row" style="margin-top:14px;">
       <div>
-        <label>IVA (%)</label>
+        <label id="lbl_iva">IVA (%)</label>
         <input id="iva" type="number" value="16">
       </div>
       <div>
-        <label>Aplicar IVA</label>
-        <select id="aplicaIva"><option value="si">Sí (16%)</option><option value="no">No</option></select>
+        <label id="lbl_aplicaIva">Aplicar IVA</label>
+        <select id="aplicaIva"><option value="si" id="opt_iva_si">Sí (16%)</option><option value="no">No</option></select>
       </div>
     </div>
 
-    <label>Términos y condiciones</label>
+    <label id="lbl_terminos">Términos y condiciones</label>
     <select id="termPreset">
-      <option value="oc">Firma + OC o anticipo 50% (estándar)</option>
-      <option value="simple">Solo firma de autorización</option>
-      <option value="custom">Personalizado…</option>
+      <option value="oc" id="opt_term_oc">Firma + OC o anticipo 50% (estándar)</option>
+      <option value="simple" id="opt_term_simple">Solo firma de autorización</option>
+      <option value="custom" id="opt_term_custom">Personalizado…</option>
     </select>
     <textarea id="terminos" style="margin-top:6px;"></textarea>
 
     <div class="btn-row">
-      <button class="btn btn-primary" id="save">💾 Guardar cotización</button>
-      <button class="btn btn-ghost" id="pdf">⬇ Descargar / Imprimir PDF</button>
-      <button class="btn btn-ghost" id="nuevo">＋ Nueva</button>
+      <button class="btn btn-primary" id="save"><span id="lbl_save">💾 Guardar cotización</span></button>
+      <button class="btn btn-ghost" id="pdf"><span id="lbl_pdf">⬇ Descargar / Imprimir PDF</span></button>
+      <button class="btn btn-ghost" id="nuevo"><span id="lbl_nuevo">＋ Nueva</span></button>
     </div>
 
     <div class="hist">
-      <h3>Historial de cotizaciones</h3>
+      <h3 id="lbl_historial">Historial de cotizaciones</h3>
       <div id="histList"><p class="empty">Aún no has guardado cotizaciones.</p></div>
     </div>
   </div>
@@ -183,7 +189,7 @@
             <div class="brand-tag">Creatividad Humana + Inteligencia Artificial</div>
           </div>
           <div class="quoteno">
-            <div class="big">COTIZACIÓN #</div>
+            <div class="big" id="d_quotelabel">COTIZACIÓN #</div>
             <div class="n" id="d_num">—</div>
             <small id="d_moneda">MONEDA: MXN</small>
             <small id="d_lugarfecha">CDMX - 16/06</small>
@@ -195,7 +201,7 @@
         <div class="inner">
         <div class="meta-grid">
           <div class="blk">
-            <div class="h">Cliente</div>
+            <div class="h" id="d_clientelabel">Cliente</div>
             <b id="d_cliente">—</b>
             <div id="d_contacto" style="margin-top:4px;"></div>
             <div id="d_direccion" style="margin-top:6px;color:#5b6b85;max-width:320px;white-space:pre-line;"></div>
@@ -206,30 +212,30 @@
 
         <table class="lines">
           <thead><tr>
-            <th class="c">Cant.</th><th>Descripción</th>
-            <th class="r">Precio Unitario</th><th class="r">Total</th>
+            <th class="c" id="d_th_cant">Cant.</th><th id="d_th_desc">Descripción</th>
+            <th class="r" id="d_th_precio">Precio Unitario</th><th class="r" id="d_th_total">Total</th>
           </tr></thead>
           <tbody id="d_items"></tbody>
         </table>
 
         <div class="totals">
-          <div class="l"><span>SUBTOTAL</span><span id="d_subtotal">$0,00</span></div>
-          <div class="l" id="d_ivarow"><span>IMPUESTOS (IVA)</span><span id="d_iva">$0,00</span></div>
-          <div class="l grand"><span>TOTAL</span><span id="d_total">$0,00</span></div>
+          <div class="l"><span id="d_lbl_subtotal">SUBTOTAL</span><span id="d_subtotal">$0,00</span></div>
+          <div class="l" id="d_ivarow"><span id="d_lbl_iva">IMPUESTOS (IVA)</span><span id="d_iva">$0,00</span></div>
+          <div class="l grand"><span id="d_lbl_total">TOTAL</span><span id="d_total">$0,00</span></div>
         </div>
 
         <div class="terms">
-          <div class="h">Términos y condiciones</div>
+          <div class="h" id="d_lbl_terminos">Términos y condiciones</div>
           <div id="d_terminos"></div>
         </div>
 
         <div class="signs">
-          <div class="sign"><div class="line">NOMBRE Y FIRMA DEL CLIENTE</div></div>
+          <div class="sign"><div class="line" id="d_firma_cliente">NOMBRE Y FIRMA DEL CLIENTE</div></div>
           <div class="sign"><img src="Firma HSF.png" style="max-width:144px;height:auto;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
         </div>
 
-        <div class="pf">
-          <b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>
+        <div class="pf" id="d_pf">
+          <span id="d_pf_content"><b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br></span>
           Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
         </div>
         </div><!-- /inner -->
@@ -243,6 +249,114 @@ const TERMS = {
   oc: "* Se solicita su firma de autorización para dar comienzo al proyecto. Los precios están sujetos a cambios en caso de cambiar el scope del proyecto. Precio vigente por 15 días a partir de la fecha de este documento. Se requiere Orden de Compra o anticipo del 50%.",
   simple: "* Se solicita su firma de autorización para dar comienzo al proyecto. Los precios están sujetos a cambios en caso de cambiar el scope del proyecto. Precio vigente por 15 días a partir de la fecha de este documento."
 };
+
+const TERMS_EN = {
+  oc: "* Your signed authorization is required to begin the project. Prices are subject to change if the project scope changes. This quote is valid for 15 days from the date of this document. A Purchase Order or 50% advance payment is required.",
+  simple: "* Your signed authorization is required to begin the project. Prices are subject to change if the project scope changes. This quote is valid for 15 days from the date of this document."
+};
+
+const LANG = {
+  es: {
+    lbl_num: '# Cotización',
+    lbl_moneda: 'Moneda',
+    lbl_cliente: 'Cliente (empresa)',
+    lbl_proyecto: 'Proyecto / concepto del mes',
+    lbl_contacto: 'Contacto',
+    lbl_direccion: 'Dirección',
+    lbl_lugarfecha: 'Lugar y fecha',
+    lbl_vigencia: 'Vigencia',
+    lbl_partidas: 'Partidas',
+    lbl_th_cant: 'Cant.',
+    lbl_th_desc: 'Descripción',
+    lbl_th_precio: 'P. Unitario',
+    lbl_additem: '+ Agregar partida',
+    lbl_iva: 'IVA (%)',
+    lbl_aplicaIva: 'Aplicar IVA',
+    opt_iva_si: 'Sí (16%)',
+    lbl_terminos: 'Términos y condiciones',
+    opt_term_oc: 'Firma + OC o anticipo 50% (estándar)',
+    opt_term_simple: 'Solo firma de autorización',
+    opt_term_custom: 'Personalizado…',
+    lbl_save: '💾 Guardar cotización',
+    lbl_pdf: '⬇ Descargar / Imprimir PDF',
+    lbl_nuevo: '＋ Nueva',
+    lbl_historial: 'Historial de cotizaciones',
+    d_quotelabel: 'COTIZACIÓN #',
+    d_moneda_prefix: 'MONEDA: ',
+    d_vigencia_prefix: 'VIGENCIA: ',
+    d_clientelabel: 'Cliente',
+    d_direccion_prefix: 'DIRECCIÓN: ',
+    d_th_cant: 'Cant.',
+    d_th_desc: 'Descripción',
+    d_th_precio: 'Precio Unitario',
+    d_th_total: 'Total',
+    d_lbl_subtotal: 'SUBTOTAL',
+    d_lbl_iva: 'IMPUESTOS (IVA)',
+    d_lbl_total: 'TOTAL',
+    d_lbl_terminos: 'Términos y condiciones',
+    d_firma_cliente: 'NOMBRE Y FIRMA DEL CLIENTE',
+    d_pf_content: '<b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>',
+    hist_empty: 'Aún no has guardado cotizaciones.',
+    hist_no_client: 'Sin cliente',
+    hist_delete_title: 'Eliminar',
+    alert_no_num: 'Pon un número de cotización antes de guardar.',
+    alert_saved: (num, next) => 'Cotización #'+num+' guardada. El siguiente número será '+next+'.',
+    confirm_new: '¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva).',
+    default_vigencia: '2 SEMANAS'
+  },
+  en: {
+    lbl_num: 'Quote #',
+    lbl_moneda: 'Currency',
+    lbl_cliente: 'Client (company)',
+    lbl_proyecto: 'Project / monthly concept',
+    lbl_contacto: 'Contact',
+    lbl_direccion: 'Address',
+    lbl_lugarfecha: 'Place & date',
+    lbl_vigencia: 'Validity',
+    lbl_partidas: 'Line items',
+    lbl_th_cant: 'Qty.',
+    lbl_th_desc: 'Description',
+    lbl_th_precio: 'Unit Price',
+    lbl_additem: '+ Add line item',
+    lbl_iva: 'Tax (%)',
+    lbl_aplicaIva: 'Apply Tax',
+    opt_iva_si: 'Yes (16%)',
+    lbl_terminos: 'Terms & Conditions',
+    opt_term_oc: 'Signature + PO or 50% advance (standard)',
+    opt_term_simple: 'Signature authorization only',
+    opt_term_custom: 'Custom…',
+    lbl_save: '💾 Save quote',
+    lbl_pdf: '⬇ Download / Print PDF',
+    lbl_nuevo: '＋ New',
+    lbl_historial: 'Quote history',
+    d_quotelabel: 'QUOTE #',
+    d_moneda_prefix: 'CURRENCY: ',
+    d_vigencia_prefix: 'VALID FOR: ',
+    d_clientelabel: 'Client',
+    d_direccion_prefix: 'ADDRESS: ',
+    d_th_cant: 'Qty.',
+    d_th_desc: 'Description',
+    d_th_precio: 'Unit Price',
+    d_th_total: 'Total',
+    d_lbl_subtotal: 'SUBTOTAL',
+    d_lbl_iva: 'TAX',
+    d_lbl_total: 'TOTAL',
+    d_lbl_terminos: 'Terms & Conditions',
+    d_firma_cliente: 'CLIENT NAME & SIGNATURE',
+    d_pf_content: '<b>INDIVIDUAL:</b> HÉCTOR SOLÍS FLORES<br>',
+    hist_empty: 'No saved quotes yet.',
+    hist_no_client: 'No client',
+    hist_delete_title: 'Delete',
+    alert_no_num: 'Enter a quote number before saving.',
+    alert_saved: (num, next) => 'Quote #'+num+' saved. Next number will be '+next+'.',
+    confirm_new: 'Start a new quote? The form will be cleared (history is preserved).',
+    default_vigencia: '2 WEEKS'
+  }
+};
+
+function curLang(){ return $('idioma').value || 'es'; }
+function L(key){ return LANG[curLang()][key]; }
+function curTerms(){ return curLang()==='en' ? TERMS_EN : TERMS; }
 
 const $ = id => document.getElementById(id);
 const STORE = 'barracuda_cotizaciones_v1';
@@ -275,15 +389,70 @@ function getItems(){
   }));
 }
 
+// ---- update all translatable labels ----
+function updateLabels(){
+  const lang = curLang();
+  const t = LANG[lang];
+  // editor labels
+  ['lbl_num','lbl_moneda','lbl_cliente','lbl_proyecto','lbl_contacto','lbl_direccion',
+   'lbl_lugarfecha','lbl_vigencia','lbl_partidas','lbl_th_cant','lbl_th_desc','lbl_th_precio',
+   'lbl_additem','lbl_iva','lbl_aplicaIva','lbl_terminos','lbl_save','lbl_pdf','lbl_nuevo',
+   'lbl_historial'].forEach(id=>{
+    const el = $(id);
+    if(el) el.textContent = t[id];
+  });
+  // select options
+  $('opt_iva_si').textContent = t.opt_iva_si;
+  $('opt_term_oc').textContent = t.opt_term_oc;
+  $('opt_term_simple').textContent = t.opt_term_simple;
+  $('opt_term_custom').textContent = t.opt_term_custom;
+  // document preview static labels
+  $('d_quotelabel').textContent = t.d_quotelabel;
+  $('d_clientelabel').textContent = t.d_clientelabel;
+  $('d_th_cant').textContent = t.d_th_cant;
+  $('d_th_desc').textContent = t.d_th_desc;
+  $('d_th_precio').textContent = t.d_th_precio;
+  $('d_th_total').textContent = t.d_th_total;
+  $('d_lbl_subtotal').textContent = t.d_lbl_subtotal;
+  $('d_lbl_iva').textContent = t.d_lbl_iva;
+  $('d_lbl_total').textContent = t.d_lbl_total;
+  $('d_lbl_terminos').textContent = t.d_lbl_terminos;
+  $('d_firma_cliente').textContent = t.d_firma_cliente;
+  $('d_pf_content').innerHTML = t.d_pf_content;
+}
+
+// ---- switch language ----
+function switchLang(){
+  const lang = curLang();
+  const t = LANG[lang];
+  const terms = curTerms();
+  if(lang==='en'){
+    $('moneda').value='USD';
+    $('aplicaIva').value='no';
+    if($('vigencia').value==='2 SEMANAS') $('vigencia').value='2 WEEKS';
+  } else {
+    $('moneda').value='MXN';
+    $('aplicaIva').value='si';
+    if($('vigencia').value==='2 WEEKS') $('vigencia').value='2 SEMANAS';
+  }
+  // update terms to current language version
+  const preset = $('termPreset').value;
+  if(preset!=='custom') $('terminos').value = terms[preset];
+  updateLabels();
+  renderHist();
+  render();
+}
+
 // ---- render del documento ----
 function render(){
+  const t = LANG[curLang()];
   $('d_num').textContent = $('num').value || '—';
-  $('d_moneda').textContent = 'MONEDA: ' + $('moneda').value;
+  $('d_moneda').textContent = t.d_moneda_prefix + $('moneda').value;
   $('d_lugarfecha').textContent = $('lugarfecha').value || '';
-  $('d_vigencia').textContent = 'VIGENCIA: ' + ($('vigencia').value || '');
+  $('d_vigencia').textContent = t.d_vigencia_prefix + ($('vigencia').value || '');
   $('d_cliente').textContent = $('cliente').value || '—';
   $('d_contacto').textContent = $('contacto').value || '';
-  $('d_direccion').textContent = $('direccion').value ? ('DIRECCIÓN: ' + $('direccion').value) : '';
+  $('d_direccion').textContent = $('direccion').value ? (t.d_direccion_prefix + $('direccion').value) : '';
   const proj = $('proyecto').value.trim();
   $('d_proyecto').style.display = proj ? 'block':'none';
   $('d_proyecto').textContent = proj;
@@ -313,7 +482,7 @@ function render(){
 
 // ---- términos preset ----
 $('termPreset').addEventListener('change', e=>{
-  if(e.target.value!=='custom') $('terminos').value = TERMS[e.target.value];
+  if(e.target.value!=='custom') $('terminos').value = curTerms()[e.target.value];
   render();
 });
 
@@ -321,6 +490,9 @@ $('termPreset').addEventListener('change', e=>{
   .forEach(id=>$(id).addEventListener('input',render));
 
 $('addItem').onclick = ()=>{addItem();render();};
+
+// ---- language switch listener ----
+$('idioma').addEventListener('change', switchLang);
 
 // ---- historial ----
 function loadStore(){ try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return []} }
@@ -333,31 +505,35 @@ function snapshot(){
     vigencia:$('vigencia').value, cliente:$('cliente').value, proyecto:$('proyecto').value,
     contacto:$('contacto').value, direccion:$('direccion').value,
     iva:$('iva').value, aplicaIva:$('aplicaIva').value, terminos:$('terminos').value,
+    idioma:$('idioma').value,
     items:getItems(), savedAt:new Date().toLocaleString('es-MX')
   };
 }
 
 function applySnapshot(s){
+  $('idioma').value=s.idioma||'es';
   $('num').value=s.num; $('moneda').value=s.moneda; $('lugarfecha').value=s.lugarfecha;
   $('vigencia').value=s.vigencia; $('cliente').value=s.cliente; $('proyecto').value=s.proyecto||'';
   $('contacto').value=s.contacto; $('direccion').value=s.direccion;
   $('iva').value=s.iva; $('aplicaIva').value=s.aplicaIva; $('terminos').value=s.terminos;
   $('items').innerHTML='';
   (s.items||[]).forEach(it=>addItem(it.cant,it.desc,it.precio));
+  updateLabels();
   render();
 }
 
 function renderHist(){
   const arr = loadStore().sort((a,b)=>b.id-a.id);
   const box = $('histList');
-  if(!arr.length){ box.innerHTML='<p class="empty">Aún no has guardado cotizaciones.</p>'; return; }
+  const t = LANG[curLang()];
+  if(!arr.length){ box.innerHTML='<p class="empty">'+t.hist_empty+'</p>'; return; }
   box.innerHTML='';
   arr.forEach(s=>{
     const div = document.createElement('div');
     div.className='hist-item';
-    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||'Sin cliente'}</b>
+    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||t.hist_no_client}</b>
       <span>${s.proyecto||''} · ${s.moneda} · ${s.savedAt}</span></div>
-      <button class="del" title="Eliminar">🗑</button>`;
+      <button class="del" title="${t.hist_delete_title}">🗑</button>`;
     div.querySelector('.meta').onclick = ()=>applySnapshot(s);
     div.querySelector('.del').onclick = ()=>{ saveStore(loadStore().filter(x=>x.id!==s.id)); renderHist(); };
     box.appendChild(div);
@@ -365,7 +541,8 @@ function renderHist(){
 }
 
 $('save').onclick = ()=>{
-  if(!$('num').value){ alert('Pon un número de cotización antes de guardar.'); return; }
+  const t = LANG[curLang()];
+  if(!$('num').value){ alert(t.alert_no_num); return; }
   const arr = loadStore();
   arr.push(snapshot());
   saveStore(arr);
@@ -395,11 +572,12 @@ $('save').onclick = ()=>{
     body: JSON.stringify(payload)
   }).catch(err=>console.log('Nota: No se pudo registrar en Google Sheets ('+err.message+')'));
 
-  alert('Cotización #'+$('num').value+' guardada. El siguiente número será '+next+'.');
+  alert(t.alert_saved($('num').value, next));
 };
 
 $('nuevo').onclick = ()=>{
-  if(!confirm('¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva).')) return;
+  const t = LANG[curLang()];
+  if(!confirm(t.confirm_new)) return;
   initBlank();
 };
 
@@ -407,6 +585,7 @@ $('pdf').onclick = ()=>window.print();
 
 // ---- inicio ----
 function initBlank(){
+  $('idioma').value='es';
   const next = parseInt(localStorage.getItem(NUMKEY)) || 190;
   $('num').value = next;
   $('moneda').value='MXN'; $('vigencia').value='2 SEMANAS';
@@ -416,6 +595,7 @@ function initBlank(){
   $('iva').value=16; $('aplicaIva').value='si';
   $('termPreset').value='oc'; $('terminos').value=TERMS.oc;
   $('items').innerHTML=''; addItem('1','','');
+  updateLabels();
   render();
 }
 
