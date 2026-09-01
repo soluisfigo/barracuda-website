@@ -109,9 +109,10 @@
         <select id="moneda"><option>MXN</option><option>USD</option></select>
       </div>
     </div>
+
     <div class="row">
       <div>
-        <label>Idioma / Language</label>
+        <label id="lbl_idioma">Idioma / Language</label>
         <select id="idioma"><option value="es">Español</option><option value="en">English</option></select>
       </div>
     </div>
@@ -142,11 +143,11 @@
     <label id="lbl_partidas">Partidas</label>
     <div class="items">
       <table>
-        <thead><tr><th id="lbl_th_cant">Cant.</th><th id="lbl_th_desc">Descripción</th><th id="lbl_th_precio">P. Unitario</th><th></th></tr></thead>
+        <thead><tr><th id="e_th_cant">Cant.</th><th id="e_th_desc">Descripción</th><th id="e_th_precio">P. Unitario</th><th></th></tr></thead>
         <tbody id="items"></tbody>
       </table>
     </div>
-    <button class="additem" id="addItem"><span id="lbl_additem">+ Agregar partida</span></button>
+    <button class="additem" id="addItem">+ Agregar partida</button>
 
     <div class="row" style="margin-top:14px;">
       <div>
@@ -155,7 +156,7 @@
       </div>
       <div>
         <label id="lbl_aplicaIva">Aplicar IVA</label>
-        <select id="aplicaIva"><option value="si" id="opt_iva_si">Sí (16%)</option><option value="no">No</option></select>
+        <select id="aplicaIva"><option value="si" id="opt_iva_si">Sí (16%)</option><option value="no" id="opt_iva_no">No</option></select>
       </div>
     </div>
 
@@ -168,13 +169,13 @@
     <textarea id="terminos" style="margin-top:6px;"></textarea>
 
     <div class="btn-row">
-      <button class="btn btn-primary" id="save"><span id="lbl_save">💾 Guardar cotización</span></button>
-      <button class="btn btn-ghost" id="pdf"><span id="lbl_pdf">⬇ Descargar / Imprimir PDF</span></button>
-      <button class="btn btn-ghost" id="nuevo"><span id="lbl_nuevo">＋ Nueva</span></button>
+      <button class="btn btn-primary" id="save">💾 <span id="lbl_save">Guardar cotización</span></button>
+      <button class="btn btn-ghost" id="pdf">⬇ <span id="lbl_pdf">Descargar / Imprimir PDF</span></button>
+      <button class="btn btn-ghost" id="nuevo">＋ <span id="lbl_nuevo">Nueva</span></button>
     </div>
 
     <div class="hist">
-      <h3 id="lbl_historial">Historial de cotizaciones</h3>
+      <h3 id="lbl_hist">Historial de cotizaciones</h3>
       <div id="histList"><p class="empty">Aún no has guardado cotizaciones.</p></div>
     </div>
   </div>
@@ -189,7 +190,7 @@
             <div class="brand-tag">Creatividad Humana + Inteligencia Artificial</div>
           </div>
           <div class="quoteno">
-            <div class="big" id="d_quotelabel">COTIZACIÓN #</div>
+            <div class="big" id="d_cotlabel">COTIZACIÓN #</div>
             <div class="n" id="d_num">—</div>
             <small id="d_moneda">MONEDA: MXN</small>
             <small id="d_lugarfecha">CDMX - 16/06</small>
@@ -201,7 +202,7 @@
         <div class="inner">
         <div class="meta-grid">
           <div class="blk">
-            <div class="h" id="d_clientelabel">Cliente</div>
+            <div class="h" id="d_lbl_cliente">Cliente</div>
             <b id="d_cliente">—</b>
             <div id="d_contacto" style="margin-top:4px;"></div>
             <div id="d_direccion" style="margin-top:6px;color:#5b6b85;max-width:320px;white-space:pre-line;"></div>
@@ -230,12 +231,12 @@
         </div>
 
         <div class="signs">
-          <div class="sign"><div class="line" id="d_firma_cliente">NOMBRE Y FIRMA DEL CLIENTE</div></div>
+          <div class="sign"><div class="line" id="d_sign_client">NOMBRE Y FIRMA DEL CLIENTE</div></div>
           <div class="sign"><img src="Firma HSF.png" style="max-width:144px;height:auto;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto;"><div class="line">HÉCTOR SOLÍS — CEO</div></div>
         </div>
 
-        <div class="pf" id="d_pf">
-          <span id="d_pf_content"><b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br></span>
+        <div class="pf">
+          <b id="d_lbl_pf">PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>
           Barracuda Advertising &nbsp;·&nbsp; www.barracudaadvertising.com
         </div>
         </div><!-- /inner -->
@@ -257,106 +258,132 @@ const TERMS_EN = {
 
 const LANG = {
   es: {
-    lbl_num: '# Cotización',
-    lbl_moneda: 'Moneda',
-    lbl_cliente: 'Cliente (empresa)',
-    lbl_proyecto: 'Proyecto / concepto del mes',
-    lbl_contacto: 'Contacto',
-    lbl_direccion: 'Dirección',
-    lbl_lugarfecha: 'Lugar y fecha',
-    lbl_vigencia: 'Vigencia',
-    lbl_partidas: 'Partidas',
-    lbl_th_cant: 'Cant.',
-    lbl_th_desc: 'Descripción',
-    lbl_th_precio: 'P. Unitario',
-    lbl_additem: '+ Agregar partida',
-    lbl_iva: 'IVA (%)',
-    lbl_aplicaIva: 'Aplicar IVA',
-    opt_iva_si: 'Sí (16%)',
-    lbl_terminos: 'Términos y condiciones',
-    opt_term_oc: 'Firma + OC o anticipo 50% (estándar)',
-    opt_term_simple: 'Solo firma de autorización',
-    opt_term_custom: 'Personalizado…',
-    lbl_save: '💾 Guardar cotización',
-    lbl_pdf: '⬇ Descargar / Imprimir PDF',
-    lbl_nuevo: '＋ Nueva',
-    lbl_historial: 'Historial de cotizaciones',
-    d_quotelabel: 'COTIZACIÓN #',
-    d_moneda_prefix: 'MONEDA: ',
-    d_vigencia_prefix: 'VIGENCIA: ',
-    d_clientelabel: 'Cliente',
-    d_direccion_prefix: 'DIRECCIÓN: ',
-    d_th_cant: 'Cant.',
-    d_th_desc: 'Descripción',
-    d_th_precio: 'Precio Unitario',
-    d_th_total: 'Total',
-    d_lbl_subtotal: 'SUBTOTAL',
-    d_lbl_iva: 'IMPUESTOS (IVA)',
-    d_lbl_total: 'TOTAL',
-    d_lbl_terminos: 'Términos y condiciones',
-    d_firma_cliente: 'NOMBRE Y FIRMA DEL CLIENTE',
-    d_pf_content: '<b>PERSONA FÍSICA:</b> HÉCTOR SOLÍS FLORES &nbsp;·&nbsp; <b>RFC:</b> SOFH850902FE6<br>',
-    hist_empty: 'Aún no has guardado cotizaciones.',
-    hist_no_client: 'Sin cliente',
-    hist_delete_title: 'Eliminar',
-    alert_no_num: 'Pon un número de cotización antes de guardar.',
-    alert_saved: (num, next) => 'Cotización #'+num+' guardada. El siguiente número será '+next+'.',
-    confirm_new: '¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva).',
-    default_vigencia: '2 SEMANAS'
+    d_cotlabel: "COTIZACIÓN #",
+    moneda_prefix: "MONEDA: ",
+    vigencia_prefix: "VIGENCIA: ",
+    direccion_prefix: "DIRECCIÓN: ",
+    d_lbl_cliente: "Cliente",
+    d_th_cant: "Cant.",
+    d_th_desc: "Descripción",
+    d_th_precio: "Precio Unitario",
+    d_th_total: "Total",
+    d_lbl_subtotal: "SUBTOTAL",
+    d_lbl_iva: "IMPUESTOS (IVA)",
+    d_lbl_total: "TOTAL",
+    d_lbl_terminos: "Términos y condiciones",
+    d_sign_client: "NOMBRE Y FIRMA DEL CLIENTE",
+    d_lbl_pf: "PERSONA FÍSICA:",
+    lbl_num: "# Cotización",
+    lbl_moneda: "Moneda",
+    lbl_cliente: "Cliente (empresa)",
+    lbl_proyecto: "Proyecto / concepto del mes",
+    lbl_contacto: "Contacto",
+    lbl_direccion: "Dirección",
+    lbl_lugarfecha: "Lugar y fecha",
+    lbl_vigencia: "Vigencia",
+    lbl_partidas: "Partidas",
+    e_th_cant: "Cant.",
+    e_th_desc: "Descripción",
+    e_th_precio: "P. Unitario",
+    lbl_iva: "IVA (%)",
+    lbl_aplicaIva: "Aplicar IVA",
+    opt_iva_si: "Sí (16%)",
+    opt_iva_no: "No",
+    lbl_terminos: "Términos y condiciones",
+    opt_term_oc: "Firma + OC o anticipo 50% (estándar)",
+    opt_term_simple: "Solo firma de autorización",
+    opt_term_custom: "Personalizado…",
+    additem: "+ Agregar partida",
+    lbl_save: "Guardar cotización",
+    lbl_pdf: "Descargar / Imprimir PDF",
+    lbl_nuevo: "Nueva",
+    lbl_hist: "Historial de cotizaciones",
+    lbl_idioma: "Idioma / Language",
+    alert_nonum: "Pon un número de cotización antes de guardar.",
+    alert_saved: "Cotización #{num} guardada. El siguiente número será {next}.",
+    confirm_new: "¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva)."
   },
   en: {
-    lbl_num: 'Quote #',
-    lbl_moneda: 'Currency',
-    lbl_cliente: 'Client (company)',
-    lbl_proyecto: 'Project / monthly concept',
-    lbl_contacto: 'Contact',
-    lbl_direccion: 'Address',
-    lbl_lugarfecha: 'Place & date',
-    lbl_vigencia: 'Validity',
-    lbl_partidas: 'Line items',
-    lbl_th_cant: 'Qty.',
-    lbl_th_desc: 'Description',
-    lbl_th_precio: 'Unit Price',
-    lbl_additem: '+ Add line item',
-    lbl_iva: 'Tax (%)',
-    lbl_aplicaIva: 'Apply Tax',
-    opt_iva_si: 'Yes (16%)',
-    lbl_terminos: 'Terms & Conditions',
-    opt_term_oc: 'Signature + PO or 50% advance (standard)',
-    opt_term_simple: 'Signature authorization only',
-    opt_term_custom: 'Custom…',
-    lbl_save: '💾 Save quote',
-    lbl_pdf: '⬇ Download / Print PDF',
-    lbl_nuevo: '＋ New',
-    lbl_historial: 'Quote history',
-    d_quotelabel: 'QUOTE #',
-    d_moneda_prefix: 'CURRENCY: ',
-    d_vigencia_prefix: 'VALID FOR: ',
-    d_clientelabel: 'Client',
-    d_direccion_prefix: 'ADDRESS: ',
-    d_th_cant: 'Qty.',
-    d_th_desc: 'Description',
-    d_th_precio: 'Unit Price',
-    d_th_total: 'Total',
-    d_lbl_subtotal: 'SUBTOTAL',
-    d_lbl_iva: 'TAX',
-    d_lbl_total: 'TOTAL',
-    d_lbl_terminos: 'Terms & Conditions',
-    d_firma_cliente: 'CLIENT NAME & SIGNATURE',
-    d_pf_content: '<b>INDIVIDUAL:</b> HÉCTOR SOLÍS FLORES<br>',
-    hist_empty: 'No saved quotes yet.',
-    hist_no_client: 'No client',
-    hist_delete_title: 'Delete',
-    alert_no_num: 'Enter a quote number before saving.',
-    alert_saved: (num, next) => 'Quote #'+num+' saved. Next number will be '+next+'.',
-    confirm_new: 'Start a new quote? The form will be cleared (history is preserved).',
-    default_vigencia: '2 WEEKS'
+    d_cotlabel: "QUOTE #",
+    moneda_prefix: "CURRENCY: ",
+    vigencia_prefix: "VALID FOR: ",
+    direccion_prefix: "ADDRESS: ",
+    d_lbl_cliente: "Client",
+    d_th_cant: "Qty.",
+    d_th_desc: "Description",
+    d_th_precio: "Unit Price",
+    d_th_total: "Total",
+    d_lbl_subtotal: "SUBTOTAL",
+    d_lbl_iva: "TAX",
+    d_lbl_total: "TOTAL",
+    d_lbl_terminos: "Terms & Conditions",
+    d_sign_client: "CLIENT NAME & SIGNATURE",
+    d_lbl_pf: "INDIVIDUAL:",
+    lbl_num: "Quote #",
+    lbl_moneda: "Currency",
+    lbl_cliente: "Client (company)",
+    lbl_proyecto: "Project / monthly concept",
+    lbl_contacto: "Contact",
+    lbl_direccion: "Address",
+    lbl_lugarfecha: "Place & date",
+    lbl_vigencia: "Validity",
+    lbl_partidas: "Line items",
+    e_th_cant: "Qty.",
+    e_th_desc: "Description",
+    e_th_precio: "Unit Price",
+    lbl_iva: "Tax (%)",
+    lbl_aplicaIva: "Apply Tax",
+    opt_iva_si: "Yes (16%)",
+    opt_iva_no: "No",
+    lbl_terminos: "Terms & Conditions",
+    opt_term_oc: "Signature + PO or 50% advance (standard)",
+    opt_term_simple: "Signature authorization only",
+    opt_term_custom: "Custom…",
+    additem: "+ Add line item",
+    lbl_save: "Save quote",
+    lbl_pdf: "Download / Print PDF",
+    lbl_nuevo: "New",
+    lbl_hist: "Quote history",
+    lbl_idioma: "Idioma / Language",
+    alert_nonum: "Enter a quote number before saving.",
+    alert_saved: "Quote #{num} saved. Next number will be {next}.",
+    confirm_new: "Start a new quote? The form will be cleared (history is preserved)."
   }
 };
 
-function curLang(){ return $('idioma').value || 'es'; }
-function L(key){ return LANG[curLang()][key]; }
-function curTerms(){ return curLang()==='en' ? TERMS_EN : TERMS; }
+function curLang(){ return ($('idioma') && $('idioma').value) || 'es'; }
+function L(key){ return LANG[curLang()][key] || LANG.es[key] || key; }
+
+function updateLabels(){
+  var ids = ['d_cotlabel','d_lbl_cliente','d_th_cant','d_th_desc','d_th_precio','d_th_total',
+    'd_lbl_subtotal','d_lbl_iva','d_lbl_total','d_lbl_terminos','d_sign_client','d_lbl_pf',
+    'lbl_num','lbl_moneda','lbl_cliente','lbl_proyecto','lbl_contacto','lbl_direccion',
+    'lbl_lugarfecha','lbl_vigencia','lbl_partidas','e_th_cant','e_th_desc','e_th_precio',
+    'lbl_iva','lbl_aplicaIva','lbl_terminos','lbl_save','lbl_pdf','lbl_nuevo','lbl_hist','lbl_idioma'];
+  ids.forEach(function(id){ var el=$(id); if(el) el.textContent = L(id); });
+  var optIds = ['opt_iva_si','opt_iva_no','opt_term_oc','opt_term_simple','opt_term_custom'];
+  optIds.forEach(function(id){ var el=$(id); if(el) el.textContent = L(id); });
+  $('addItem').textContent = L('additem');
+}
+
+function switchLang(){
+  var lang = curLang();
+  if(lang==='en'){
+    $('moneda').value='USD';
+    $('aplicaIva').value='no';
+    $('vigencia').value='2 WEEKS';
+    var preset = $('termPreset').value;
+    if(preset!=='custom') $('terminos').value = TERMS_EN[preset] || TERMS_EN.oc;
+  } else {
+    $('moneda').value='MXN';
+    $('aplicaIva').value='si';
+    $('vigencia').value='2 SEMANAS';
+    var preset = $('termPreset').value;
+    if(preset!=='custom') $('terminos').value = TERMS[preset] || TERMS.oc;
+  }
+  updateLabels();
+  render();
+}
 
 const $ = id => document.getElementById(id);
 const STORE = 'barracuda_cotizaciones_v1';
@@ -389,70 +416,15 @@ function getItems(){
   }));
 }
 
-// ---- update all translatable labels ----
-function updateLabels(){
-  const lang = curLang();
-  const t = LANG[lang];
-  // editor labels
-  ['lbl_num','lbl_moneda','lbl_cliente','lbl_proyecto','lbl_contacto','lbl_direccion',
-   'lbl_lugarfecha','lbl_vigencia','lbl_partidas','lbl_th_cant','lbl_th_desc','lbl_th_precio',
-   'lbl_additem','lbl_iva','lbl_aplicaIva','lbl_terminos','lbl_save','lbl_pdf','lbl_nuevo',
-   'lbl_historial'].forEach(id=>{
-    const el = $(id);
-    if(el) el.textContent = t[id];
-  });
-  // select options
-  $('opt_iva_si').textContent = t.opt_iva_si;
-  $('opt_term_oc').textContent = t.opt_term_oc;
-  $('opt_term_simple').textContent = t.opt_term_simple;
-  $('opt_term_custom').textContent = t.opt_term_custom;
-  // document preview static labels
-  $('d_quotelabel').textContent = t.d_quotelabel;
-  $('d_clientelabel').textContent = t.d_clientelabel;
-  $('d_th_cant').textContent = t.d_th_cant;
-  $('d_th_desc').textContent = t.d_th_desc;
-  $('d_th_precio').textContent = t.d_th_precio;
-  $('d_th_total').textContent = t.d_th_total;
-  $('d_lbl_subtotal').textContent = t.d_lbl_subtotal;
-  $('d_lbl_iva').textContent = t.d_lbl_iva;
-  $('d_lbl_total').textContent = t.d_lbl_total;
-  $('d_lbl_terminos').textContent = t.d_lbl_terminos;
-  $('d_firma_cliente').textContent = t.d_firma_cliente;
-  $('d_pf_content').innerHTML = t.d_pf_content;
-}
-
-// ---- switch language ----
-function switchLang(){
-  const lang = curLang();
-  const t = LANG[lang];
-  const terms = curTerms();
-  if(lang==='en'){
-    $('moneda').value='USD';
-    $('aplicaIva').value='no';
-    if($('vigencia').value==='2 SEMANAS') $('vigencia').value='2 WEEKS';
-  } else {
-    $('moneda').value='MXN';
-    $('aplicaIva').value='si';
-    if($('vigencia').value==='2 WEEKS') $('vigencia').value='2 SEMANAS';
-  }
-  // update terms to current language version
-  const preset = $('termPreset').value;
-  if(preset!=='custom') $('terminos').value = terms[preset];
-  updateLabels();
-  renderHist();
-  render();
-}
-
 // ---- render del documento ----
 function render(){
-  const t = LANG[curLang()];
   $('d_num').textContent = $('num').value || '—';
-  $('d_moneda').textContent = t.d_moneda_prefix + $('moneda').value;
+  $('d_moneda').textContent = L('moneda_prefix') + $('moneda').value;
   $('d_lugarfecha').textContent = $('lugarfecha').value || '';
-  $('d_vigencia').textContent = t.d_vigencia_prefix + ($('vigencia').value || '');
+  $('d_vigencia').textContent = L('vigencia_prefix') + ($('vigencia').value || '');
   $('d_cliente').textContent = $('cliente').value || '—';
   $('d_contacto').textContent = $('contacto').value || '';
-  $('d_direccion').textContent = $('direccion').value ? (t.d_direccion_prefix + $('direccion').value) : '';
+  $('d_direccion').textContent = $('direccion').value ? (L('direccion_prefix') + $('direccion').value) : '';
   const proj = $('proyecto').value.trim();
   $('d_proyecto').style.display = proj ? 'block':'none';
   $('d_proyecto').textContent = proj;
@@ -482,17 +454,15 @@ function render(){
 
 // ---- términos preset ----
 $('termPreset').addEventListener('change', e=>{
-  if(e.target.value!=='custom') $('terminos').value = curTerms()[e.target.value];
+  if(e.target.value!=='custom'){ $('terminos').value = curLang()==='en' ? (TERMS_EN[e.target.value]||'') : (TERMS[e.target.value]||''); }
   render();
 });
 
-['num','moneda','lugarfecha','vigencia','cliente','proyecto','contacto','direccion','iva','aplicaIva','terminos']
+['num','moneda','lugarfecha','vigencia','cliente','proyecto','contacto','direccion','iva','aplicaIva','terminos','idioma']
   .forEach(id=>$(id).addEventListener('input',render));
+$('idioma').addEventListener('change', switchLang);
 
 $('addItem').onclick = ()=>{addItem();render();};
-
-// ---- language switch listener ----
-$('idioma').addEventListener('change', switchLang);
 
 // ---- historial ----
 function loadStore(){ try{return JSON.parse(localStorage.getItem(STORE))||[]}catch(e){return []} }
@@ -504,18 +474,16 @@ function snapshot(){
     num: $('num').value, moneda:$('moneda').value, lugarfecha:$('lugarfecha').value,
     vigencia:$('vigencia').value, cliente:$('cliente').value, proyecto:$('proyecto').value,
     contacto:$('contacto').value, direccion:$('direccion').value,
-    iva:$('iva').value, aplicaIva:$('aplicaIva').value, terminos:$('terminos').value,
-    idioma:$('idioma').value,
+    iva:$('iva').value, aplicaIva:$('aplicaIva').value, idioma:$('idioma').value, terminos:$('terminos').value,
     items:getItems(), savedAt:new Date().toLocaleString('es-MX')
   };
 }
 
 function applySnapshot(s){
-  $('idioma').value=s.idioma||'es';
   $('num').value=s.num; $('moneda').value=s.moneda; $('lugarfecha').value=s.lugarfecha;
   $('vigencia').value=s.vigencia; $('cliente').value=s.cliente; $('proyecto').value=s.proyecto||'';
   $('contacto').value=s.contacto; $('direccion').value=s.direccion;
-  $('iva').value=s.iva; $('aplicaIva').value=s.aplicaIva; $('terminos').value=s.terminos;
+  $('iva').value=s.iva; $('aplicaIva').value=s.aplicaIva; if(s.idioma) $('idioma').value=s.idioma; $('terminos').value=s.terminos;
   $('items').innerHTML='';
   (s.items||[]).forEach(it=>addItem(it.cant,it.desc,it.precio));
   updateLabels();
@@ -525,15 +493,14 @@ function applySnapshot(s){
 function renderHist(){
   const arr = loadStore().sort((a,b)=>b.id-a.id);
   const box = $('histList');
-  const t = LANG[curLang()];
-  if(!arr.length){ box.innerHTML='<p class="empty">'+t.hist_empty+'</p>'; return; }
+  if(!arr.length){ box.innerHTML='<p class="empty">Aún no has guardado cotizaciones.</p>'; return; }
   box.innerHTML='';
   arr.forEach(s=>{
     const div = document.createElement('div');
     div.className='hist-item';
-    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||t.hist_no_client}</b>
+    div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||'Sin cliente'}</b>
       <span>${s.proyecto||''} · ${s.moneda} · ${s.savedAt}</span></div>
-      <button class="del" title="${t.hist_delete_title}">🗑</button>`;
+      <button class="del" title="Eliminar">🗑</button>`;
     div.querySelector('.meta').onclick = ()=>applySnapshot(s);
     div.querySelector('.del').onclick = ()=>{ saveStore(loadStore().filter(x=>x.id!==s.id)); renderHist(); };
     box.appendChild(div);
@@ -541,8 +508,7 @@ function renderHist(){
 }
 
 $('save').onclick = ()=>{
-  const t = LANG[curLang()];
-  if(!$('num').value){ alert(t.alert_no_num); return; }
+  if(!$('num').value){ alert(L('alert_nonum')); return; }
   const arr = loadStore();
   arr.push(snapshot());
   saveStore(arr);
@@ -572,12 +538,22 @@ $('save').onclick = ()=>{
     body: JSON.stringify(payload)
   }).catch(err=>console.log('Nota: No se pudo registrar en Google Sheets ('+err.message+')'));
 
-  alert(t.alert_saved($('num').value, next));
+  const savedNum = $('num').value;
+  alert(L('alert_saved').replace('{num}',savedNum).replace('{next}',next));
+
+  // Auto-advance: clear form for next quote
+  $('num').value = next;
+  $('cliente').value = '';
+  $('proyecto').value = '';
+  $('contacto').value = '';
+  $('direccion').value = '';
+  $('items').innerHTML = '';
+  addItem('1','','');
+  render();
 };
 
 $('nuevo').onclick = ()=>{
-  const t = LANG[curLang()];
-  if(!confirm(t.confirm_new)) return;
+  if(!confirm(L('confirm_new'))) return;
   initBlank();
 };
 
@@ -585,9 +561,9 @@ $('pdf').onclick = ()=>window.print();
 
 // ---- inicio ----
 function initBlank(){
-  $('idioma').value='es';
   const next = parseInt(localStorage.getItem(NUMKEY)) || 190;
   $('num').value = next;
+  $('idioma').value='es';
   $('moneda').value='MXN'; $('vigencia').value='2 SEMANAS';
   $('cliente').value=''; $('proyecto').value=''; $('contacto').value=''; $('direccion').value='';
   const d=new Date();
