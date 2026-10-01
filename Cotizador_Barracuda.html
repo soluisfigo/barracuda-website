@@ -42,6 +42,8 @@
   .hist-item .meta{cursor:pointer;flex:1;}
   .hist-item .meta b{display:block;}
   .hist-item .meta span{color:var(--muted);}
+  .hist-item .dup{background:#fff;border:1px solid var(--line);color:var(--brand);border-radius:6px;cursor:pointer;width:26px;height:26px;font-size:13px;}
+  .hist-item .dup:hover{background:var(--soft);}
   .empty{color:var(--muted);font-size:12px;font-style:italic;}
 
   /* ===== Documento (preview / impresión) ===== */
@@ -301,7 +303,9 @@ const LANG = {
     lbl_idioma: "Idioma / Language",
     alert_nonum: "Pon un número de cotización antes de guardar.",
     alert_saved: "Cotización #{num} guardada. El siguiente número será {next}.",
-    confirm_new: "¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva)."
+    confirm_new: "¿Empezar una cotización nueva? Se limpiará el formulario (el historial se conserva).",
+    hist_dup: "Duplicar con nuevo número",
+    hist_open: "Abrir tal cual (revisar o reimprimir)"
   },
   en: {
     d_cotlabel: "QUOTE #",
@@ -347,7 +351,9 @@ const LANG = {
     lbl_idioma: "Idioma / Language",
     alert_nonum: "Enter a quote number before saving.",
     alert_saved: "Quote #{num} saved. Next number will be {next}.",
-    confirm_new: "Start a new quote? The form will be cleared (history is preserved)."
+    confirm_new: "Start a new quote? The form will be cleared (history is preserved).",
+    hist_dup: "Duplicate with new number",
+    hist_open: "Open as is (review or reprint)"
   }
 };
 
@@ -490,6 +496,31 @@ function applySnapshot(s){
   render();
 }
 
+// ---- consecutivo seguro: nunca retrocede, aunque abras una cotizacion vieja ----
+function nextNum(){
+  const stored = parseInt(localStorage.getItem(NUMKEY))||0;
+  const maxSaved = loadStore().reduce((m,s)=>Math.max(m, parseInt(s.num)||0), 0);
+  if(!stored && !maxSaved) return 190;              // primer uso
+  return Math.max(stored, maxSaved+1);
+}
+
+function hoyLugarFecha(){
+  const d=new Date();
+  return 'CDMX - ' + String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+}
+
+// ---- duplicar: mismos datos y partidas, nuevo consecutivo y fecha de hoy ----
+function duplicar(s){
+  applySnapshot(s);
+  $('num').value = nextNum();
+  $('lugarfecha').value = hoyLugarFecha();
+  updateLabels();
+  render();
+  window.scrollTo({top:0,behavior:'smooth'});
+  $('cliente').focus();
+  $('cliente').select();
+}
+
 function renderHist(){
   const arr = loadStore().sort((a,b)=>b.id-a.id);
   const box = $('histList');
@@ -500,8 +531,11 @@ function renderHist(){
     div.className='hist-item';
     div.innerHTML = `<div class="meta"><b>#${s.num||'—'} · ${s.cliente||'Sin cliente'}</b>
       <span>${s.proyecto||''} · ${s.moneda} · ${s.savedAt}</span></div>
+      <button class="dup" title="${L('hist_dup')}">⧉</button>
       <button class="del" title="Eliminar">🗑</button>`;
+    div.querySelector('.meta').title = L('hist_open');
     div.querySelector('.meta').onclick = ()=>applySnapshot(s);
+    div.querySelector('.dup').onclick = ()=>duplicar(s);
     div.querySelector('.del').onclick = ()=>{ saveStore(loadStore().filter(x=>x.id!==s.id)); renderHist(); };
     box.appendChild(div);
   });
@@ -513,7 +547,7 @@ $('save').onclick = ()=>{
   arr.push(snapshot());
   saveStore(arr);
   // avanzar consecutivo
-  const next = (parseInt($('num').value)||0)+1;
+  const next = Math.max((parseInt($('num').value)||0)+1, parseInt(localStorage.getItem(NUMKEY))||0);
   localStorage.setItem(NUMKEY, next);
   renderHist();
 
@@ -561,13 +595,11 @@ $('pdf').onclick = ()=>window.print();
 
 // ---- inicio ----
 function initBlank(){
-  const next = parseInt(localStorage.getItem(NUMKEY)) || 190;
-  $('num').value = next;
+  $('num').value = nextNum();
   $('idioma').value='es';
   $('moneda').value='MXN'; $('vigencia').value='2 SEMANAS';
   $('cliente').value=''; $('proyecto').value=''; $('contacto').value=''; $('direccion').value='';
-  const d=new Date();
-  $('lugarfecha').value = 'CDMX - ' + String(d.getDate()).padStart(2,'0')+'/'+String(d.getMonth()+1).padStart(2,'0');
+  $('lugarfecha').value = hoyLugarFecha();
   $('iva').value=16; $('aplicaIva').value='si';
   $('termPreset').value='oc'; $('terminos').value=TERMS.oc;
   $('items').innerHTML=''; addItem('1','','');
